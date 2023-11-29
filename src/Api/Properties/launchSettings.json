@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "SPW.Admin.Api": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:55539;http://localhost:55540"
+    }
+  }
+}

@@ -6,14 +6,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
-builder.Services.InitializeAppliactionServices();
+builder.Services.InitializeApplicationServices();
 
 builder.Logging.ClearProviders();
-builder.Logging.AddSerilog(new LoggerConfiguration()
+
+Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
-    .Enrich.FromLogContext()
-    .WriteTo.Console()
-    .CreateLogger());
+    //.Enrich.FromLogContext()
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 var app = builder.Build();
 

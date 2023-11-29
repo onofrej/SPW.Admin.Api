@@ -1,0 +1,8 @@
+2023-11-29 15:54:33.679 -03:00 [INF] Found AWS options in IConfiguration
+2023-11-29 15:54:33.862 -03:00 [INF] Found credentials using the AWS SDK's default credential search
+2023-11-29 15:54:35.610 -03:00 [INF] User created with success: Input { Id = 7e982faa-d376-4fe4-bdb5-c360d96b1539, Name = Hommer Simpson }
+2023-11-29 15:54:37.893 -03:00 [INF] User created with success: Input { Id = dec3e21d-a004-4fef-9391-4f4ac31e834b, Name = Hommer Simpson }
+2023-11-29 16:00:28.638 -03:00 [INF] Found AWS options in IConfiguration
+2023-11-29 16:00:28.808 -03:00 [INF] Found credentials using the AWS SDK's default credential search
+2023-11-29 16:00:30.358 -03:00 [INF] User created with success: Input { Id = eabbdd74-efeb-4d1a-baa2-7d4ebf817f51, Name = Hommer Simpson }
+2023-11-29 16:00:31.908 -03:00 [INF] User created with success: Input { Id = 8e03d1a4-a0c7-435e-9cee-a1861f9e2e7c, Name = Hommer Simpson }

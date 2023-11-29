@@ -1,3 +1,4 @@
+using Serilog;
 using SPW.Admin.Api.DependencyInjection;
 using SPW.Admin.Api.Users.UseCases.Create;
 
@@ -7,6 +8,13 @@ builder.Services.AddControllers();
 builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 builder.Services.InitializeAppliactionServices();
 
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog(new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .CreateLogger());
+
 var app = builder.Build();
 
 app.UseHttpsRedirection();
@@ -15,3 +23,10 @@ app.MapControllers();
 app.MapEndpoints();
 
 app.Run();
+
+[ExcludeFromCodeCoverage]
+public partial class Program
+{
+    protected Program()
+    { }
+}

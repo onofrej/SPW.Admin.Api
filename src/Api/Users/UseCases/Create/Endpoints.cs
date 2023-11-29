@@ -1,4 +1,6 @@
-﻿namespace SPW.Admin.Api.Users.UseCases.Create;
+﻿using Serilog;
+
+namespace SPW.Admin.Api.Users.UseCases.Create;
 
 internal static class Endpoints
 {
@@ -15,6 +17,8 @@ internal static class Endpoints
             request.Name!);
 
         await _createUserUseCase.ExecuteAsync(input, cancellationToken);
+
+        Log.Information("User created with success: {input}", input);
 
         return Results.Created($"/users/{input.Id}", input);
     }

@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Users.DataAccess;
+﻿namespace SPW.Admin.Api.Features.Users.DataAccess;
 
 internal interface IUserData
 {

@@ -1,5 +1,4 @@
-﻿using SPW.Admin.Api.Users.DataAccess;
-using SPW.Admin.Api.Users.UseCases.Create;
+﻿using SPW.Admin.Api.Features.Users.DataAccess;
 
 namespace SPW.Admin.Api.DependencyInjection;
 
@@ -11,15 +10,6 @@ internal static class ServiceCollectionExtensions
         services.AddScoped<IDynamoDBContext, DynamoDBContext>();
         services.AddScoped<IUserData, UserData>();
         services.AddAWSService<IAmazonDynamoDB>();
-
-        services.AddCreateUserUseCase();
-
-        return services;
-    }
-
-    private static IServiceCollection AddCreateUserUseCase(this IServiceCollection services)
-    {
-        services.AddScoped<IUseCase, UseCase>();
 
         return services;
     }

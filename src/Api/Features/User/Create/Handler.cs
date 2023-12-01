@@ -1,18 +1,29 @@
 ﻿using SPW.Admin.Api.DataAccess.User;
+using SPW.Admin.Api.Shared;
 
-namespace SPW.Admin.Api.Features.User;
+namespace SPW.Admin.Api.Features.User.Create;
 
-internal sealed class Handler : IRequestHandler<Command, Guid>
+internal sealed class Handler : IRequestHandler<Command, Result<Guid>>
 {
     private readonly IUserData _userData;
+    private readonly IValidator<Command> _validator;
 
-    public Handler(IUserData userData)
+    public Handler(IUserData userData, IValidator<Command> validator)
     {
         _userData = userData;
+        _validator = validator;
     }
 
-    public async Task<Guid> Handle(Command request, CancellationToken cancellationToken)
+    public async Task<Result<Guid>> Handle(Command request, CancellationToken cancellationToken)
     {
+        var validationResult = _validator.Validate(request);
+
+        if (!validationResult.IsValid)
+        {
+            return new Result<Guid>(Guid.Empty,
+                Errors.GetInvalidEntriesError(validationResult.ToString()));
+        }
+
         var entity = new UserEntity
         {
             Id = Guid.NewGuid(),
@@ -22,6 +33,6 @@ internal sealed class Handler : IRequestHandler<Command, Guid>
 
         await _userData.InsertAsync(entity, cancellationToken);
 
-        return entity.Id;
+        return new Result<Guid>(entity.Id);
     }
 }

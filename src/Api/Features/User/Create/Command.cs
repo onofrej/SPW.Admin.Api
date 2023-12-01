@@ -1,3 +1,9 @@
-﻿namespace SPW.Admin.Api.Features.User;
+﻿using SPW.Admin.Api.Shared;
 
-internal sealed record Command(string Name) : IRequest<Guid>;
+namespace SPW.Admin.Api.Features.User.Create;
+
+[ExcludeFromCodeCoverage]
+public sealed class Command : IRequest<Result<Guid>>
+{
+    public string Name { get; set; } = string.Empty;
+}

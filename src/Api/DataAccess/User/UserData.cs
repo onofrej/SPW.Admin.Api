@@ -1,5 +1,6 @@
-﻿namespace SPW.Admin.Api.Users.DataAccess;
+﻿namespace SPW.Admin.Api.DataAccess.User;
 
+[ExcludeFromCodeCoverage]
 internal sealed class UserData : IUserData
 {
     private readonly IDynamoDBContext _dynamoDBContext;

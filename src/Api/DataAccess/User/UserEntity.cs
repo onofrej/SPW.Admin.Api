@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Users.DataAccess;
+﻿namespace SPW.Admin.Api.DataAccess.User;
 
 [ExcludeFromCodeCoverage]
 [DynamoDBTable(TableName)]
@@ -9,7 +9,7 @@ internal sealed class UserEntity
     public const string SortKeyName = "name";
 
     [DynamoDBHashKey(HashKeyName)]
-    public string? Id { get; set; }
+    public Guid Id { get; set; }
 
     [DynamoDBRangeKey(SortKeyName)]
     public string? Name { get; set; }

@@ -1,5 +1,4 @@
 using SPW.Admin.Api.DependencyInjection;
-using SPW.Admin.Api.Features.Users.UseCases.Create;
 
 var builder = WebApplication.CreateBuilder(args);
 

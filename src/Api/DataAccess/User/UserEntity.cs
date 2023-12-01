@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.Users.DataAccess;
+﻿namespace SPW.Admin.Api.DataAccess.User;
 
 [ExcludeFromCodeCoverage]
 [DynamoDBTable(TableName)]

@@ -1,4 +1,4 @@
-﻿using SPW.Admin.Api.Features.Users.DataAccess;
+﻿using SPW.Admin.Api.DataAccess.User;
 
 namespace SPW.Admin.Api.DependencyInjection;
 

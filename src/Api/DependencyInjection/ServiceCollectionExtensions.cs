@@ -1,15 +1,13 @@
-﻿using SPW.Admin.Api.DataAccess.User;
+﻿using SPW.Admin.Api.Features.User.DataAccess;
 
 namespace SPW.Admin.Api.DependencyInjection;
 
 [ExcludeFromCodeCoverage]
 internal static class ServiceCollectionExtensions
 {
-    internal static IServiceCollection InitializeApplicationServices(this IServiceCollection services)
+    internal static IServiceCollection InitializeApplicationDependencies(this IServiceCollection services)
     {
-        services.AddScoped<IDynamoDBContext, DynamoDBContext>();
         services.AddScoped<IUserData, UserData>();
-        services.AddAWSService<IAmazonDynamoDB>();
 
         return services;
     }

@@ -1,5 +1,5 @@
-﻿using SPW.Admin.Api.DataAccess.User;
-using SPW.Admin.Api.Shared;
+﻿using SPW.Admin.Api.Features.User.DataAccess;
+using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.User.Create;
 
@@ -21,7 +21,7 @@ internal sealed class Handler : IRequestHandler<Command, Result<Guid>>
         if (!validationResult.IsValid)
         {
             return new Result<Guid>(Guid.Empty,
-                Errors.GetInvalidEntriesError(validationResult.ToString()));
+                Errors.CreateInvalidEntriesError(validationResult.ToString()));
         }
 
         var entity = new UserEntity

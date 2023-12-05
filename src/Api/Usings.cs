@@ -1,4 +1,5 @@
 ﻿global using System.Diagnostics.CodeAnalysis;
+global using System.Text.Json;
 global using Amazon.DynamoDBv2;
 global using Amazon.DynamoDBv2.DataModel;
 global using Carter;

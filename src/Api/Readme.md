@@ -49,3 +49,9 @@ Deploy application
     cd "SPW.Admin.Api/src/SPW.Admin.Api"
     dotnet lambda deploy-serverless
 ```
+
+
+aws dynamodb --endpoint-url http://localhost:4566 --region us-east-1 create-table --table-name users \
+    --attribute-definitions AttributeName=id,AttributeType=S AttributeName=name,AttributeType=S \ 
+    --key-schema AttributeName=id,KeyType=HASH AttributeName=name,KeyType=RANGE \
+    --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5

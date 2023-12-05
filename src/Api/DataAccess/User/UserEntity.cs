@@ -16,4 +16,22 @@ internal sealed class UserEntity
 
     [DynamoDBProperty("creation_date")]
     public DateTime CreationDate { get; set; }
+
+    [DynamoDBProperty("email")]
+    public string? Email { get; set; }
+
+    [DynamoDBProperty("phonenumber")]
+    public string? PhoneNumber { get; set; }
+
+    [DynamoDBProperty("gender")]
+    public string? Gender { get; set; }
+
+    [DynamoDBProperty("birthdate")]
+    public DateTime BirthDate { get; set; }
+
+    [DynamoDBProperty("baptismdate")]
+    public DateTime BaptismDate { get; set; }
+
+    [DynamoDBProperty("privilege")]
+    public string? Privilege { get; set; }
 }

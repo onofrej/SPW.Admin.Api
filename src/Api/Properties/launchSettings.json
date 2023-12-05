@@ -4,7 +4,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "IntegrationTests"
       },
       "applicationUrl": "https://localhost:55539;http://localhost:55540"
     }

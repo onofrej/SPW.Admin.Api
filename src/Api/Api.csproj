@@ -23,5 +23,6 @@
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
     <PackageReference Include="Serilog.Sinks.AwsCloudWatch" Version="4.0.178" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 </Project>

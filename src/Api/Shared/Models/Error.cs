@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Shared;
+﻿namespace SPW.Admin.Api.Shared.Models;
 
 [ExcludeFromCodeCoverage]
 public readonly struct Error : IEquatable<Error>

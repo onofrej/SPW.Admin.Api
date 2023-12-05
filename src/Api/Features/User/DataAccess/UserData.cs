@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.DataAccess.User;
+﻿namespace SPW.Admin.Api.Features.User.DataAccess;
 
 [ExcludeFromCodeCoverage]
 internal sealed class UserData : IUserData

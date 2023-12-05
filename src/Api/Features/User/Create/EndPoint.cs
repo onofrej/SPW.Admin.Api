@@ -1,4 +1,4 @@
-﻿using SPW.Admin.Api.Shared;
+﻿using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.User.Create;
 

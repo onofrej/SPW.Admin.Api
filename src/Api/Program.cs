@@ -1,4 +1,3 @@
-using Microsoft.OpenApi.Models;
 using SPW.Admin.Api.DependencyInjection;
 using SPW.Admin.Api.Shared.Middlewares;
 

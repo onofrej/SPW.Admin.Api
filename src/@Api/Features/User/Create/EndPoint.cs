@@ -7,9 +7,7 @@ public sealed class EndPoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapPost("/users", CreateUserAsync)
-            .WithName("users")
-            .WithOpenApi();
+        app.MapPost("/users", CreateUserAsync);
     }
 
     public static async Task<IResult> CreateUserAsync(Request request,

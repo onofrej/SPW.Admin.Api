@@ -8,6 +8,13 @@
 	<AWSProjectType>Lambda</AWSProjectType>
 	<AssemblyName>SPW.Admin.Api</AssemblyName>
 	<RootNamespace>SPW.Admin.Api</RootNamespace>
+	<OutputType>exe</OutputType>
+	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	<PublishReadyToRunComposite>true</PublishReadyToRunComposite>
+	<EventSourceSupport>false</EventSourceSupport>
+	<UseSystemResourceKeys>true</UseSystemResourceKeys>
+	<SelfContained>true</SelfContained>
+	<RuntimeIdentifier>linux-x64</RuntimeIdentifier>
   </PropertyGroup>
 
   <ItemGroup>

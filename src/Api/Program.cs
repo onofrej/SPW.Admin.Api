@@ -24,6 +24,10 @@ builder.Services.AddAWSService<IAmazonDynamoDB>();
 
 builder.Logging.ClearProviders();
 
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerGen();
+
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .CreateLogger();
@@ -33,6 +37,9 @@ builder.Host.UseSerilog();
 var app = builder.Build();
 
 app.MapCarter();
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 

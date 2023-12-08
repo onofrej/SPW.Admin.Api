@@ -1,28 +1,28 @@
-﻿namespace SPW.Admin.Api.Features.User.Get
+﻿namespace SPW.Admin.Api.Features.User.Get;
+
+[ExcludeFromCodeCoverage]
+public sealed class EndPoint : ICarterModule
 {
-    [ExcludeFromCodeCoverage]
-    public sealed class EndPoint : ICarterModule
+    private readonly HandlerGet _query;
+
+    public EndPoint(HandlerGet query)
     {
-        public void AddRoutes(IEndpointRouteBuilder app)
-        {
-            app.MapGet("/users", GetAllUsersAsync);
-            app.MapGet("users{id:int}", GetUserByIdAsync);
-            app.MapGet("/users/{name}", GetUserByNameAsync);
-        }
+        _query = query;
+    }
 
-        public static async Task<string> GetAllUsersAsync()
-        {
-            return await Task.FromResult("Ok");
-        }
+    public void AddRoutes(IEndpointRouteBuilder app)
+    {
+        app.MapGet("/users", GetAllUsersAsync);
+        app.MapGet("/users/{Id}", GetUserByIdAsync);
+    }
 
-        public static async Task<string> GetUserByIdAsync(int id)
-        {
-            return await Task.FromResult("Ok");
-        }
+    public async Task<IResult> GetAllUsersAsync()
+    {
+        return await _query.GetAllUsersAsync();
+    }
 
-        public static async Task<string> GetUserByNameAsync(string name)
-        {
-            return await Task.FromResult("Ok");
-        }
+    public async Task<IResult> GetUserByIdAsync(Guid Id, string Name)
+    {
+        return await _query.GetUserByIdAsync(Id, Name);
     }
 }

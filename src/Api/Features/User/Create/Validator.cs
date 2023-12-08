@@ -14,18 +14,14 @@ public sealed class Validator : AbstractValidator<Command>
             .WithMessage("Email cannot be empty")
             .Matches(@"^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$")
             .WithMessage("Invalid email address");
-        //Com o .EmailAddres() ele passa um email example@example sem precisar de um dominio .com etc
-        //Usando o Regex ele faz essa verificação
-        //.EmailAddress()
-        //.WithMessage("Invalid email address");
 
         RuleFor(expression => expression.PhoneNumber)
             .NotEmpty()
             .WithMessage("Phone Number cannot be empty")
             .Matches("^[0-9]*$")
-            .WithMessage("You must just enter numbers");
-        //.Length(11)
-        //.WithMessage("The length must be 11");
+            .WithMessage("You must just enter numbers")
+            .Length(11)
+            .WithMessage("The length must be 11");
 
         RuleFor(expression => expression.Gender)
             .NotEmpty()

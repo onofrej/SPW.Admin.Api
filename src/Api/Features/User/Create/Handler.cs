@@ -31,7 +31,7 @@ internal sealed class Handler : IRequestHandler<Command, Result<Guid>>
             CreationDate = DateTime.UtcNow
         };
 
-        await _userData.InsertAsync(entity, cancellationToken);
+        await _userData.InsertSingleItemAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

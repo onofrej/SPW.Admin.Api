@@ -10,7 +10,7 @@
   "configuration": "Release",
   "function-runtime": "provided.al2023",
   "function-memory-size": 1048,
-  "function-timeout": 10,
+  "function-timeout": 30,
   "function-handler": "SPW.Admin.Api",
   "function-url-enable": true,
   "function-architectures": [ "x86_64", "arm64" ]

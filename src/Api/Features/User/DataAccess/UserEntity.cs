@@ -1,19 +1,21 @@
 ﻿namespace SPW.Admin.Api.Features.User.DataAccess;
 
 [ExcludeFromCodeCoverage]
-[DynamoDBTable(TableName)]
+[DynamoDBTable(TABLENAME)]
 internal sealed class UserEntity
 {
-    public const string TableName = "users";
-    public const string HashKeyName = "id";
-    public const string SortKeyName = "name";
+    public const string TABLENAME = "users";
+    public const string HASHKEYNAME = "id";
+    public const string SORTKEYNAME = "name";
 
-    [DynamoDBHashKey(HashKeyName)]
+    [DynamoDBHashKey(HASHKEYNAME)]
     public Guid Id { get; set; }
 
-    [DynamoDBRangeKey(SortKeyName)]
+    [DynamoDBRangeKey(SORTKEYNAME)]
     public string? Name { get; set; }
 
     [DynamoDBProperty("creation_date")]
     public DateTime CreationDate { get; set; }
+
+    public string TableName { get; } = TABLENAME;
 }

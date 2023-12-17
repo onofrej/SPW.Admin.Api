@@ -14,7 +14,16 @@ public sealed class EndPoint : ICarterModule
         ISender _sender,
         CancellationToken cancellationToken)
     {
-        var command = new Command { Name = request.Name! };
+        var command = new Command
+        {
+            Name = request.Name!,
+            Email = request.Email!,
+            PhoneNumber = request.PhoneNumber!,
+            Gender = request.Gender!,
+            BirthDate = request.BirthDate!,
+            BaptismDate = request.BaptismDate!,
+            Privilege = request.Privilege!
+        };
 
         var result = await _sender.Send(command, cancellationToken);
 

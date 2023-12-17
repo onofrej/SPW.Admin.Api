@@ -1,4 +1,6 @@
-﻿namespace SPW.Admin.Api.Features.User.DataAccess;
+﻿using Amazon.DynamoDBv2.DocumentModel;
+
+namespace SPW.Admin.Api.Features.User.DataAccess;
 
 [ExcludeFromCodeCoverage]
 internal sealed class UserData : IUserData

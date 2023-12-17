@@ -31,4 +31,7 @@
     <PackageReference Include="Serilog.Sinks.AwsCloudWatch" Version="4.0.178" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\User\GetById\" />
+  </ItemGroup>
 </Project>

@@ -1,6 +1,4 @@
-﻿using Amazon.DynamoDBv2.DocumentModel;
-
-namespace SPW.Admin.Api.Features.User.DataAccess;
+﻿namespace SPW.Admin.Api.Features.User.DataAccess;
 
 [ExcludeFromCodeCoverage]
 internal sealed class UserData : IUserData
@@ -13,6 +11,11 @@ internal sealed class UserData : IUserData
     }
 
     public Task InsertAsync(UserEntity userEntity, CancellationToken cancellationToken)
+    {
+        return _dynamoDBContext.SaveAsync(userEntity, cancellationToken);
+    }
+
+    public Task UpdateAsync(UserEntity userEntity, CancellationToken cancellationToken)
     {
         return _dynamoDBContext.SaveAsync(userEntity, cancellationToken);
     }

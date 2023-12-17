@@ -3,18 +3,18 @@
 namespace SPW.Admin.Api.Features.User.Create;
 
 [ExcludeFromCodeCoverage]
-public sealed class EndPoint : ICarterModule
+public sealed class CreateEndPoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapPost("/users", CreateUserAsync);
     }
 
-    public static async Task<IResult> CreateUserAsync(Request request,
+    public static async Task<IResult> CreateUserAsync(CreateRequest request,
         ISender _sender,
         CancellationToken cancellationToken)
     {
-        var command = new Command
+        var command = new CreateCommand
         {
             Name = request.Name!,
             Email = request.Email!,
@@ -34,6 +34,6 @@ public sealed class EndPoint : ICarterModule
 
         Log.Information("User created with success: {input}", command);
 
-        return Results.Created($"/users/{result.Data}", new Response<Guid>(result.Data, default));
+        return Results.Created($"/users/{result.Data}", new Response<Guid>(result.Data));
     }
 }

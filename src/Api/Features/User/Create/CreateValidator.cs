@@ -1,9 +1,9 @@
 ﻿namespace SPW.Admin.Api.Features.User.Create;
 
 [ExcludeFromCodeCoverage]
-public sealed class Validator : AbstractValidator<Command>
+public sealed class CreateValidator : AbstractValidator<CreateCommand>
 {
-    public Validator()
+    public CreateValidator()
     {
         RuleFor(expression => expression.Name)
             .NotEmpty()

@@ -1,0 +1,20 @@
+﻿services:
+    localstack:
+        image: localstack/localstack
+        container_name: localstack
+        ports:
+            - "4566:4566"
+        environment:
+            - SERVICES=dynamodb
+            - AWS_DEFAULT_OUTPUT=json
+            - DEFAULT_REGION=us-east-1
+
+    dynamodb-admin:
+        image: aaronshaf/dynamodb-admin:latest
+        container_name: dynamodb-viewer
+        ports:
+          - "8001:8001"
+        environment:
+          DYNAMO_ENDPOINT: http://localstack:4566
+        depends_on:
+          - localstack

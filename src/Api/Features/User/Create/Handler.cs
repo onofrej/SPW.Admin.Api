@@ -28,7 +28,13 @@ internal sealed class Handler : IRequestHandler<Command, Result<Guid>>
         {
             Id = Guid.NewGuid(),
             Name = request.Name,
-            CreationDate = DateTime.UtcNow
+            CreationDate = DateTime.UtcNow,
+            Email = request.Email,
+            PhoneNumber = request.PhoneNumber,
+            Gender = request.Gender,
+            BirthDate = request.BirthDate,
+            BaptismDate = request.BaptismDate,
+            Privilege = request.Privilege
         };
 
         await _userData.InsertAsync(entity, cancellationToken);

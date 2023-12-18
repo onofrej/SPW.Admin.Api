@@ -19,4 +19,9 @@ internal sealed class UserData : IUserData
     {
         return _dynamoDBContext.SaveAsync(userEntity, cancellationToken);
     }
+
+    public Task DeleteAsync(UserEntity userEntity, CancellationToken cancellationToken)
+    {
+        return _dynamoDBContext.DeleteAsync(userEntity.Id, cancellationToken);
+    }
 }

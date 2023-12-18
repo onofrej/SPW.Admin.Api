@@ -15,9 +15,13 @@
     <PublishReadyToRun>true</PublishReadyToRun>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Features\User\GetById\**" />
     <Compile Remove="Users\**" />
+    <Content Remove="Features\User\GetById\**" />
     <Content Remove="Users\**" />
+    <EmbeddedResource Remove="Features\User\GetById\**" />
     <EmbeddedResource Remove="Users\**" />
+    <None Remove="Features\User\GetById\**" />
     <None Remove="Users\**" />
   </ItemGroup>
   <ItemGroup>
@@ -32,6 +36,6 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\User\GetById\" />
+    <Folder Include="Features\User\Read\" />
   </ItemGroup>
 </Project>

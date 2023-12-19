@@ -7,23 +7,9 @@
     <AWSProjectType>Lambda</AWSProjectType>
 	<AssemblyName>SPW.Admin.Api</AssemblyName>
 	<RootNamespace>SPW.Admin.Api</RootNamespace>
-	  
-	<!-- This property makes the build directory similar to a publish directory and helps the AWS .NET Lambda Mock Test Tool find project dependencies. -->
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    
-	<!-- Generate ready to run images during publishing to improvement cold starts. -->
     <PublishReadyToRun>true</PublishReadyToRun>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Features\User\GetById\**" />
-    <Compile Remove="Users\**" />
-    <Content Remove="Features\User\GetById\**" />
-    <Content Remove="Users\**" />
-    <EmbeddedResource Remove="Features\User\GetById\**" />
-    <EmbeddedResource Remove="Users\**" />
-    <None Remove="Features\User\GetById\**" />
-    <None Remove="Users\**" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Amazon.Lambda.AspNetCoreServer.Hosting" Version="1.6.0" />
     <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.300.7" />
@@ -34,8 +20,5 @@
     <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
     <PackageReference Include="Serilog.Sinks.AwsCloudWatch" Version="4.0.178" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Features\User\Read\" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SPW.Admin.Api.Shared.Models;
+﻿using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.User.Delete;
 
@@ -8,15 +7,12 @@ public sealed class DeleteEndPoint : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapDelete("/users/{Id}", DeleteUserAsync);
+        app.MapDelete("/users/{id:guid}", DeleteUserAsync);
     }
 
-    public static async Task<IResult> DeleteUserAsync([FromRoute] DeleteRequest request, ISender _sender, CancellationToken cancellationToken)
+    public static async Task<IResult> DeleteUserAsync([FromRoute] Guid id, ISender _sender, CancellationToken cancellationToken)
     {
-        var command = new DeleteCommand
-        {
-            Id = request.Id,
-        };
+        var command = new DeleteCommand { Id = id };
 
         var result = await _sender.Send(command, cancellationToken);
 

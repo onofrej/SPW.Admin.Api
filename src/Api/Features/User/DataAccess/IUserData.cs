@@ -7,4 +7,6 @@ internal interface IUserData
     Task UpdateAsync(UserEntity userEntity, CancellationToken cancellationToken);
 
     Task DeleteAsync(UserEntity userEntity, CancellationToken cancellationToken);
+
+    Task<UserEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken);
 }

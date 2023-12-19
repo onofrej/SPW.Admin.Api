@@ -5,4 +5,5 @@ global using Amazon.DynamoDBv2.DataModel;
 global using Carter;
 global using FluentValidation;
 global using MediatR;
+global using Microsoft.AspNetCore.Mvc;
 global using Serilog;

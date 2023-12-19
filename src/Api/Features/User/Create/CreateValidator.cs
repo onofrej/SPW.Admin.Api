@@ -21,7 +21,7 @@ public sealed class CreateValidator : AbstractValidator<CreateCommand>
             .Matches("^[0-9]*$")
             .WithMessage("You must just enter numbers")
             .Length(11)
-            .WithMessage("The length must be 11");
+            .WithMessage("The phone number length must be 11");
 
         RuleFor(expression => expression.Gender)
             .NotEmpty()

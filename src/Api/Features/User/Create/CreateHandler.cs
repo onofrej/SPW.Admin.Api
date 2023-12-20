@@ -21,7 +21,7 @@ internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid
         if (!validationResult.IsValid)
         {
             return new Result<Guid>(Guid.Empty,
-                CreateErrors.ReturnInvalidEntriesError(validationResult.ToString()));
+                Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
         var entity = new UserEntity

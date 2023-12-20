@@ -4,12 +4,10 @@
 internal sealed class UserData : IUserData
 {
     private readonly IDynamoDBContext _dynamoDBContext;
-    private readonly IAmazonDynamoDB _dynamoDbClient;
 
-    public UserData(IDynamoDBContext dynamoDBContext, IAmazonDynamoDB dynamoDbClient)
+    public UserData(IDynamoDBContext dynamoDBContext)
     {
         _dynamoDBContext = dynamoDBContext;
-        _dynamoDbClient = dynamoDbClient;
     }
 
     public Task InsertAsync(UserEntity userEntity, CancellationToken cancellationToken)
@@ -30,5 +28,10 @@ internal sealed class UserData : IUserData
     public async Task<UserEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
     {
         return await _dynamoDBContext.LoadAsync<UserEntity>(id, cancellationToken);
+    }
+
+    public async Task<IEnumerable<UserEntity>> GetAllAsync(CancellationToken cancellationToken)
+    {
+        return await _dynamoDBContext.ScanAsync<UserEntity>(default).GetRemainingAsync(cancellationToken);
     }
 }

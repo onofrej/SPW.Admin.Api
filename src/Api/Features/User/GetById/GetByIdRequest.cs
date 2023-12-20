@@ -1,7 +1,7 @@
 ﻿namespace SPW.Admin.Api.Features.User.Read;
 
 [ExcludeFromCodeCoverage]
-public sealed class ReadRequest
+public sealed class GetByIdRequest
 {
     public Guid Id { get; set; }
     public string? Name { get; set; }

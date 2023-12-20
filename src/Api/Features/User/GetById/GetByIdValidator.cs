@@ -1,9 +1,9 @@
 ﻿namespace SPW.Admin.Api.Features.User.Read;
 
 [ExcludeFromCodeCoverage]
-public sealed class ReadValidator : AbstractValidator<ReadCommand>
+public sealed class GetByIdValidator : AbstractValidator<ReadCommand>
 {
-    public ReadValidator()
+    public GetByIdValidator()
     {
         RuleFor(expression => expression.Id)
                .NotEmpty()

@@ -4,12 +4,12 @@ using SPW.Admin.Api.Shared.Models;
 namespace SPW.Admin.Api.Features.User.Read;
 
 [ExcludeFromCodeCoverage]
-internal sealed class ReadHandler : IRequestHandler<ReadCommand, Result<Guid>>
+internal sealed class GetByIdHandler : IRequestHandler<ReadCommand, Result<Guid>>
 {
     private readonly IUserData _userData;
     private readonly IValidator<ReadCommand> _validator;
 
-    public ReadHandler(IUserData userData, IValidator<ReadCommand> validator)
+    public GetByIdHandler(IUserData userData, IValidator<ReadCommand> validator)
     {
         _userData = userData;
         _validator = validator;
@@ -22,14 +22,14 @@ internal sealed class ReadHandler : IRequestHandler<ReadCommand, Result<Guid>>
         if (!validationResult.IsValid)
         {
             return new Result<Guid>(Guid.Empty,
-                ReadErrors.ReturnInvalidEntriesError(validationResult.ToString()));
+                Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
         var userEntityById = await _userData.GetByIdAsync(request.Id, cancellationToken);
 
         if (userEntityById is null)
         {
-            return new Result<Guid>(Guid.Empty, ReadErrors.ReturnUserNotFoundError());
+            return new Result<Guid>(Guid.Empty, Errors.ReturnUserNotFoundError());
         }
 
         request.Name = userEntityById.Name!;

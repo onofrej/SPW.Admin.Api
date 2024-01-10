@@ -11,6 +11,12 @@
     <PublishReadyToRun>true</PublishReadyToRun>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Features\User\NewFolder\**" />
+    <Content Remove="Features\User\NewFolder\**" />
+    <EmbeddedResource Remove="Features\User\NewFolder\**" />
+    <None Remove="Features\User\NewFolder\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Amazon.Lambda.AspNetCoreServer.Hosting" Version="1.6.0" />
     <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.300.7" />
     <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.300" />

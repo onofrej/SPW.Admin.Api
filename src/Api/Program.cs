@@ -1,5 +1,5 @@
-using Microsoft.AspNetCore.ResponseCompression;
 using System.IO.Compression;
+using Microsoft.AspNetCore.ResponseCompression;
 using SPW.Admin.Api.DependencyInjection;
 using SPW.Admin.Api.Shared.Middlewares;
 

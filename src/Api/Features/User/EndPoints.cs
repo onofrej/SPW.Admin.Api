@@ -2,7 +2,7 @@
 using SPW.Admin.Api.Features.User.DataAccess;
 using SPW.Admin.Api.Features.User.Delete;
 using SPW.Admin.Api.Features.User.GetAll;
-using SPW.Admin.Api.Features.User.Read;
+using SPW.Admin.Api.Features.User.GetById;
 using SPW.Admin.Api.Features.User.Update;
 using SPW.Admin.Api.Shared.Models;
 
@@ -36,33 +36,18 @@ public sealed class EndPoints : ICarterModule
 
     public static async Task<IResult> GetByIdAsync([FromRoute] Guid id, ISender _sender, CancellationToken cancellationToken)
     {
-        var command = new ReadCommand
-        {
-            Id = id,
-        };
+        var query = new GetByIdQuery(id);
 
-        var result = await _sender.Send(command, cancellationToken);
+        var result = await _sender.Send(query, cancellationToken);
 
         if (result.HasFailed)
         {
             return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
         }
 
-        Log.Information("User by id retreived with success: {input}", command);
+        Log.Information("User by id retrieved with success: {input}", query);
 
-        var userData = new ReadCommand
-        {
-            Id = command.Id,
-            Name = command.Name,
-            Email = command.Email,
-            PhoneNumber = command.PhoneNumber,
-            Gender = command.Gender,
-            BirthDate = command.BirthDate,
-            BaptismDate = command.BirthDate,
-            Privilege = command.Privilege,
-        };
-
-        return Results.Ok(userData);
+        return Results.Ok(new Response<UserEntity>(result.Data));
     }
 
     public static async Task<IResult> CreateUserAsync(CreateRequest request,

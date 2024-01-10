@@ -4,7 +4,7 @@
 [DynamoDBTable(TableName)]
 internal sealed class UserEntity
 {
-    public const string TableName = "users";
+    public const string TableName = "user";
     public const string HashKeyName = "id";
 
     [DynamoDBHashKey(HashKeyName)]

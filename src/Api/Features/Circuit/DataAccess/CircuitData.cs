@@ -41,6 +41,6 @@ internal sealed class CircuitData : ICircuitData
 
     public async Task<IEnumerable<CircuitEntity>> GetAllAsync(CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return await _dynamoDBContext.ScanAsync<CircuitEntity>(default).GetRemainingAsync(cancellationToken);
     }
 }

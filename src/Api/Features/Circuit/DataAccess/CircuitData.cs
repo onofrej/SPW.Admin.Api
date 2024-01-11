@@ -36,7 +36,7 @@ internal sealed class CircuitData : ICircuitData
 
     public async Task<CircuitEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return await _dynamoDBContext.LoadAsync<CircuitEntity>(id, cancellationToken);
     }
 
     public async Task<IEnumerable<CircuitEntity>> GetAllAsync(CancellationToken cancellationToken)

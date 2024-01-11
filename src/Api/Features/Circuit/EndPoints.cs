@@ -1,6 +1,7 @@
 ﻿using SPW.Admin.Api.Features.Circuit.Create;
 using SPW.Admin.Api.Features.Circuit.DataAccess;
 using SPW.Admin.Api.Features.Circuit.GetAll;
+using SPW.Admin.Api.Features.Circuit.GetById;
 using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.Circuit;
@@ -10,6 +11,7 @@ public sealed class EndPoints : ICarterModule
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapGet("/circuits", GetCircuitsAsync);
+        app.MapGet("/circuits/{id:guid}", GetByIdAsync);
         app.MapPost("/circuits", CreateCircuitsAsync);
     }
 
@@ -25,6 +27,22 @@ public sealed class EndPoints : ICarterModule
         Log.Information("Circuits retreived with success - count: {count}", result.Data!.Count());
 
         return Results.Ok(new Response<IEnumerable<CircuitEntity>>(result.Data));
+    }
+
+    public static async Task<IResult> GetByIdAsync([FromRoute] Guid id, ISender _sender, CancellationToken cancellationToken)
+    {
+        var query = new GetByIdQuery(id);
+
+        var result = await _sender.Send(query, cancellationToken);
+
+        if (result.HasFailed)
+        {
+            return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
+        }
+
+        Log.Information("Circuit by id retrieved with success: {input}", query);
+
+        return Results.Ok(new Response<CircuitEntity>(result.Data));
     }
 
     public static async Task<IResult> CreateCircuitsAsync(CreateRequest request, ISender _sender, CancellationToken cancellationToken)

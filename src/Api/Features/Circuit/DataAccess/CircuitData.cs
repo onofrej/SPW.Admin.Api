@@ -24,9 +24,9 @@ internal sealed class CircuitData : ICircuitData
         await _table.PutItemAsync(document, cancellationToken);
     }
 
-    public async Task UpdateAsync(CircuitEntity circuitEntity, CancellationToken cancellationToken)
+    public Task UpdateAsync(CircuitEntity circuitEntity, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return _dynamoDBContext.SaveAsync(circuitEntity, cancellationToken);
     }
 
     public async Task DeleteAsync(CircuitEntity circuitEntity, CancellationToken cancellationToken)

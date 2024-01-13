@@ -29,9 +29,9 @@ internal sealed class CircuitData : ICircuitData
         return _dynamoDBContext.SaveAsync(circuitEntity, cancellationToken);
     }
 
-    public async Task DeleteAsync(CircuitEntity circuitEntity, CancellationToken cancellationToken)
+    public Task DeleteAsync(CircuitEntity circuitEntity, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return _dynamoDBContext.DeleteAsync(circuitEntity, cancellationToken);
     }
 
     public async Task<CircuitEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)

@@ -1,5 +1,6 @@
 ﻿using SPW.Admin.Api.Features.Circuit.Create;
 using SPW.Admin.Api.Features.Circuit.DataAccess;
+using SPW.Admin.Api.Features.Circuit.Delete;
 using SPW.Admin.Api.Features.Circuit.GetAll;
 using SPW.Admin.Api.Features.Circuit.GetById;
 using SPW.Admin.Api.Features.Circuit.Update;
@@ -15,6 +16,7 @@ public sealed class EndPoints : ICarterModule
         app.MapGet("/circuits/{id:guid}", GetByIdAsync);
         app.MapPost("/circuits", CreateCircuitsAsync);
         app.MapPut("/circuits", UpdateCircuitAsync);
+        app.MapDelete("/circuits/{id:guid}", DeleteCircuitAsync);
     }
 
     public static async Task<IResult> GetCircuitsAsync(ISender _sender, CancellationToken cancellationToken)
@@ -84,5 +86,21 @@ public sealed class EndPoints : ICarterModule
         Log.Information("Circuit updated with success: {input}", command);
 
         return Results.Ok(new Response<Guid>(result.Data));
+    }
+
+    public static async Task<IResult> DeleteCircuitAsync([FromRoute] Guid id, ISender _sender, CancellationToken cancellationToken)
+    {
+        var command = new DeleteCommand { Id = id };
+
+        var result = await _sender.Send(command, cancellationToken);
+
+        if (result.HasFailed)
+        {
+            return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
+        }
+
+        Log.Information("Circuit deleted with success: {input}", command);
+
+        return Results.NoContent();
     }
 }

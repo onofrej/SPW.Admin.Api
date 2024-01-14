@@ -1,4 +1,5 @@
-using Microsoft.OpenApi.Models;
+using System.IO.Compression;
+using Microsoft.AspNetCore.ResponseCompression;
 using SPW.Admin.Api.DependencyInjection;
 using SPW.Admin.Api.Shared.Middlewares;
 
@@ -29,6 +30,23 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+    options.Providers.Add<BrotliCompressionProvider>();
+    options.Providers.Add<GzipCompressionProvider>();
+});
+
+builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
+{
+    options.Level = CompressionLevel.Fastest;
+});
+
+builder.Services.Configure<GzipCompressionProviderOptions>(options =>
+{
+    options.Level = CompressionLevel.SmallestSize;
+});
+
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .CreateLogger();
@@ -49,6 +67,8 @@ app.UseMiddleware<GlobalExceptionHandler>();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseResponseCompression();
 
 app.Run();
 

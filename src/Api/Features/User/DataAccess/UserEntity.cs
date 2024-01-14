@@ -4,14 +4,13 @@
 [DynamoDBTable(TableName)]
 internal sealed class UserEntity
 {
-    public const string TableName = "users";
+    public const string TableName = "user";
     public const string HashKeyName = "id";
-    public const string SortKeyName = "name";
 
     [DynamoDBHashKey(HashKeyName)]
     public Guid Id { get; set; }
 
-    [DynamoDBRangeKey(SortKeyName)]
+    [DynamoDBProperty("name")]
     public string? Name { get; set; }
 
     [DynamoDBProperty("creation_date")]

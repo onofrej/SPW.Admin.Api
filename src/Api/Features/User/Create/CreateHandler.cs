@@ -3,25 +3,25 @@ using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.User.Create;
 
-internal sealed class Handler : IRequestHandler<Command, Result<Guid>>
+internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid>>
 {
     private readonly IUserData _userData;
-    private readonly IValidator<Command> _validator;
+    private readonly IValidator<CreateCommand> _validator;
 
-    public Handler(IUserData userData, IValidator<Command> validator)
+    public CreateHandler(IUserData userData, IValidator<CreateCommand> validator)
     {
         _userData = userData;
         _validator = validator;
     }
 
-    public async Task<Result<Guid>> Handle(Command request, CancellationToken cancellationToken)
+    public async Task<Result<Guid>> Handle(CreateCommand request, CancellationToken cancellationToken)
     {
         var validationResult = _validator.Validate(request);
 
         if (!validationResult.IsValid)
         {
             return new Result<Guid>(Guid.Empty,
-                Errors.CreateInvalidEntriesError(validationResult.ToString()));
+                Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
         var entity = new UserEntity

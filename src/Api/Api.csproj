@@ -7,18 +7,14 @@
     <AWSProjectType>Lambda</AWSProjectType>
 	<AssemblyName>SPW.Admin.Api</AssemblyName>
 	<RootNamespace>SPW.Admin.Api</RootNamespace>
-	  
-	<!-- This property makes the build directory similar to a publish directory and helps the AWS .NET Lambda Mock Test Tool find project dependencies. -->
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    
-	<!-- Generate ready to run images during publishing to improvement cold starts. -->
     <PublishReadyToRun>true</PublishReadyToRun>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Users\**" />
-    <Content Remove="Users\**" />
-    <EmbeddedResource Remove="Users\**" />
-    <None Remove="Users\**" />
+    <Compile Remove="Features\User\NewFolder\**" />
+    <Content Remove="Features\User\NewFolder\**" />
+    <EmbeddedResource Remove="Features\User\NewFolder\**" />
+    <None Remove="Features\User\NewFolder\**" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Amazon.Lambda.AspNetCoreServer.Hosting" Version="1.6.0" />

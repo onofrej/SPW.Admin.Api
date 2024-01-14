@@ -1,9 +1,9 @@
-﻿namespace SPW.Admin.Api.Features.User.Create;
+﻿namespace SPW.Admin.Api.Features.User.Update;
 
 [ExcludeFromCodeCoverage]
-public sealed class Validator : AbstractValidator<Command>
+public sealed class UpdateValidator : AbstractValidator<UpdateCommand>
 {
-    public Validator()
+    public UpdateValidator()
     {
         RuleFor(expression => expression.Name)
             .NotEmpty()
@@ -21,7 +21,7 @@ public sealed class Validator : AbstractValidator<Command>
             .Matches("^[0-9]*$")
             .WithMessage("You must just enter numbers")
             .Length(11)
-            .WithMessage("The length must be 11");
+            .WithMessage("The phone number length must be 11");
 
         RuleFor(expression => expression.Gender)
             .NotEmpty()

@@ -1,8 +1,9 @@
-﻿namespace SPW.Admin.Api.Features.User.Create;
+﻿namespace SPW.Admin.Api.Features.User.Update;
 
 [ExcludeFromCodeCoverage]
-public sealed class Request
+public sealed class UpdateRequest
 {
+    public Guid Id { get; set; }
     public string? Name { get; set; }
     public string? Email { get; set; }
     public string? PhoneNumber { get; set; }

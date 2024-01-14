@@ -3,7 +3,7 @@
 namespace SPW.Admin.Api.Features.User.Create;
 
 [ExcludeFromCodeCoverage]
-public sealed class Command : IRequest<Result<Guid>>
+public sealed class CreateCommand : IRequest<Result<Guid>>
 {
     public string Name { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;

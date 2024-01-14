@@ -13,11 +13,11 @@ internal sealed class LoggingPipelineBehavior<TRequest, TResponse> : IPipelineBe
 
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Handling {@RequestType} at {@DateTime}", typeof(TRequest).Name, DateTime.UtcNow);
+        _logger.LogInformation("The {RequestType} type has been received at {DateTime}", typeof(TRequest).Name, DateTime.UtcNow);
 
         var response = await next();
 
-        _logger.LogInformation("Handling {@ResponseType} at {@DateTime}", typeof(TResponse).Name, DateTime.UtcNow);
+        _logger.LogInformation("The {RequestType} type has been returned at {DateTime}", typeof(TResponse).Name, DateTime.UtcNow);
 
         return response;
     }

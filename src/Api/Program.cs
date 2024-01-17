@@ -28,7 +28,10 @@ builder.Logging.ClearProviders();
 
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.CustomSchemaIds(x => x.FullName);
+});
 
 builder.Services.AddResponseCompression(options =>
 {

@@ -11,11 +11,17 @@ internal sealed class PointEntity
     public Guid Id { get; set; }
 
     [DynamoDBProperty("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     [DynamoDBProperty("quantity_publishers")]
     public int QuantityPublishers { get; set; }
 
     [DynamoDBProperty("address")]
-    public string Address { get; set; }
+    public string? Address { get; set; }
+
+    [DynamoDBProperty("imageurl")]
+    public string? ImageUrl { get; set; }
+
+    [DynamoDBProperty("googlemaps_url")]
+    public string? GoogleMapsUrl { get; set; }
 }

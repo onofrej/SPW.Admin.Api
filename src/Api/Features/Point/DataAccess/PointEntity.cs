@@ -17,5 +17,5 @@ internal sealed class PointEntity
     public int QuantityPublishers { get; set; }
 
     [DynamoDBProperty("address")]
-    public string Asddress { get; set; }
+    public string Address { get; set; }
 }

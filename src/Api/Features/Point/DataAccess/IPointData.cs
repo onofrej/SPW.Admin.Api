@@ -2,7 +2,7 @@
 
 internal interface IPointData
 {
-    Task InsertAsyn(PointEntity pointEntity, CancellationToken cancellationToken);
+    Task InsertAsync(PointEntity pointEntity, CancellationToken cancellationToken);
 
     Task UpdateAsync(PointEntity pointEntity, CancellationToken cancellationToken);
 

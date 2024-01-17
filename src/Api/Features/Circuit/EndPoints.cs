@@ -14,7 +14,7 @@ public sealed class EndPoints : ICarterModule
     {
         app.MapGet("/circuits", GetCircuitsAsync);
         app.MapGet("/circuits/{id:guid}", GetByIdAsync);
-        app.MapPost("/circuits", CreateCircuitsAsync);
+        app.MapPost("/circuits", CreateCircuitAsync);
         app.MapPut("/circuits", UpdateCircuitAsync);
         app.MapDelete("/circuits/{id:guid}", DeleteCircuitAsync);
     }
@@ -49,7 +49,7 @@ public sealed class EndPoints : ICarterModule
         return Results.Ok(new Response<CircuitEntity>(result.Data));
     }
 
-    public static async Task<IResult> CreateCircuitsAsync(CreateRequest request, ISender _sender, CancellationToken cancellationToken)
+    public static async Task<IResult> CreateCircuitAsync(CreateRequest request, ISender _sender, CancellationToken cancellationToken)
     {
         var command = new CreateCommand
         {

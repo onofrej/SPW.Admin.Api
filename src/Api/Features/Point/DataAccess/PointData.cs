@@ -7,16 +7,26 @@ internal sealed class PointData : IPointData
     private readonly IAmazonDynamoDB _amazonDynamoDBClient;
     private readonly Table _table;
 
-    public PointData(IDynamoDBContext dynamoDBContext, IAmazonDynamoDB amazonDynamoDBClient, Table table)
+    public PointData(IDynamoDBContext dynamoDBContext, IAmazonDynamoDB amazonDynamoDBClient)
     {
         _dynamoDBContext = dynamoDBContext;
         _amazonDynamoDBClient = amazonDynamoDBClient;
-        _table = table;
+        _table = Table.LoadTable(_amazonDynamoDBClient, PointEntity.TableName);
     }
 
-    public Task InsertAsyn(PointEntity pointEntity, CancellationToken cancellationToken)
+    public async Task InsertAsync(PointEntity pointEntity, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var document = new Document
+        {
+            ["id"] = pointEntity.Id,
+            ["name"] = pointEntity.Name,
+            ["quantity_publishers"] = pointEntity.QuantityPublishers,
+            ["address"] = pointEntity.Address,
+            ["imageurl"] = pointEntity.ImageUrl,
+            ["googlemaps_url"] = pointEntity.GoogleMapsUrl
+        };
+
+        await _table.PutItemAsync(document, cancellationToken);
     }
 
     public Task UpdateAsync(PointEntity pointEntity, CancellationToken cancellationToken)

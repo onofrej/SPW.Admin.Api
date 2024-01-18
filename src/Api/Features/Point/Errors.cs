@@ -8,5 +8,5 @@ internal static class Errors
         errorMessage: "Invalid entries", errorDetails);
 
     internal static Error ReturnPointNotFoundError(string errorDetails) => new(errorCode: "POI002",
-    errorMessage: "Point not found", errorDetails);
+        errorMessage: "Point not found", errorDetails);
 }

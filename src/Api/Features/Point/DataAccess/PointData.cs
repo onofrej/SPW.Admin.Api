@@ -44,8 +44,8 @@ internal sealed class PointData : IPointData
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<PointEntity>> GetAllAsync(CancellationToken cancellationToken)
+    public async Task<IEnumerable<PointEntity>> GetAllAsync(CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return await _dynamoDBContext.ScanAsync<PointEntity>(default).GetRemainingAsync(cancellationToken);
     }
 }

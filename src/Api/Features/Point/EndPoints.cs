@@ -1,4 +1,6 @@
 ﻿using SPW.Admin.Api.Features.Point.Create;
+using SPW.Admin.Api.Features.Point.DataAccess;
+using SPW.Admin.Api.Features.Point.GetAll;
 using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.Point;
@@ -7,7 +9,22 @@ public sealed class EndPoints : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
+        app.MapGet("/points", GetPointsAsync);
         app.MapPost("/points", CreatePointAsync);
+    }
+
+    public static async Task<IResult> GetPointsAsync(ISender _sender, CancellationToken cancellationToken)
+    {
+        var result = await _sender.Send(new GetAllQuery(), cancellationToken);
+
+        if (result.HasFailed)
+        {
+            return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
+        }
+
+        Log.Information("Points retreived with success - count: {count}", result.Data!.Count());
+
+        return Results.Ok(new Response<IEnumerable<PointEntity>>(result.Data));
     }
 
     public static async Task<IResult> CreatePointAsync(CreateRequest request, ISender _sender, CancellationToken cancellationToken)

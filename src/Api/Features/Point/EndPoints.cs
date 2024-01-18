@@ -1,5 +1,6 @@
 ﻿using SPW.Admin.Api.Features.Point.Create;
 using SPW.Admin.Api.Features.Point.DataAccess;
+using SPW.Admin.Api.Features.Point.Delete;
 using SPW.Admin.Api.Features.Point.GetAll;
 using SPW.Admin.Api.Features.Point.GetById;
 using SPW.Admin.Api.Shared.Models;
@@ -11,8 +12,9 @@ public sealed class EndPoints : ICarterModule
     public void AddRoutes(IEndpointRouteBuilder app)
     {
         app.MapGet("/points", GetPointsAsync);
-        app.MapGet("/points{id:guid}", GetByIdAsync);
+        app.MapGet("/points/{id:guid}", GetByIdAsync);
         app.MapPost("/points", CreatePointAsync);
+        app.MapDelete("/points/{id:guid}", DeletePointAsync);
     }
 
     public static async Task<IResult> GetPointsAsync(ISender _sender, CancellationToken cancellationToken)
@@ -66,5 +68,21 @@ public sealed class EndPoints : ICarterModule
         Log.Information("Point created with success: {input}", command);
 
         return Results.Created($"/points/{result.Data}", new Response<Guid>(result.Data));
+    }
+
+    public static async Task<IResult> DeletePointAsync([FromRoute] Guid id, ISender _sender, CancellationToken cancellationToken)
+    {
+        var command = new DeleteCommand { Id = id };
+
+        var result = await _sender.Send(command, cancellationToken);
+
+        if (result.HasFailed)
+        {
+            return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
+        }
+
+        Log.Information("Point deleted with success: {input}", command);
+
+        return Results.NoContent();
     }
 }

@@ -73,7 +73,7 @@ public sealed class EndPoints : ICarterModule
         var command = new UpdateCommand
         {
             Id = request.Id,
-            Name = request.Name,
+            Name = request.Name!,
         };
 
         var result = await _sender.Send(command, cancellationToken);

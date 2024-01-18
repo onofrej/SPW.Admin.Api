@@ -31,7 +31,7 @@ internal sealed class PointData : IPointData
 
     public Task UpdateAsync(PointEntity pointEntity, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return _dynamoDBContext.SaveAsync(pointEntity, cancellationToken);
     }
 
     public Task DeleteAsync(PointEntity pointEntity, CancellationToken cancellationToken)

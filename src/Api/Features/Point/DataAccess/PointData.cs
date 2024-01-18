@@ -39,9 +39,9 @@ internal sealed class PointData : IPointData
         throw new NotImplementedException();
     }
 
-    public Task<PointEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<PointEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return await _dynamoDBContext.LoadAsync<PointEntity>(id, cancellationToken);
     }
 
     public async Task<IEnumerable<PointEntity>> GetAllAsync(CancellationToken cancellationToken)

@@ -7,16 +7,24 @@ internal class ValidityData : IValidtyData
     private readonly IAmazonDynamoDB _amazonDynamoDBClient;
     private readonly Table _table;
 
-    public ValidityData(IDynamoDBContext dynamoDBContext, IAmazonDynamoDB amazonDynamoDBClient, Table table)
+    public ValidityData(IDynamoDBContext dynamoDBContext, IAmazonDynamoDB amazonDynamoDBClient)
     {
         _dynamoDBContext = dynamoDBContext;
         _amazonDynamoDBClient = amazonDynamoDBClient;
-        _table = table;
+        _table = Table.LoadTable(_amazonDynamoDBClient, ValidityEntity.TableName);
     }
 
-    public Task InsertAsync(ValidityEntity validityEntity, CancellationToken cancellationToken)
+    public async Task InsertAsync(ValidityEntity validityEntity, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var document = new Document
+        {
+            ["id"] = validityEntity.Id,
+            ["startdate"] = validityEntity.StartDate,
+            ["enddate"] = validityEntity.EndDate,
+            ["status"] = validityEntity.Status
+        };
+
+        await _table.PutItemAsync(document, cancellationToken);
     }
 
     public Task UpdateAsync(ValidityEntity validityEntity, CancellationToken cancellationToken)

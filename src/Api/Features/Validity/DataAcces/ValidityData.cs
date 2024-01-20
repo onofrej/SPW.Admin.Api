@@ -37,9 +37,9 @@ internal class ValidityData : IValidityData
         throw new NotImplementedException();
     }
 
-    public Task<ValidityEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<ValidityEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return await _dynamoDBContext.LoadAsync<ValidityEntity>(id, cancellationToken);
     }
 
     public async Task<IEnumerable<ValidityEntity>> GetAllAsync(CancellationToken cancellationToken)

@@ -10,6 +10,8 @@ public sealed class CreateValidator : AbstractValidator<CreateCommand>
 
         RuleFor(expression => expression.EndDate)
            .NotEmpty()
-           .WithMessage("End date cannot be empty");
+           .WithMessage("End date cannot be empty")
+           .GreaterThan(expression => expression.StartDate)
+           .WithMessage("End date cannot be less than Start Date");
     }
 }

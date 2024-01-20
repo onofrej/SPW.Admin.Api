@@ -1,5 +1,6 @@
 ﻿using SPW.Admin.Api.Features.Validity.Create;
 using SPW.Admin.Api.Features.Validity.DataAcces;
+using SPW.Admin.Api.Features.Validity.Delete;
 using SPW.Admin.Api.Features.Validity.GetAll;
 using SPW.Admin.Api.Features.Validity.GetById;
 using SPW.Admin.Api.Shared.Models;
@@ -14,6 +15,7 @@ public sealed class EndPoints : ICarterModule
         app.MapGet("/validities", GetValiditiesAsync);
         app.MapGet("/validities/{id:guid}", GetByIdAsync);
         app.MapPost("/validities", CreateValidityAsync);
+        app.MapDelete("/validities/{id:guid}", DeleteValidityAsync);
     }
 
     public static async Task<IResult> GetValiditiesAsync(ISender _sender, CancellationToken cancellationToken)
@@ -67,5 +69,21 @@ public sealed class EndPoints : ICarterModule
         Log.Information("Validity created with success: {input}", command);
 
         return Results.Created($"/validities/{result.Data}", new Response<Guid>(result.Data));
+    }
+
+    public static async Task<IResult> DeleteValidityAsync([FromRoute] Guid id, ISender _sender, CancellationToken cancellationToken)
+    {
+        var command = new DeleteCommand { Id = id };
+
+        var result = await _sender.Send(command, cancellationToken);
+
+        if (result.HasFailed)
+        {
+            return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
+        }
+
+        Log.Information("Validity deleted with success: {input}", command);
+
+        return Results.NoContent();
     }
 }

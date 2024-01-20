@@ -34,7 +34,7 @@ internal class ValidityData : IValidityData
 
     public Task DeleteAsync(ValidityEntity validityEntity, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return _dynamoDBContext.DeleteAsync(validityEntity, cancellationToken);
     }
 
     public async Task<ValidityEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)

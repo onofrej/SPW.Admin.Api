@@ -1,6 +1,6 @@
 ﻿namespace SPW.Admin.Api.Features.Validity.DataAcces;
 
-internal interface IValidtyData
+internal interface IValidityData
 {
     Task InsertAsync(ValidityEntity validityEntity, CancellationToken cancellationToken);
 

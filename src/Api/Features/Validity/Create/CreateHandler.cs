@@ -5,10 +5,10 @@ namespace SPW.Admin.Api.Features.Validity.Create;
 
 internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid>>
 {
-    private readonly IValidtyData _validityData;
+    private readonly IValidityData _validityData;
     private readonly IValidator<CreateCommand> _validator;
 
-    public CreateHandler(IValidtyData validityData, IValidator<CreateCommand> validator)
+    public CreateHandler(IValidityData validityData, IValidator<CreateCommand> validator)
     {
         _validityData = validityData;
         _validator = validator;

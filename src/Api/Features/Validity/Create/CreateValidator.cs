@@ -11,9 +11,5 @@ public sealed class CreateValidator : AbstractValidator<CreateCommand>
         RuleFor(expression => expression.EndDate)
            .NotEmpty()
            .WithMessage("End date cannot be empty");
-
-        RuleFor(expression => expression.Status)
-           .NotEmpty()
-           .WithMessage("Status cannot be empty");
     }
 }

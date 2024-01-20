@@ -1,4 +1,6 @@
 ﻿using SPW.Admin.Api.Features.Validity.Create;
+using SPW.Admin.Api.Features.Validity.DataAcces;
+using SPW.Admin.Api.Features.Validity.GetAll;
 using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.Validity;
@@ -8,7 +10,22 @@ public sealed class EndPoints : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
+        app.MapGet("/validities", GetValiditiesAsync);
         app.MapPost("/validities", CreateValidityAsync);
+    }
+
+    public static async Task<IResult> GetValiditiesAsync(ISender _sender, CancellationToken cancellationToken)
+    {
+        var result = await _sender.Send(new GetAllQuery(), cancellationToken);
+
+        if (result.HasFailed)
+        {
+            return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
+        }
+
+        Log.Information("Validities retreived with success - count: {count}", result.Data!.Count());
+
+        return Results.Ok(new Response<IEnumerable<ValidityEntity>>(result.Data));
     }
 
     public static async Task<IResult> CreateValidityAsync(CreateRequest request,

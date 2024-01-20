@@ -1,7 +1,7 @@
 ﻿namespace SPW.Admin.Api.Features.Validity.DataAcces;
 
 [ExcludeFromCodeCoverage]
-internal class ValidityData : IValidtyData
+internal class ValidityData : IValidityData
 {
     private readonly IDynamoDBContext _dynamoDBContext;
     private readonly IAmazonDynamoDB _amazonDynamoDBClient;
@@ -42,8 +42,8 @@ internal class ValidityData : IValidtyData
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<ValidityEntity>> GetAllAsync(CancellationToken cancellationToken)
+    public async Task<IEnumerable<ValidityEntity>> GetAllAsync(CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return await _dynamoDBContext.ScanAsync<ValidityEntity>(default).GetRemainingAsync(cancellationToken);
     }
 }

@@ -13,7 +13,7 @@ internal static class ServiceCollectionExtensions
         services.AddScoped<IUserData, UserData>();
         services.AddScoped<ICircuitData, CircuitData>();
         services.AddScoped<IPointData, PointData>();
-        services.AddScoped<IValidtyData, ValidityData>();
+        services.AddScoped<IValidityData, ValidityData>();
 
         return services;
     }

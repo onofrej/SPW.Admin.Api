@@ -29,7 +29,7 @@ internal class ValidityData : IValidityData
 
     public Task UpdateAsync(ValidityEntity validityEntity, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        return _dynamoDBContext.SaveAsync(validityEntity, cancellationToken);
     }
 
     public Task DeleteAsync(ValidityEntity validityEntity, CancellationToken cancellationToken)

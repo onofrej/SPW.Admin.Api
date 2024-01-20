@@ -1,6 +1,4 @@
-﻿using SPW.Admin.Api.Features.User.DataAccess;
-
-namespace SPW.Admin.Api.Features.Schedule.DataAccess;
+﻿namespace SPW.Admin.Api.Features.Schedule.DataAccess;
 
 [ExcludeFromCodeCoverage]
 internal sealed class ScheduleData : IScheduleData

@@ -96,7 +96,7 @@ public sealed class EndPoints : ICarterModule
 
         Log.Information("Point updated with success: {input}", command);
 
-        return Results.Created($"/points/{result.Data}", new Response<Guid>(result.Data));
+        return Results.Ok(new Response<Guid>(result.Data));
     }
 
     public static async Task<IResult> DeletePointAsync([FromRoute] Guid id, ISender _sender, CancellationToken cancellationToken)

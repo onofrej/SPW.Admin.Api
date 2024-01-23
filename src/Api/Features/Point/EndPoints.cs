@@ -12,11 +12,14 @@ public sealed class EndPoints : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/points", GetPointsAsync);
-        app.MapGet("/points/{id:guid}", GetByIdAsync);
-        app.MapPost("/points", CreatePointAsync);
-        app.MapPut("/points", UpdatePointAsync);
-        app.MapDelete("/points/{id:guid}", DeletePointAsync);
+        var group = app.MapGroup("/points")
+           .WithTags("Points");
+
+        group.MapGet(string.Empty, GetPointsAsync);
+        group.MapGet("/{id:guid}", GetByIdAsync);
+        group.MapPost(string.Empty, CreatePointAsync);
+        group.MapPut(string.Empty, UpdatePointAsync);
+        group.MapDelete("/{id:guid}", DeletePointAsync);
     }
 
     public static async Task<IResult> GetPointsAsync(ISender _sender, CancellationToken cancellationToken)

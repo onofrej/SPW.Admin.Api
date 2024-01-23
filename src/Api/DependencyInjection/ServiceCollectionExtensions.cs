@@ -1,4 +1,5 @@
 ﻿using SPW.Admin.Api.Features.Circuit.DataAccess;
+using SPW.Admin.Api.Features.Point.DataAccess;
 using SPW.Admin.Api.Features.Schedule.DataAccess;
 using SPW.Admin.Api.Features.User.DataAccess;
 using SPW.Admin.Api.Features.Validity.DataAcces;

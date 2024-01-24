@@ -15,6 +15,7 @@ internal static class ServiceCollectionExtensions
         services.AddScoped<ICircuitData, CircuitData>();
         services.AddScoped<IPointData, PointData>();
         services.AddScoped<IValidityData, ValidityData>();
+        services.AddScoped<IScheduleData, ScheduleData>();
 
         return services;
     }

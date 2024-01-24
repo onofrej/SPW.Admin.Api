@@ -10,9 +10,6 @@ internal sealed class ScheduleEntity
     [DynamoDBHashKey(HashKeyName)]
     public Guid Id { get; set; }
 
-    [DynamoDBHashKey("time")]
-    public DateTime Time { get; set; }
-
-    [DynamoDBHashKey("timeCode")]
-    public string? TimeCode { get; private set; }
+    [DynamoDBProperty("time")]
+    public string? Time { get; set; }
 }

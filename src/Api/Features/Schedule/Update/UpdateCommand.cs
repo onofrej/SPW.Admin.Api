@@ -6,5 +6,5 @@ namespace SPW.Admin.Api.Features.Schedule.Update;
 public sealed class UpdateCommand : IRequest<Result<Guid>>
 {
     public Guid Id { get; set; }
-    public DateTime Time { get; set; } = default;
+    public string? Time { get; set; } = default;
 }

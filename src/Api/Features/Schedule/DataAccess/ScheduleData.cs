@@ -19,8 +19,7 @@ internal sealed class ScheduleData : IScheduleData
         var document = new Document
         {
             ["id"] = scheduleEntity.Id,
-            ["time"] = scheduleEntity.Time,
-            ["timecode"] = $"H{scheduleEntity.Id.ToString("D2")}"
+            ["time"] = scheduleEntity.Time
         };
 
         await _table.PutItemAsync(document, cancellationToken);

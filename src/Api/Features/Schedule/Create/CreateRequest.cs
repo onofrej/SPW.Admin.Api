@@ -3,5 +3,5 @@
 [ExcludeFromCodeCoverage]
 public sealed class CreateRequest
 {
-    public DateTime Time { get; set; }
+    public string? Time { get; set; }
 }

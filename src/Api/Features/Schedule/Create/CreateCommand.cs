@@ -5,5 +5,5 @@ namespace SPW.Admin.Api.Features.Schedule.Create;
 [ExcludeFromCodeCoverage]
 public sealed class CreateCommand : IRequest<Result<Guid>>
 {
-    public DateTime Time { get; set; } = default;
+    public string? Time { get; set; } = default;
 }

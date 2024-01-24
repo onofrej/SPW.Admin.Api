@@ -4,5 +4,5 @@
 public sealed class UpdateRequest
 {
     public Guid Id { get; set; }
-    public DateTime Time { get; set; } = default;
+    public string? Time { get; set; } = default;
 }

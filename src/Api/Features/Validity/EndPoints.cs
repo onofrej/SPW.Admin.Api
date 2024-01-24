@@ -8,16 +8,18 @@ using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.Validity;
 
-[ExcludeFromCodeCoverage]
 public sealed class EndPoints : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/validities", GetValiditiesAsync);
-        app.MapGet("/validities/{id:guid}", GetByIdAsync);
-        app.MapPost("/validities", CreateValidityAsync);
-        app.MapPut("/validities", UpdateValidityAsync);
-        app.MapDelete("/validities/{id:guid}", DeleteValidityAsync);
+        var group = app.MapGroup("/validities")
+            .WithTags("Validities");
+
+        group.MapGet(string.Empty, GetValiditiesAsync);
+        group.MapGet("/{id:guid}", GetByIdAsync);
+        group.MapPost(string.Empty, CreateValidityAsync);
+        group.MapPut(string.Empty, UpdateValidityAsync);
+        group.MapDelete("/{id:guid}", DeleteValidityAsync);
     }
 
     public static async Task<IResult> GetValiditiesAsync(ISender _sender, CancellationToken cancellationToken)

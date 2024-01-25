@@ -3,6 +3,7 @@ using SPW.Admin.Api.Features.Announcement.DataAccess;
 using SPW.Admin.Api.Features.Announcement.Delete;
 using SPW.Admin.Api.Features.Announcement.GetAll;
 using SPW.Admin.Api.Features.Announcement.GetById;
+using SPW.Admin.Api.Features.Announcement.Update;
 using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.Announcement;
@@ -17,7 +18,7 @@ public sealed class EndPoints : ICarterModule
         group.MapGet(string.Empty, GetAnnouncementsAsync);
         group.MapGet("/{id:guid}", GetByIdAsync);
         group.MapPost(string.Empty, CreateAnnouncementAsync);
-        //group.MapPut(string.Empty, UpdateAnnouncementsync);
+        group.MapPut(string.Empty, UpdateAnnouncementsync);
         group.MapDelete("/{id:guid}", DeleteAnnouncementAsync);
     }
 
@@ -69,6 +70,29 @@ public sealed class EndPoints : ICarterModule
         Log.Information("Announcement created with success: {input}", command);
 
         return Results.Created($"/announcements/{result.Data}", new Response<Guid>(result.Data));
+    }
+
+    public static async Task<IResult> UpdateAnnouncementsync(UpdateRequest request,
+       ISender _sender,
+       CancellationToken cancellationToken)
+    {
+        var command = new UpdateCommand
+        {
+            Id = request.Id,
+            Title = request.Title,
+            Message = request.Message,
+        };
+
+        var result = await _sender.Send(command, cancellationToken);
+
+        if (result.HasFailed)
+        {
+            return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
+        }
+
+        Log.Information("Announcement updated with success: {input}", command);
+
+        return Results.Ok(new Response<Guid>(result.Data));
     }
 
     public static async Task<IResult> DeleteAnnouncementAsync([FromRoute] Guid id, ISender _sender, CancellationToken cancellationToken)

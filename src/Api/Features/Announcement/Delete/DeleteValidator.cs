@@ -6,6 +6,6 @@ public sealed class DeleteValidator : AbstractValidator<DeleteCommand>
     {
         RuleFor(expression => expression.Id)
             .NotEmpty()
-            .WithMessage("Id cannot be empty");
+            .WithMessage("Announcement Id cannot be empty");
     }
 }

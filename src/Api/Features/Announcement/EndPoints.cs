@@ -1,5 +1,6 @@
 ﻿using SPW.Admin.Api.Features.Announcement.Create;
 using SPW.Admin.Api.Features.Announcement.DataAccess;
+using SPW.Admin.Api.Features.Announcement.Delete;
 using SPW.Admin.Api.Features.Announcement.GetAll;
 using SPW.Admin.Api.Features.Announcement.GetById;
 using SPW.Admin.Api.Shared.Models;
@@ -17,7 +18,7 @@ public sealed class EndPoints : ICarterModule
         group.MapGet("/{id:guid}", GetByIdAsync);
         group.MapPost(string.Empty, CreateAnnouncementAsync);
         //group.MapPut(string.Empty, UpdateAnnouncementsync);
-        //group.MapDelete("/{id:guid}", DeleteAnnouncementAsync);
+        group.MapDelete("/{id:guid}", DeleteAnnouncementAsync);
     }
 
     public static async Task<IResult> GetAnnouncementsAsync(ISender _sender, CancellationToken cancellationToken)
@@ -68,5 +69,21 @@ public sealed class EndPoints : ICarterModule
         Log.Information("Announcement created with success: {input}", command);
 
         return Results.Created($"/announcements/{result.Data}", new Response<Guid>(result.Data));
+    }
+
+    public static async Task<IResult> DeleteAnnouncementAsync([FromRoute] Guid id, ISender _sender, CancellationToken cancellationToken)
+    {
+        var command = new DeleteCommand { Id = id };
+
+        var result = await _sender.Send(command, cancellationToken);
+
+        if (result.HasFailed)
+        {
+            return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
+        }
+
+        Log.Information("Announcement deleted with success: {input}", command);
+
+        return Results.NoContent();
     }
 }

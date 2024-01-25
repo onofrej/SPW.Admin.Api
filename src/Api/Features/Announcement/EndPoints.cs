@@ -1,4 +1,7 @@
 ﻿using SPW.Admin.Api.Features.Announcement.Create;
+using SPW.Admin.Api.Features.Announcement.DataAccess;
+using SPW.Admin.Api.Features.Announcement.GetAll;
+using SPW.Admin.Api.Features.Announcement.GetById;
 using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.Announcement;
@@ -10,11 +13,41 @@ public sealed class EndPoints : ICarterModule
         var group = app.MapGroup("/announcements")
             .WithTags("Announcements");
 
-        //group.MapGet(string.Empty, GetAnnouncementsAsync);
-        //group.MapGet("/{id:guid}", GetByIdAsync);
+        group.MapGet(string.Empty, GetAnnouncementsAsync);
+        group.MapGet("/{id:guid}", GetByIdAsync);
         group.MapPost(string.Empty, CreateAnnouncementAsync);
         //group.MapPut(string.Empty, UpdateAnnouncementsync);
         //group.MapDelete("/{id:guid}", DeleteAnnouncementAsync);
+    }
+
+    public static async Task<IResult> GetAnnouncementsAsync(ISender _sender, CancellationToken cancellationToken)
+    {
+        var result = await _sender.Send(new GetAllQuery(), cancellationToken);
+
+        if (result.HasFailed)
+        {
+            return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
+        }
+
+        Log.Information("Announcements retreived with success - count: {count}", result.Data!.Count());
+
+        return Results.Ok(new Response<IEnumerable<AnnouncementEntity>>(result.Data));
+    }
+
+    public static async Task<IResult> GetByIdAsync([FromRoute] Guid id, ISender _sender, CancellationToken cancellationToken)
+    {
+        var query = new GetByIdQuery(id);
+
+        var result = await _sender.Send(query, cancellationToken);
+
+        if (result.HasFailed)
+        {
+            return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
+        }
+
+        Log.Information("Announcement by id retrieved with success: {input}", query);
+
+        return Results.Ok(new Response<AnnouncementEntity>(result.Data));
     }
 
     public static async Task<IResult> CreateAnnouncementAsync(CreateRequest request, ISender _sender, CancellationToken cancellationToken)

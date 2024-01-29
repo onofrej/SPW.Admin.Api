@@ -13,6 +13,6 @@ public class UpdateValidator : AbstractValidator<UpdateCommand>
            .NotEmpty()
            .WithMessage("End date cannot be empty")
            .GreaterThan(expression => expression.StartDate)
-           .WithMessage("End date cannot be less than Start Date");
+           .WithMessage("End date cannot be lower than Start Date");
     }
 }

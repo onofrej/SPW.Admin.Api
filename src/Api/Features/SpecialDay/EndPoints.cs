@@ -1,10 +1,10 @@
-﻿using SPW.Admin.Api.Features.SpecialDate.Delete;
-using SPW.Admin.Api.Features.SpecialDate.Create;
-using SPW.Admin.Api.Features.SpecialDate.GetAll;
-using SPW.Admin.Api.Features.SpecialDate.DataAccess;
+﻿using SPW.Admin.Api.Features.SpecialDay.Delete;
+using SPW.Admin.Api.Features.SpecialDay.Create;
+using SPW.Admin.Api.Features.SpecialDay.GetAll;
+using SPW.Admin.Api.Features.SpecialDay.DataAccess;
+using SPW.Admin.Api.Features.SpecialDay.GetById;
+using SPW.Admin.Api.Features.SpecialDay.Update;
 using SPW.Admin.Api.Shared.Models;
-using SPW.Admin.Api.Features.SpecialDate.GetById;
-using SPW.Admin.Api.Features.SpecialDate.Update;
 
 namespace SPW.Admin.Api.Features.SpecialDate;
 
@@ -13,17 +13,17 @@ public class EndPoints : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        var group = app.MapGroup("/specialdates")
-         .WithTags("Special Dates");
+        var group = app.MapGroup("/specialdays")
+         .WithTags("Special Days");
 
-        group.MapGet(string.Empty, GetSpecialDatesAsync);
+        group.MapGet(string.Empty, GetSpecialDaysAsync);
         group.MapGet("/{id:guid}", GetByIdAsync);
-        group.MapPost(string.Empty, CreateSpecialDateAsync);
-        group.MapPut(string.Empty, UpdateSpecialDateAsync);
-        group.MapDelete("/{id:guid}", DeleteSpecialDateAsync);
+        group.MapPost(string.Empty, CreateSpecialDayAsync);
+        group.MapPut(string.Empty, UpdateSpecialDayAsync);
+        group.MapDelete("/{id:guid}", DeleteSpecialDayAsync);
     }
 
-    public static async Task<IResult> GetSpecialDatesAsync(ISender _sender, CancellationToken cancellationToken)
+    public static async Task<IResult> GetSpecialDaysAsync(ISender _sender, CancellationToken cancellationToken)
     {
         var result = await _sender.Send(new GetAllQuery(), cancellationToken);
 
@@ -32,9 +32,9 @@ public class EndPoints : ICarterModule
             return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
         }
 
-        Log.Information("Special dates retreived with success - count: {count}", result.Data!.Count());
+        Log.Information("Special days retreived with success - count: {count}", result.Data!.Count());
 
-        return Results.Ok(new Response<IEnumerable<SpecialDateEntity>>(result.Data));
+        return Results.Ok(new Response<IEnumerable<SpecialDayEntity>>(result.Data));
     }
 
     public static async Task<IResult> GetByIdAsync([FromRoute] Guid id, ISender _sender, CancellationToken cancellationToken)
@@ -48,12 +48,12 @@ public class EndPoints : ICarterModule
             return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
         }
 
-        Log.Information("Special date by id retrieved with success: {input}", query);
+        Log.Information("Special day by id retrieved with success: {input}", query);
 
-        return Results.Ok(new Response<SpecialDateEntity>(result.Data));
+        return Results.Ok(new Response<SpecialDayEntity>(result.Data));
     }
 
-    public static async Task<IResult> CreateSpecialDateAsync(CreateRequest request,
+    public static async Task<IResult> CreateSpecialDayAsync(CreateRequest request,
        ISender _sender,
        CancellationToken cancellationToken)
     {
@@ -72,12 +72,12 @@ public class EndPoints : ICarterModule
             return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
         }
 
-        Log.Information("Special Date created with success: {input}", command);
+        Log.Information("Special Day created with success: {input}", command);
 
-        return Results.Created($"/specialdates/{result.Data}", new Response<Guid>(result.Data));
+        return Results.Created($"/specialdays/{result.Data}", new Response<Guid>(result.Data));
     }
 
-    public static async Task<IResult> UpdateSpecialDateAsync(UpdateRequest request,
+    public static async Task<IResult> UpdateSpecialDayAsync(UpdateRequest request,
        ISender _sender,
        CancellationToken cancellationToken)
     {
@@ -97,12 +97,12 @@ public class EndPoints : ICarterModule
             return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
         }
 
-        Log.Information("Special date updated with success: {input}", command);
+        Log.Information("Special day updated with success: {input}", command);
 
         return Results.Ok(new Response<Guid>(result.Data));
     }
 
-    public static async Task<IResult> DeleteSpecialDateAsync([FromRoute] Guid id, ISender _sender, CancellationToken cancellationToken)
+    public static async Task<IResult> DeleteSpecialDayAsync([FromRoute] Guid id, ISender _sender, CancellationToken cancellationToken)
     {
         var command = new DeleteCommand { Id = id };
 
@@ -113,7 +113,7 @@ public class EndPoints : ICarterModule
             return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
         }
 
-        Log.Information("Special date deleted with success: {input}", command);
+        Log.Information("Special day deleted with success: {input}", command);
 
         return Results.NoContent();
     }

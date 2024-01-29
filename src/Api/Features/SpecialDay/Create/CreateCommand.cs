@@ -1,6 +1,6 @@
 ﻿using SPW.Admin.Api.Shared.Models;
 
-namespace SPW.Admin.Api.Features.SpecialDate.Create;
+namespace SPW.Admin.Api.Features.SpecialDay.Create;
 
 [ExcludeFromCodeCoverage]
 public sealed class CreateCommand : IRequest<Result<Guid>>

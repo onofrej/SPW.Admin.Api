@@ -1,18 +1,18 @@
 ﻿using SPW.Admin.Api.Features.Circuit.DataAccess;
-using SPW.Admin.Api.Features.SpecialDate.DataAccess;
+using SPW.Admin.Api.Features.SpecialDay.DataAccess;
 using SPW.Admin.Api.Shared.Models;
 
-namespace SPW.Admin.Api.Features.SpecialDate.Update;
+namespace SPW.Admin.Api.Features.SpecialDay.Update;
 
 internal sealed class UpdateHandler : IRequestHandler<UpdateCommand, Result<Guid>>
 {
-    private readonly ISpecialDateData _specialDateData;
+    private readonly ISpecialDayData _specialDayData;
     private readonly IValidator<UpdateCommand> _validator;
     private readonly ICircuitData _circuitData;
 
-    public UpdateHandler(ISpecialDateData specialDateData, IValidator<UpdateCommand> validator, ICircuitData circuitData)
+    public UpdateHandler(ISpecialDayData specialDayData, IValidator<UpdateCommand> validator, ICircuitData circuitData)
     {
-        _specialDateData = specialDateData;
+        _specialDayData = specialDayData;
         _validator = validator;
         _circuitData = circuitData;
     }
@@ -27,7 +27,7 @@ internal sealed class UpdateHandler : IRequestHandler<UpdateCommand, Result<Guid
                 Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
-        var entity = new SpecialDateEntity
+        var entity = new SpecialDayEntity
         {
             Id = request.Id,
             Name = request.Name,
@@ -43,7 +43,7 @@ internal sealed class UpdateHandler : IRequestHandler<UpdateCommand, Result<Guid
             return new Result<Guid>(Guid.Empty, Errors.ReturnCircuitNotFoundError());
         }
 
-        await _specialDateData.UpdateAsync(entity, cancellationToken);
+        await _specialDayData.UpdateAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.SpecialDate.Create;
+﻿namespace SPW.Admin.Api.Features.SpecialDay.Create;
 
 [ExcludeFromCodeCoverage]
 public sealed class CreateValidator : AbstractValidator<CreateCommand>
@@ -7,17 +7,17 @@ public sealed class CreateValidator : AbstractValidator<CreateCommand>
     {
         RuleFor(expression => expression.Name)
             .NotEmpty()
-            .WithMessage("Special Date name cannot be empty");
+            .WithMessage("Special Day name cannot be empty");
 
         RuleFor(expression => expression.StartDate)
            .NotEmpty()
-           .WithMessage("Special date start date cannot be empty");
+           .WithMessage("Special day startDate cannot be empty");
 
         RuleFor(expression => expression.EndDate)
            .NotEmpty()
-           .WithMessage("Special date end date cannot be empty")
+           .WithMessage("Special day end date cannot be empty")
            .GreaterThan(expression => expression.StartDate)
-           .WithMessage("Special date end date cannot be lower than start date");
+           .WithMessage("Special day end date cannot be lower than start date");
 
         RuleFor(expression => expression.CircuitId)
            .NotEmpty()

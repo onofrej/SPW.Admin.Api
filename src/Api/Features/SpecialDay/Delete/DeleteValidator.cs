@@ -1,9 +1,9 @@
-﻿namespace SPW.Admin.Api.Features.SpecialDate.GetById;
+﻿namespace SPW.Admin.Api.Features.SpecialDay.Delete;
 
 [ExcludeFromCodeCoverage]
-public sealed class GetByIdValidator : AbstractValidator<GetByIdQuery>
+public sealed class DeleteValidator : AbstractValidator<DeleteCommand>
 {
-    public GetByIdValidator()
+    public DeleteValidator()
     {
         RuleFor(expression => expression.Id)
             .NotEmpty()

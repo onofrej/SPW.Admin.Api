@@ -1,10 +1,10 @@
-﻿namespace SPW.Admin.Api.Features.SpecialDate.DataAccess;
+﻿namespace SPW.Admin.Api.Features.SpecialDay.DataAccess;
 
 [ExcludeFromCodeCoverage]
 [DynamoDBTable(TableName)]
-internal sealed class SpecialDateEntity
+internal sealed class SpecialDayEntity
 {
-    public const string TableName = "specialdate";
+    public const string TableName = "specialday";
     public const string HashKeyName = "id";
 
     [DynamoDBHashKey(HashKeyName)]

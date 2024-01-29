@@ -1,9 +1,8 @@
-﻿namespace SPW.Admin.Api.Features.SpecialDate.Update;
+﻿namespace SPW.Admin.Api.Features.SpecialDay.Create;
 
 [ExcludeFromCodeCoverage]
-public sealed class UpdateRequest
+public sealed class CreateRequest
 {
-    public Guid Id { get; set; }
     public string? Name { get; set; }
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }

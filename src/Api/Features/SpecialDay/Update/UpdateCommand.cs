@@ -1,6 +1,6 @@
 ﻿using SPW.Admin.Api.Shared.Models;
 
-namespace SPW.Admin.Api.Features.SpecialDate.Update;
+namespace SPW.Admin.Api.Features.SpecialDay.Update;
 
 [ExcludeFromCodeCoverage]
 public sealed class UpdateCommand : IRequest<Result<Guid>>

@@ -2,7 +2,7 @@
 using SPW.Admin.Api.Features.Circuit.DataAccess;
 using SPW.Admin.Api.Features.Point.DataAccess;
 using SPW.Admin.Api.Features.Schedule.DataAccess;
-using SPW.Admin.Api.Features.SpecialDate.DataAccess;
+using SPW.Admin.Api.Features.SpecialDay.DataAccess;
 using SPW.Admin.Api.Features.User.DataAccess;
 using SPW.Admin.Api.Features.Validity.DataAcces;
 
@@ -19,7 +19,7 @@ internal static class ServiceCollectionExtensions
         services.AddScoped<IValidityData, ValidityData>();
         services.AddScoped<IScheduleData, ScheduleData>();
         services.AddScoped<IAnnouncementData, AnnouncementData>();
-        services.AddScoped<ISpecialDateData, SpecialDateData>();
+        services.AddScoped<ISpecialDayData, SpecialDayData>();
 
         return services;
     }

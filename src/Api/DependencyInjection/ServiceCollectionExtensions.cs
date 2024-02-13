@@ -1,4 +1,5 @@
 ﻿using SPW.Admin.Api.Features.Announcement.DataAccess;
+using SPW.Admin.Api.Features.Authentication.DataAccess;
 using SPW.Admin.Api.Features.Circuit.DataAccess;
 using SPW.Admin.Api.Features.Holiday.DataAccess;
 using SPW.Admin.Api.Features.Point.DataAccess;
@@ -22,6 +23,7 @@ internal static class ServiceCollectionExtensions
         services.AddScoped<IHolidayData, HolidayData>();
         services.AddScoped<IAnnouncementData, AnnouncementData>();
         services.AddScoped<ISpecialDayData, SpecialDayData>();
+        services.AddScoped<IAuthenticationData, AuthenticationData>();
 
         return services;
     }

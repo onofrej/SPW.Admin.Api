@@ -1,4 +1,7 @@
-﻿namespace SPW.Admin.Api.Features.Authentication;
+﻿using SPW.Admin.Api.Features.Authentication.Register;
+using SPW.Admin.Api.Shared.Models;
+
+namespace SPW.Admin.Api.Features.Authentication;
 
 public class EndPoints : ICarterModule
 {
@@ -7,17 +10,28 @@ public class EndPoints : ICarterModule
         var group = app.MapGroup("/authentication")
           .WithTags("Authentication");
 
-        group.MapPost("/register", CreateAuthenticationAsync);
-        group.MapPost("/login", LoginAuthenticationAsync);
+        group.MapPost("/register", RegisterAuthenticationAsync);
     }
 
-    public static async Task<IResult> CreateAuthenticationAsync()
+    public static async Task<IResult> RegisterAuthenticationAsync(AuthenticationRequest request, ISender _sender, CancellationToken cancellationToken)
     {
-        return Results.Ok();
-    }
+        var command = new AuthenticationCommand
+        {
+            Name = request.Name!,
+            Email = request.Email!,
+            Password = request.Password!,
+            ConfirmPassword = request.ConfirmPassword!
+        };
 
-    public static async Task<IResult> LoginAuthenticationAsync()
-    {
-        return Results.Ok();
+        var result = await _sender.Send(command, cancellationToken);
+
+        if (result.HasFailed)
+        {
+            return Results.BadRequest(new Response<Guid>(Guid.Empty, result.Error));
+        }
+
+        Log.Information("User authentication created with success: {input}", command);
+
+        return Results.Created($"/authentication/{result.Data}", new Response<Guid>(result.Data));
     }
 }

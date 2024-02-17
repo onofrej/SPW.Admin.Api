@@ -3,18 +3,18 @@ using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.Authentication.Register;
 
-internal sealed class AuthenticationHandler : IRequestHandler<AuthenticationCommand, Result<Guid>>
+internal sealed class RegisterHandler : IRequestHandler<RegisterCommand, Result<Guid>>
 {
     private readonly IAuthenticationData _authenticationData;
-    private readonly IValidator<AuthenticationCommand> _validator;
+    private readonly IValidator<RegisterCommand> _validator;
 
-    public AuthenticationHandler(IAuthenticationData authenticationData, IValidator<AuthenticationCommand> validator)
+    public RegisterHandler(IAuthenticationData authenticationData, IValidator<RegisterCommand> validator)
     {
         _authenticationData = authenticationData;
         _validator = validator;
     }
 
-    public async Task<Result<Guid>> Handle(AuthenticationCommand request, CancellationToken cancellationToken)
+    public async Task<Result<Guid>> Handle(RegisterCommand request, CancellationToken cancellationToken)
     {
         var validationResult = _validator.Validate(request);
 
@@ -27,7 +27,6 @@ internal sealed class AuthenticationHandler : IRequestHandler<AuthenticationComm
         var entity = new AuthenticationEntity
         {
             Id = Guid.NewGuid(),
-            Name = request.Name,
             Email = request.Email,
             Password = request.Password,
             ConfirmPassword = request.ConfirmPassword,

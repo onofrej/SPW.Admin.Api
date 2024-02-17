@@ -25,4 +25,9 @@ internal sealed class AuthenticationData : IAuthenticationData
 
         await _table.PutItemAsync(document, cancellationToken);
     }
+
+    public async Task<AuthenticationEntity> GetUserCredentialsAsync(string email, string password, CancellationToken cancellationToken)
+    {
+        return await _dynamoDBContext.LoadAsync<AuthenticationEntity>(email, password, cancellationToken);
+    }
 }

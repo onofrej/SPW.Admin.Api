@@ -1,4 +1,6 @@
-﻿using SPW.Admin.Api.Features.Authentication.Register;
+﻿using Microsoft.AspNetCore.Authorization;
+using SPW.Admin.Api.Features.Authentication.Login;
+using SPW.Admin.Api.Features.Authentication.Register;
 using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.Authentication;
@@ -11,13 +13,14 @@ public class EndPoints : ICarterModule
           .WithTags("Authentication");
 
         group.MapPost("/register", RegisterAuthenticationAsync);
+        group.MapPost("/login", LoginAuthenticationAsync);
     }
 
-    public static async Task<IResult> RegisterAuthenticationAsync(AuthenticationRequest request, ISender _sender, CancellationToken cancellationToken)
+    [AllowAnonymous]
+    public static async Task<IResult> RegisterAuthenticationAsync(Register.RegisterRequest request, ISender _sender, CancellationToken cancellationToken)
     {
-        var command = new AuthenticationCommand
+        var command = new RegisterCommand
         {
-            Name = request.Name!,
             Email = request.Email!,
             Password = request.Password!,
             ConfirmPassword = request.ConfirmPassword!
@@ -33,5 +36,22 @@ public class EndPoints : ICarterModule
         Log.Information("User authentication created with success: {input}", command);
 
         return Results.Created($"/authentication/{result.Data}", new Response<Guid>(result.Data));
+    }
+
+    [AllowAnonymous]
+    public static async Task<IResult> LoginAuthenticationAsync([FromBody] LoginQuery request, ISender _sender, CancellationToken cancellationToken)
+    {
+        var query = new LoginQuery(request.Email, request.Password);
+
+        var result = await _sender.Send(query, cancellationToken);
+
+        if (result.HasFailed)
+        {
+            return Results.BadRequest(new Response<Guid>(Guid.Empty, result?.Error));
+        }
+
+        //colocar logica para pegar o token jwt
+
+        return Results.Ok();
     }
 }

@@ -10,9 +10,6 @@ internal sealed class AuthenticationEntity
     [DynamoDBHashKey(HashKeyName)]
     public Guid Id { get; set; }
 
-    [DynamoDBProperty("name")]
-    public string? Name { get; set; }
-
     [DynamoDBProperty("email")]
     public string? Email { get; set; }
 

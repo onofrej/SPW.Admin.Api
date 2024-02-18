@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using SPW.Admin.Api.Features.Authentication.Login;
 using SPW.Admin.Api.Features.Authentication.Register;
+using SPW.Admin.Api.Features.Authentication.Services;
 using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.Authentication;
@@ -44,6 +45,8 @@ public class EndPoints : ICarterModule
         var query = new LoginQuery(request.Email, request.Password);
 
         var result = await _sender.Send(query, cancellationToken);
+
+        //var token = TokenService.GenerateToken();
 
         if (result.HasFailed)
         {

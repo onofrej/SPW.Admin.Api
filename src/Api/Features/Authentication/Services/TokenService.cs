@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SPW.Admin.Api.Features.Authentication.Services;
 
-public class TokenService
+public static class TokenService
 {
     internal static string GenerateToken(AuthenticationEntity authenticationEntity)
     {
@@ -22,6 +22,7 @@ public class TokenService
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
         var token = tokenHandler.CreateToken(tokenDescriptor);
+
         return tokenHandler.WriteToken(token);
     }
 }

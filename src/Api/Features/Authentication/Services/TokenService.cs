@@ -6,23 +6,33 @@ using System.Text;
 
 namespace SPW.Admin.Api.Features.Authentication.Services;
 
-public static class TokenService
+public class TokenService
 {
-    internal static string GenerateToken(AuthenticationEntity authenticationEntity)
+    internal ActionResult<UserToken> GenerateToken(AuthenticationEntity authenticationEntity)
     {
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes("DcrORx3QjaDhQTryxdEROGdkjVrzN0dt");
-        var tokenDescriptor = new SecurityTokenDescriptor
+        var claims = new[]
         {
-            Subject = new ClaimsIdentity(new Claim[]
-            {
-                new Claim(ClaimTypes.Email, authenticationEntity.Email!)
-            }),
-            Expires = DateTime.UtcNow.AddHours(2),
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            new Claim(ClaimTypes.Email, authenticationEntity.Email!),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
-        var token = tokenHandler.CreateToken(tokenDescriptor);
 
-        return tokenHandler.WriteToken(token);
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("DcrORx3QjaDhQTryxdEROGdkjVrzN0dt"));
+
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+        var expiration = DateTime.UtcNow.AddMinutes(60);
+
+        JwtSecurityToken token = new JwtSecurityToken(
+                 issuer: ("https://localhost:55539"),
+                 audience: ("https://localhost:55539"),
+                 claims: claims,
+                 expires: expiration,
+                 signingCredentials: creds);
+
+        return new UserToken()
+        {
+            Token = new JwtSecurityTokenHandler().WriteToken(token),
+            Expiration = expiration,
+        };
     }
 }

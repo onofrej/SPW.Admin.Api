@@ -26,13 +26,6 @@ internal sealed class LoginHandler : IRequestHandler<LoginQuery, Result<Authenti
 
         var authenticationEntity = await _authenticationData.GetUserCredentialsAsync(request.Email, request.Password, cancellationToken);
 
-        if (authenticationEntity.Email == authenticationEntity.Email && authenticationEntity.Password == authenticationEntity.Password)
-        {
-            Log.Information("Login valid");
-
-            //colocar logica para gerar o token jwt
-        }
-
         return new Result<AuthenticationEntity>(authenticationEntity);
     }
 }

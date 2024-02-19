@@ -18,7 +18,7 @@ public class EndPoints : ICarterModule
     }
 
     [AllowAnonymous]
-    public static async Task<IResult> RegisterAuthenticationAsync(Register.RegisterRequest request, ISender _sender, CancellationToken cancellationToken)
+    public static async Task<IResult> RegisterAuthenticationAsync(RegisterRequest request, ISender _sender, CancellationToken cancellationToken)
     {
         var command = new RegisterCommand
         {
@@ -42,19 +42,25 @@ public class EndPoints : ICarterModule
     [AllowAnonymous]
     public static async Task<IResult> LoginAuthenticationAsync([FromBody] LoginQuery request, ISender _sender, CancellationToken cancellationToken)
     {
+        TokenService generateToken = new();
+
         var query = new LoginQuery(request.Email, request.Password);
 
         var result = await _sender.Send(query, cancellationToken);
-
-        //var token = TokenService.GenerateToken();
 
         if (result.HasFailed)
         {
             return Results.BadRequest(new Response<Guid>(Guid.Empty, result?.Error));
         }
 
-        //colocar logica para pegar o token jwt
+        var authenticationEntity = result.Data;
 
-        return Results.Ok();
+        var authToken = generateToken.GenerateToken(authenticationEntity!);
+
+        return Results.Ok(new Response<Guid>(result.Data!.Id, authToken));
+
+        //Erro:
+        //"Data": "",
+        //"Errors": "Unable to cast object of type 'System.String' to type 'System.Guid'."
     }
 }

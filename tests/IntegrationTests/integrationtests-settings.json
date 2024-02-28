@@ -1,0 +1,5 @@
+{
+  "AWSLocalStackSettings": {
+    "ServiceURL": "http://localhost:4566"
+  }
+}

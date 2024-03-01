@@ -1,22 +1,22 @@
-﻿using SPW.Admin.Api.Features.Circuit.Create;
+﻿using SPW.Admin.Api.Features.Announcement.Create;
 using SPW.Admin.IntegrationTests.Fixtures;
 
 namespace SPW.Admin.IntegrationTests.Tests;
 
-public class CircuitTests : IClassFixture<MainFixture>
+public class AnnouncementTests : IClassFixture<MainFixture>
 {
-    private const string RequestUri = "/circuits";
+    private const string RequestUri = "/announcements";
     private readonly Fixture _fixture;
     private readonly MainFixture _mainFixture;
 
-    public CircuitTests(MainFixture mainFixture)
+    public AnnouncementTests(MainFixture mainFixture)
     {
         _fixture = new Fixture();
         _mainFixture = mainFixture;
     }
 
-    [Fact(DisplayName = "Request received is valid then circuit is created")]
-    public async Task Request_received_is_valid_then_circuit_is_created()
+    [Fact(DisplayName = "Request received is valid then announcement is created")]
+    public async Task Request_received_is_valid_then_announcement_is_created()
     {
         //Arrange
         var request = _fixture.Create<CreateRequest>();
@@ -28,8 +28,8 @@ public class CircuitTests : IClassFixture<MainFixture>
         response.Should().NotBeNull();
     }
 
-    [Fact(DisplayName = "Request received is invalid then circuit is not created")]
-    public async Task Request_received_is_invalid_then_circuit_is_not_created()
+    [Fact(DisplayName = "Request received is invalid then announcement is not created")]
+    public async Task Request_received_is_invalid_then_announcement_is_not_created()
     {
         //Arrange
 

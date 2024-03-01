@@ -1,22 +1,22 @@
-﻿using SPW.Admin.Api.Features.Circuit.Create;
+﻿using SPW.Admin.Api.Features.Point.Create;
 using SPW.Admin.IntegrationTests.Fixtures;
 
 namespace SPW.Admin.IntegrationTests.Tests;
 
-public class CircuitTests : IClassFixture<MainFixture>
+public class PointTests : IClassFixture<MainFixture>
 {
-    private const string RequestUri = "/circuits";
+    private const string RequestUri = "/points";
     private readonly Fixture _fixture;
     private readonly MainFixture _mainFixture;
 
-    public CircuitTests(MainFixture mainFixture)
+    public PointTests(MainFixture mainFixture)
     {
         _fixture = new Fixture();
         _mainFixture = mainFixture;
     }
 
-    [Fact(DisplayName = "Request received is valid then circuit is created")]
-    public async Task Request_received_is_valid_then_circuit_is_created()
+    [Fact(DisplayName = "Request received is valid then point is created")]
+    public async Task Request_received_is_valid_then_point_is_created()
     {
         //Arrange
         var request = _fixture.Create<CreateRequest>();
@@ -28,8 +28,8 @@ public class CircuitTests : IClassFixture<MainFixture>
         response.Should().NotBeNull();
     }
 
-    [Fact(DisplayName = "Request received is invalid then circuit is not created")]
-    public async Task Request_received_is_invalid_then_circuit_is_not_created()
+    [Fact(DisplayName = "Request received is invalid then point is not created")]
+    public async Task Request_received_is_invalid_then_point_is_not_created()
     {
         //Arrange
 

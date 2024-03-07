@@ -13,8 +13,9 @@
     </PropertyGroup>
 
 	<ItemGroup>
-		<InternalsVisibleTo Include="SPW.Admin.IntegrationTests" />
 		<InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+		<InternalsVisibleTo Include="SPW.Admin.IntegrationTests" />
+		<InternalsVisibleTo Include="SPW.Admin.UnitTests" />
 	</ItemGroup>
 	
     <ItemGroup>

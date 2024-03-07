@@ -19,13 +19,11 @@ public sealed class MainFixture : IDisposable
 
         InitializeEnvironmentVariables();
 
-        //_dynamoDbFixture = new DynamoDbFixture(_configuration);
+        _dynamoDbFixture = new DynamoDbFixture(_configuration);
 
         _customWebApplicationFactory = new CustomWebApplicationFactory();
         _httpClient = _customWebApplicationFactory.CreateClient();
     }
-
-    internal IConfiguration Configuration => _configuration;
 
     internal HttpClient HttpClient => _httpClient;
 
@@ -33,7 +31,7 @@ public sealed class MainFixture : IDisposable
 
     public void Dispose()
     {
-        //_dynamoDbFixture.Dispose();
+        _dynamoDbFixture.Dispose();
 
         GC.SuppressFinalize(this);
     }

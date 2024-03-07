@@ -1,8 +1,8 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using SPW.Admin.Api.Features.Authentication.DataAccess;
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using SPW.Admin.Api.Features.Authentication.DataAccess;
 
 namespace SPW.Admin.Api.Features.Authentication.Services;
 

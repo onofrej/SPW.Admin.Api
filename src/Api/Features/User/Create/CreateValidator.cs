@@ -32,6 +32,8 @@ public sealed class CreateValidator : AbstractValidator<CreateCommand>
             .WithMessage("Birth Date cannot be empty");
 
         RuleFor(expression => expression.BaptismDate)
+            .GreaterThan(expression => expression.BirthDate)
+            .WithMessage("Baptism Date cannot be greather than Birth Date")
             .NotEmpty()
             .WithMessage("Baptism Date cannot be empty");
 

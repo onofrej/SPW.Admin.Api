@@ -3,9 +3,6 @@ using SPW.Admin.Api.Features.User.DataAccess;
 using SPW.Admin.Api.Shared.Models;
 using SPW.Admin.IntegrationTests.Fixtures;
 using Bogus;
-using FluentValidation;
-using Serilog;
-using FluentAssertions.Extensions;
 
 namespace SPW.Admin.IntegrationTests.Tests;
 

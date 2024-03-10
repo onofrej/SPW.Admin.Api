@@ -22,6 +22,7 @@ public class UserTests : IClassFixture<MainFixture>
     [Fact(DisplayName = "Request received is valid then user is created")]
     public async Task Request_received_is_valid_then_user_is_created()
     {
+        //Arrange
         var faker = new Faker<CreateRequest>().StrictMode(true)
                .RuleFor(user => user.Name, fakerData => fakerData.Name.FullName(Bogus.DataSets.Name.Gender.Male))
                .RuleFor(user => user.Email, fakerData => fakerData.Internet.Email(fakerData.Person.FirstName.ToLower()))

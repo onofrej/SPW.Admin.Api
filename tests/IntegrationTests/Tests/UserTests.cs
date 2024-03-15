@@ -6,7 +6,7 @@ using SPW.Admin.IntegrationTests.Fixtures;
 
 namespace SPW.Admin.IntegrationTests.Tests;
 
-public class UserTests : IClassFixture<MainFixture>
+public class UserTests : BaseIntegratedTest, IClassFixture<MainFixture>
 {
     private const string RequestUri = "/users";
     private const string HashKey = "id";
@@ -38,10 +38,10 @@ public class UserTests : IClassFixture<MainFixture>
             .RuleFor(user => user.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
             .Generate();
 
-        var rawResponse = await _mainFixture.HttpClient.PostAsJsonAsync(RequestUri, request);
+        var rawResponse = await _mainFixture.HttpClient.PostAsJsonAsync(RequestUri, request, GetCancellationToken);
 
         //Act
-        var response = await rawResponse.Content.ReadFromJsonAsync<Response<Guid>>();
+        var response = await rawResponse.Content.ReadFromJsonAsync<Response<Guid>>(GetCancellationToken);
 
         //Assert
         rawResponse.Should().NotBeNull();
@@ -84,8 +84,8 @@ public class UserTests : IClassFixture<MainFixture>
             .Generate();
 
         //Act
-        var rawResponse = await _mainFixture.HttpClient.PutAsJsonAsync(RequestUri, request);
-        var response = await rawResponse.Content.ReadFromJsonAsync<Response<Guid>>();
+        var rawResponse = await _mainFixture.HttpClient.PutAsJsonAsync(RequestUri, request, GetCancellationToken);
+        var response = await rawResponse.Content.ReadFromJsonAsync<Response<Guid>>(GetCancellationToken);
 
         //Assert
         rawResponse.Should().NotBeNull();
@@ -147,13 +147,42 @@ public class UserTests : IClassFixture<MainFixture>
         await _mainFixture.DynamoDbFixture.InsertAsync(entity);
 
         //Act
-        var rawResponse = await _mainFixture.HttpClient.GetAsync($"{RequestUri}/{entity.Id}");
-        var response = await rawResponse.Content.ReadFromJsonAsync<Response<UserEntity>>();
+        var rawResponse = await _mainFixture.HttpClient.GetAsync($"{RequestUri}/{entity.Id}", GetCancellationToken);
+        var response = await rawResponse.Content.ReadFromJsonAsync<Response<UserEntity>>(GetCancellationToken);
 
         //Assert
         rawResponse.Should().NotBeNull();
         rawResponse.StatusCode.Should().Be(HttpStatusCode.OK);
 
         entity.Should().BeEquivalentTo(response!.Data);
+    }
+
+    [Fact(DisplayName = "Request received is valid and users are returned")]
+    public async Task Request_received_is_valid_and_users_are_returned()
+    {
+        //Arrange
+        var entity = new Faker<UserEntity>().StrictMode(true)
+           .RuleFor(property => property.Id, setter => Guid.NewGuid())
+           .RuleFor(property => property.Name, setter => setter.Name.FullName(Bogus.DataSets.Name.Gender.Male))
+           .RuleFor(property => property.Email, setter => setter.Internet.Email(setter.Person.FirstName.ToLower()))
+           .RuleFor(property => property.PhoneNumber, setter => setter.Random.ReplaceNumbers("###########"))
+           .RuleFor(property => property.Gender, setter => setter.PickRandom(new string[] { "male", "female" }))
+           .RuleFor(property => property.CreationDate, setter => _creationDate)
+           .RuleFor(property => property.BirthDate, setter => _birthDate)
+           .RuleFor(property => property.BaptismDate, setter => _baptismDate)
+           .RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
+           .Generate();
+
+        await _mainFixture.DynamoDbFixture.InsertAsync(entity);
+
+        //Act
+        var rawResponse = await _mainFixture.HttpClient.GetAsync(RequestUri, GetCancellationToken);
+        var response = await rawResponse.Content.ReadFromJsonAsync<Response<IEnumerable<UserEntity>>>(GetCancellationToken);
+
+        //Assert
+        rawResponse.Should().NotBeNull();
+        rawResponse.StatusCode.Should().Be(HttpStatusCode.OK);
+
+        response!.Data.Should().BeEquivalentTo(new List<UserEntity> { entity });
     }
 }

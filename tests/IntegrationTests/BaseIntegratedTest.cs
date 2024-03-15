@@ -7,7 +7,7 @@ public abstract class BaseIntegratedTest
         get
         {
             var cancellationTokenSource = new CancellationTokenSource();
-            cancellationTokenSource.CancelAfter(600_000);
+            cancellationTokenSource.CancelAfter(60_000);
             return cancellationTokenSource.Token;
         }
     }

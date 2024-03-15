@@ -2,6 +2,7 @@
 using SPW.Admin.Api.Features.User.DataAccess;
 using SPW.Admin.Api.Shared.Models;
 using SPW.Admin.IntegrationTests.Fixtures;
+using Bogus;
 
 namespace SPW.Admin.IntegrationTests.Tests;
 
@@ -11,30 +12,29 @@ public class UserTests : IClassFixture<MainFixture>
     private const string HashKey = "id";
     private readonly Fixture _fixture;
     private readonly MainFixture _mainFixture;
-    private readonly DateTime _birthDate;
-    private readonly DateTime _baptismDate;
 
     public UserTests(MainFixture mainFixture)
     {
         _fixture = new Fixture();
         _mainFixture = mainFixture;
-        _birthDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-        _baptismDate = new DateTime(DateTime.Now.Year + 10, DateTime.Now.Month, DateTime.Now.Day);
     }
 
     [Fact(DisplayName = "Request received is valid then user is created")]
     public async Task Request_received_is_valid_then_user_is_created()
     {
         //Arrange
-        var request = _fixture.Build<CreateRequest>()
-            .With(propertyPicker => propertyPicker.Email, "johndoe@gmail.com")
-            .With(propertyPicker => propertyPicker.PhoneNumber, "12345678912")
-            .With(propertyPicker => propertyPicker.BirthDate, _birthDate)
-            .With(propertyPicker => propertyPicker.BaptismDate, _baptismDate)
-            .Create();
+        var faker = new Faker<CreateRequest>().StrictMode(true)
+               .RuleFor(user => user.Name, fakerData => fakerData.Name.FullName(Bogus.DataSets.Name.Gender.Male))
+               .RuleFor(user => user.Email, fakerData => fakerData.Internet.Email(fakerData.Person.FirstName.ToLower()))
+               .RuleFor(user => user.PhoneNumber, fakerData => fakerData.Random.ReplaceNumbers("###########"))
+               .RuleFor(user => user.Gender, fakerData => fakerData.PickRandom(new string[] { "male", "female" }))
+               .RuleFor(user => user.BirthDate, fakerData => fakerData.Date.Recent(3650).ToUniversalTime())
+               .RuleFor(user => user.BaptismDate, fakerData => fakerData.Date.Recent(350).ToUniversalTime())
+               .RuleFor(user => user.Privilege, fakerData => fakerData.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }));
 
         //Act
-        var rawResponse = await _mainFixture.HttpClient.PostAsJsonAsync(RequestUri, request);
+        var entity = faker.Generate();
+        var rawResponse = await _mainFixture.HttpClient.PostAsJsonAsync(RequestUri, entity);
         var response = await rawResponse.Content.ReadFromJsonAsync<Response<Guid>>();
 
         //Assert
@@ -44,7 +44,7 @@ public class UserTests : IClassFixture<MainFixture>
         var userEntity = await _mainFixture.DynamoDbFixture
             .ReadAsync<UserEntity>(HashKey, response!.Data.ToString());
 
-        userEntity.Should().BeEquivalentTo(request);
+        userEntity.Should().BeEquivalentTo(entity);
     }
 
     [Fact(DisplayName = "Request received is invalid then user is not created")]

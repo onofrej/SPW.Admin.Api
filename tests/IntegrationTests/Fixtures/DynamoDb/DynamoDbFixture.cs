@@ -9,7 +9,8 @@ internal sealed class DynamoDbFixture : IDisposable
 {
     private readonly List<Table> _tables = new()
     {
-        new Table("user", "id", default)
+        new Table("user", "id", default),
+        new Table("circuit", "id", default)
     };
 
     private readonly IConfiguration _configuration;

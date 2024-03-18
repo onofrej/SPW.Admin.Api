@@ -43,10 +43,10 @@ jobs:
     - run: |
         npm install -g github-cli
 
-    - name: Read Pull Request Template
-      id: read_template
-      run: |
-        cat ../pull_request_template.md
+    # - name: Read Pull Request Template
+    #   id: read_template
+    #   run: |
+    #     cat ../pull_request_template.md
 
     - name: Create Pull Request
       run: |

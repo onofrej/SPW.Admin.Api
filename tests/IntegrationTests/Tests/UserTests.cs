@@ -29,13 +29,13 @@ public class UserTests : BaseIntegratedTest, IClassFixture<MainFixture>
     {
         //Arrange
         var request = new Faker<CreateRequest>().StrictMode(true)
-            .RuleFor(user => user.Name, setter => setter.Name.FullName(Bogus.DataSets.Name.Gender.Male))
-            .RuleFor(user => user.Email, setter => setter.Internet.Email(setter.Person.FirstName.ToLower()))
-            .RuleFor(user => user.PhoneNumber, setter => setter.Random.ReplaceNumbers("###########"))
-            .RuleFor(user => user.Gender, setter => setter.PickRandom(new string[] { "male", "female" }))
-            .RuleFor(user => user.BirthDate, setter => _birthDate)
-            .RuleFor(user => user.BaptismDate, setter => _baptismDate)
-            .RuleFor(user => user.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
+            .RuleFor(property => property.Name, setter => setter.Name.FullName(Bogus.DataSets.Name.Gender.Male))
+            .RuleFor(property => property.Email, setter => setter.Internet.Email(setter.Person.FirstName.ToLower()))
+            .RuleFor(property => property.PhoneNumber, setter => setter.Random.ReplaceNumbers("###########"))
+            .RuleFor(property => property.Gender, setter => setter.PickRandom(new string[] { "male", "female" }))
+            .RuleFor(property => property.BirthDate, setter => _birthDate)
+            .RuleFor(property => property.BaptismDate, setter => _baptismDate)
+            .RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
             .Generate();
 
         var rawResponse = await _mainFixture.HttpClient.PostAsJsonAsync(RequestUri, request, GetCancellationToken);

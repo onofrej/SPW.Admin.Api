@@ -59,7 +59,8 @@ jobs:
         signoff: false
         
         commit-message: "Automated PR"
-        branch: "develop"
+        branch: "feature/TASK-19"
+        base: "develop"
         # base: "develop"
         delete-branch: true
         title: "Automated PR"

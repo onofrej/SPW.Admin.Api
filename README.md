@@ -55,3 +55,6 @@ This API aims to maintain all administrative modules of the special public witne
 
 - Create relationship between "circuit" and "specialday" table
   `aws dynamodb --endpoint-url http://localhost:4566 --region us-east-1 update-table --table-name specialday --attribute-definitions AttributeName=circuitId,AttributeType=S --global-secondary-index-updates "Create={IndexName=CircuitIdIndex,KeySchema=[{AttributeName=circuitId,KeyType=HASH}],Projection={ProjectionType=ALL},ProvisionedThroughput={ReadCapacityUnits=5,WriteCapacityUnits=5}}"`
+
+- Create table "authentication" on DynamoDB
+  `aws dynamodb --endpoint-url http://localhost:4566 --region us-east-1 create-table --table-name authentication --attribute-definitions AttributeName=id,AttributeType=S --key-schema AttributeName=id,KeyType=HASH --provisioned-throughput ReadCapacityUnits=25,WriteCapacityUnits=25`

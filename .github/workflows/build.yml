@@ -46,7 +46,7 @@ jobs:
     - name: Read Pull Request Template
       id: read_template
       run: |
-        cat pull_request_template.md
+        cat ../pull_request_template.md
 
     - name: Create Pull Request
       run: |

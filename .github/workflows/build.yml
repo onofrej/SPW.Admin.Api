@@ -1,0 +1,30 @@
+name: ASP.NET 8 Build
+
+on:
+  push:
+    branches:
+      - 'feature**'
+  # pull_request:
+  #   branches:
+  #     - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '8.x' # Change to the version of .NET Core you need
+      
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --configuration Release
+      
+    # You can add additional steps here, such as running tests or deploying the application

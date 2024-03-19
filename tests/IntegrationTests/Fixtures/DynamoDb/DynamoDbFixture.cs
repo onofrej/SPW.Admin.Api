@@ -12,7 +12,8 @@ internal sealed class DynamoDbFixture : IDisposable
         new Table("user", "id", default),
         new Table("circuit", "id", default),
         new Table("point", "id", default),
-        new Table("validity", "id", default)
+        new Table("validity", "id", default),
+        new Table("announcement", "id", default)
     };
 
     private readonly IConfiguration _configuration;

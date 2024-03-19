@@ -1,0 +1,129 @@
+name: ASP.NET 8 Build
+
+on:
+  push:
+    branches:
+      - 'feature**'
+  # pull_request:
+  #   branches:
+  #     - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '8.x' # Change to the version of .NET Core you need
+      
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --configuration Release
+
+  unit-tests:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '8.x' # Change to the version of .NET Core you need
+      
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Test
+      run: dotnet test ./tests/UnitTests/*.csproj --no-restore --logger:"trx" /p:CollectCoverage=\"true\" /p:CoverletOutputFormat=\"opencover\" /p:Exclude=\"[xunit.*]*\"
+
+  create_pull_request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+      - name: Install dependencies
+        run: |
+          echo "pandas==1.3.3" > requirements.txt
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Update available cloud list
+        run: make cloud-list
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: Cloud - Update available list
+          title: Cloud - Update available list
+          body: Cloud - Update available list
+          base: develop
+          labels: automated-pr, Clouds & Regions
+          branch: feature/TASK-19
+          delete-branch: true
+
+    # needs: unit-tests
+    # steps:
+    # - name: Checkout
+    #   uses: actions/checkout@v4
+
+    # - name: Create Pull Request
+    #   uses: peter-evans/create-pull-request@v6
+    #   with:
+    #     author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
+    #     signoff: false
+        
+    #     commit-message: "Automated PR"
+    #     branch: "feature/TASK-19"
+    #     base: "develop"
+    #     # base: "develop"
+    #     delete-branch: true
+    #     title: "Automated PR"
+    #     body-path: ${{ github.workspace }}/.github/pull_request_template.md
+        
+        
+
+# name: .NET 8 CI
+
+# on:
+#   push:
+#     branches:
+#       - 'feature**'
+
+# jobs:
+#   build:
+
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - uses: actions/checkout@v2
+
+#     - name: Setup .NET
+#       uses: actions/setup-dotnet@v1
+#       with:
+#         dotnet-version: 8.0.x
+
+#     - name: Build Application
+#       run: dotnet build ./src --configuration Release
+
+#     - name: Run Tests
+#       run: dotnet test ./tests/UnitTests/*.csproj
+
+#     - name: Create Pull Request
+#       uses: peter-evans/create-pull-request@v3
+#       with:
+#         commit-message: "Automated PR"
+#         branch: "automated-pr"
+#         base: "develop"
+#         title: "Automated PR"
+#         body: ${{ github.workspace }}/.github/pull_request_template.md

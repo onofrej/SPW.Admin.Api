@@ -64,7 +64,7 @@ jobs:
       run: |
         docker-compose -f ./tests/IntegrationTests/docker-compose.yaml up -d
         sleep 5
-        dotnet test ./tests/UnitTests/*.csproj --no-restore --logger:"trx" /p:CollectCoverage=\"true\" /p:CoverletOutputFormat=\"opencover\" /p:Exclude=\"[xunit.*]*\"
+        dotnet test ./tests/IntegrationTests/*.csproj
 
   create_pull_request:
     runs-on: ubuntu-latest

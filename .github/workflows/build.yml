@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - 'feature**'
-  # pull_request:
-  #   branches:
-  #     - main
 
 jobs:
   build:
@@ -66,32 +63,32 @@ jobs:
         sleep 5
         dotnet test ./tests/IntegrationTests/*.csproj
 
-  create_pull_request:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the repo
-        uses: actions/checkout@v2
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.8"
-      - name: Install dependencies
-        run: |
-          echo "pandas==1.3.3" > requirements.txt
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: Update available cloud list
-        run: make cloud-list
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
-        with:
-          commit-message: Cloud - Update available list
-          title: Cloud - Update available list
-          body: Cloud - Update available list
-          base: develop
-          labels: automated-pr, Clouds & Regions
-          branch: feature/TASK-19
-          delete-branch: true
+  # create_pull_request:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout the repo
+  #       uses: actions/checkout@v2
+  #     - name: Set up Python 3.8
+  #       uses: actions/setup-python@v2
+  #       with:
+  #         python-version: "3.8"
+  #     - name: Install dependencies
+  #       run: |
+  #         echo "pandas==1.3.3" > requirements.txt
+  #         python -m pip install --upgrade pip
+  #         pip install -r requirements.txt
+  #     - name: Update available cloud list
+  #       run: make cloud-list
+  #     - name: Create Pull Request
+  #       uses: peter-evans/create-pull-request@v4
+  #       with:
+  #         commit-message: Cloud - Update available list
+  #         title: Cloud - Update available list
+  #         body: Cloud - Update available list
+  #         base: develop
+  #         labels: automated-pr, Clouds & Regions
+  #         branch: feature/TASK-19
+  #         delete-branch: true
 
     # needs: unit-tests
     # steps:

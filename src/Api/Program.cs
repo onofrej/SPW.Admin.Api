@@ -1,8 +1,12 @@
+using System.Data;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Npgsql;
 using SPW.Admin.Api.DependencyInjection;
+using SPW.Admin.Api.Shared.Infrastructure;
 using SPW.Admin.Api.Shared.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,9 +26,7 @@ builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehavior<,>));
 
-builder.Services.AddScoped<IDynamoDBContext, DynamoDBContext>();
-
-builder.Services.AddAWSService<IAmazonDynamoDB>();
+builder.Services.AddSingleton<IConnectionProvider, ConnectionProvider>();
 
 builder.Logging.ClearProviders();
 

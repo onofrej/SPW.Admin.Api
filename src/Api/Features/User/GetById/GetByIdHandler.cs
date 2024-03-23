@@ -24,7 +24,7 @@ internal sealed class GetByIdHandler : IRequestHandler<GetByIdQuery, Result<User
             return new Result<UserEntity>(default, Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
-        var userEntity = await _userData.GetByIdAsync(request.Id, cancellationToken);
+        var userEntity = await _userData.GetUserByIdAsync(request.Id, cancellationToken);
 
         if (userEntity is null)
         {

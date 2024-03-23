@@ -37,7 +37,7 @@ internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid
             Privilege = request.Privilege
         };
 
-        await _userData.InsertAsync(entity, cancellationToken);
+        await _userData.CreateUserAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

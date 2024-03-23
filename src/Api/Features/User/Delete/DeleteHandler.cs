@@ -25,14 +25,14 @@ internal sealed class DeleteHandler : IRequestHandler<DeleteCommand, Result<Guid
                 Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
-        var userEntity = await _userData.GetByIdAsync(request.Id, cancellationToken);
+        var userEntity = await _userData.GetUserByIdAsync(request.Id, cancellationToken);
 
         if (userEntity is null)
         {
             return new Result<Guid>(Guid.Empty, Errors.ReturnUserNotFoundError());
         }
 
-        await _userData.DeleteAsync(userEntity, cancellationToken);
+        await _userData.DeleteUserAsync(userEntity.Id, cancellationToken);
 
         return new Result<Guid>(request.Id);
     }

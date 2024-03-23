@@ -2,13 +2,13 @@
 
 internal interface IUserData
 {
-    Task InsertAsync(UserEntity userEntity, CancellationToken cancellationToken);
+    Task<int> CreateUserAsync(UserEntity user, CancellationToken cancellationToken);
 
-    Task UpdateAsync(UserEntity userEntity, CancellationToken cancellationToken);
+    Task<int> DeleteUserAsync(Guid id, CancellationToken cancellationToken);
 
-    Task DeleteAsync(UserEntity userEntity, CancellationToken cancellationToken);
+    Task<IEnumerable<UserEntity>> GetAllUsersAsync(CancellationToken cancellationToken);
 
-    Task<UserEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<UserEntity> GetUserByIdAsync(Guid id, CancellationToken cancellationToken);
 
-    Task<IEnumerable<UserEntity>> GetAllAsync(CancellationToken cancellationToken);
+    Task<int> UpdateUserAsync(UserEntity user, CancellationToken cancellationToken);
 }

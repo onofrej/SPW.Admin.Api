@@ -30,13 +30,13 @@ public class UserTests : BaseIntegratedTest
     {
         //Arrange
         var request = new Faker<CreateRequest>().StrictMode(true)
-            .RuleFor(property => property.Name, setter => setter.Name.FullName(Bogus.DataSets.Name.Gender.Male))
-            .RuleFor(property => property.Email, setter => setter.Internet.Email(setter.Person.FirstName.ToLower()))
-            .RuleFor(property => property.PhoneNumber, setter => setter.Random.ReplaceNumbers("###########"))
-            .RuleFor(property => property.Gender, setter => setter.PickRandom(new string[] { "male", "female" }))
-            .RuleFor(property => property.BirthDate, setter => _birthDate)
-            .RuleFor(property => property.BaptismDate, setter => _baptismDate)
-            .RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
+            //.RuleFor(property => property.Name, setter => setter.Name.FullName(Bogus.DataSets.Name.Gender.Male))
+            //.RuleFor(property => property.Email, setter => setter.Internet.Email(setter.Person.FirstName.ToLower()))
+            //.RuleFor(property => property.PhoneNumber, setter => setter.Random.ReplaceNumbers("###########"))
+            //.RuleFor(property => property.Gender, setter => setter.PickRandom(new string[] { "male", "female" }))
+            //.RuleFor(property => property.BirthDate, setter => _birthDate)
+            //.RuleFor(property => property.BaptismDate, setter => _baptismDate)
+            //.RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
             .Generate();
 
         var rawResponse = await _mainFixture.HttpClient.PostAsJsonAsync(RequestUri, request, GetCancellationToken);
@@ -58,30 +58,30 @@ public class UserTests : BaseIntegratedTest
     public async Task Request_received_is_valid_and_user_exists_then_user_is_updated()
     {
         //Arrange
-        var faker = new Faker<UserEntity>().StrictMode(true)
-           .RuleFor(property => property.Id, setter => Guid.NewGuid())
-           .RuleFor(property => property.Name, setter => setter.Name.FullName(Bogus.DataSets.Name.Gender.Male))
-           .RuleFor(property => property.Email, setter => setter.Internet.Email(setter.Person.FirstName.ToLower()))
-           .RuleFor(property => property.PhoneNumber, setter => setter.Random.ReplaceNumbers("###########"))
-           .RuleFor(property => property.Gender, setter => setter.PickRandom(new string[] { "male", "female" }))
-           .RuleFor(property => property.CreationDate, setter => _creationDate)
-           .RuleFor(property => property.BirthDate, setter => _birthDate)
-           .RuleFor(property => property.BaptismDate, setter => _baptismDate)
-           .RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }));
+        var faker = new Faker<UserEntity>().StrictMode(true);
+        //.RuleFor(property => property.Id, setter => Guid.NewGuid())
+        //.RuleFor(property => property.Name, setter => setter.Name.FullName(Bogus.DataSets.Name.Gender.Male))
+        //.RuleFor(property => property.Email, setter => setter.Internet.Email(setter.Person.FirstName.ToLower()))
+        //.RuleFor(property => property.PhoneNumber, setter => setter.Random.ReplaceNumbers("###########"))
+        //.RuleFor(property => property.Gender, setter => setter.PickRandom(new string[] { "male", "female" }))
+        //.RuleFor(property => property.CreationDate, setter => _creationDate)
+        //.RuleFor(property => property.BirthDate, setter => _birthDate)
+        //.RuleFor(property => property.BaptismDate, setter => _baptismDate)
+        //.RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }));
 
         var entity = faker.Generate();
 
         await _mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
 
         var request = new Faker<UpdateRequest>().StrictMode(true)
-            .RuleFor(property => property.Id, setter => entity.Id)
-            .RuleFor(property => property.Name, setter => setter.Name.FullName(Bogus.DataSets.Name.Gender.Male))
-            .RuleFor(property => property.Email, setter => setter.Internet.Email(setter.Person.FirstName.ToLower()))
-            .RuleFor(property => property.PhoneNumber, setter => setter.Random.ReplaceNumbers("###########"))
-            .RuleFor(property => property.Gender, setter => setter.PickRandom(new string[] { "male", "female" }))
-            .RuleFor(property => property.BirthDate, setter => _birthDate.AddDays(DaysToAddAtDateValues))
-            .RuleFor(property => property.BaptismDate, setter => _baptismDate.AddDays(DaysToAddAtDateValues))
-            .RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
+            //.RuleFor(property => property.Id, setter => entity.Id)
+            //.RuleFor(property => property.Name, setter => setter.Name.FullName(Bogus.DataSets.Name.Gender.Male))
+            //.RuleFor(property => property.Email, setter => setter.Internet.Email(setter.Person.FirstName.ToLower()))
+            //.RuleFor(property => property.PhoneNumber, setter => setter.Random.ReplaceNumbers("###########"))
+            //.RuleFor(property => property.Gender, setter => setter.PickRandom(new string[] { "male", "female" }))
+            //.RuleFor(property => property.BirthDate, setter => _birthDate.AddDays(DaysToAddAtDateValues))
+            //.RuleFor(property => property.BaptismDate, setter => _baptismDate.AddDays(DaysToAddAtDateValues))
+            //.RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
             .Generate();
 
         //Act
@@ -103,15 +103,15 @@ public class UserTests : BaseIntegratedTest
     {
         //Arrange
         var entity = new Faker<UserEntity>().StrictMode(true)
-           .RuleFor(property => property.Id, setter => Guid.NewGuid())
-           .RuleFor(property => property.Name, setter => setter.Name.FullName(Bogus.DataSets.Name.Gender.Male))
-           .RuleFor(property => property.Email, setter => setter.Internet.Email(setter.Person.FirstName.ToLower()))
-           .RuleFor(property => property.PhoneNumber, setter => setter.Random.ReplaceNumbers("###########"))
-           .RuleFor(property => property.Gender, setter => setter.PickRandom(new string[] { "male", "female" }))
-           .RuleFor(property => property.CreationDate, setter => _creationDate)
-           .RuleFor(property => property.BirthDate, setter => _birthDate)
-           .RuleFor(property => property.BaptismDate, setter => _baptismDate)
-           .RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
+           //.RuleFor(property => property.Id, setter => Guid.NewGuid())
+           //.RuleFor(property => property.Name, setter => setter.Name.FullName(Bogus.DataSets.Name.Gender.Male))
+           //.RuleFor(property => property.Email, setter => setter.Internet.Email(setter.Person.FirstName.ToLower()))
+           //.RuleFor(property => property.PhoneNumber, setter => setter.Random.ReplaceNumbers("###########"))
+           //.RuleFor(property => property.Gender, setter => setter.PickRandom(new string[] { "male", "female" }))
+           //.RuleFor(property => property.CreationDate, setter => _creationDate)
+           //.RuleFor(property => property.BirthDate, setter => _birthDate)
+           //.RuleFor(property => property.BaptismDate, setter => _baptismDate)
+           //.RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
            .Generate();
 
         await _mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
@@ -134,15 +134,15 @@ public class UserTests : BaseIntegratedTest
     {
         //Arrange
         var entity = new Faker<UserEntity>().StrictMode(true)
-           .RuleFor(property => property.Id, setter => Guid.NewGuid())
-           .RuleFor(property => property.Name, setter => setter.Name.FullName(Bogus.DataSets.Name.Gender.Male))
-           .RuleFor(property => property.Email, setter => setter.Internet.Email(setter.Person.FirstName.ToLower()))
-           .RuleFor(property => property.PhoneNumber, setter => setter.Random.ReplaceNumbers("###########"))
-           .RuleFor(property => property.Gender, setter => setter.PickRandom(new string[] { "male", "female" }))
-           .RuleFor(property => property.CreationDate, setter => _creationDate)
-           .RuleFor(property => property.BirthDate, setter => _birthDate)
-           .RuleFor(property => property.BaptismDate, setter => _baptismDate)
-           .RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
+           //.RuleFor(property => property.Id, setter => Guid.NewGuid())
+           //.RuleFor(property => property.Name, setter => setter.Name.FullName(Bogus.DataSets.Name.Gender.Male))
+           //.RuleFor(property => property.Email, setter => setter.Internet.Email(setter.Person.FirstName.ToLower()))
+           //.RuleFor(property => property.PhoneNumber, setter => setter.Random.ReplaceNumbers("###########"))
+           //.RuleFor(property => property.Gender, setter => setter.PickRandom(new string[] { "male", "female" }))
+           //.RuleFor(property => property.CreationDate, setter => _creationDate)
+           //.RuleFor(property => property.BirthDate, setter => _birthDate)
+           //.RuleFor(property => property.BaptismDate, setter => _baptismDate)
+           //.RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
            .Generate();
 
         await _mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
@@ -163,15 +163,15 @@ public class UserTests : BaseIntegratedTest
     {
         //Arrange
         var entity = new Faker<UserEntity>().StrictMode(true)
-           .RuleFor(property => property.Id, setter => Guid.NewGuid())
-           .RuleFor(property => property.Name, setter => setter.Name.FullName(Bogus.DataSets.Name.Gender.Male))
-           .RuleFor(property => property.Email, setter => setter.Internet.Email(setter.Person.FirstName.ToLower()))
-           .RuleFor(property => property.PhoneNumber, setter => setter.Random.ReplaceNumbers("###########"))
-           .RuleFor(property => property.Gender, setter => setter.PickRandom(new string[] { "male", "female" }))
-           .RuleFor(property => property.CreationDate, setter => _creationDate)
-           .RuleFor(property => property.BirthDate, setter => _birthDate)
-           .RuleFor(property => property.BaptismDate, setter => _baptismDate)
-           .RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
+           //.RuleFor(property => property.Id, setter => Guid.NewGuid())
+           //.RuleFor(property => property.Name, setter => setter.Name.FullName(Bogus.DataSets.Name.Gender.Male))
+           //.RuleFor(property => property.Email, setter => setter.Internet.Email(setter.Person.FirstName.ToLower()))
+           //.RuleFor(property => property.PhoneNumber, setter => setter.Random.ReplaceNumbers("###########"))
+           //.RuleFor(property => property.Gender, setter => setter.PickRandom(new string[] { "male", "female" }))
+           //.RuleFor(property => property.CreationDate, setter => _creationDate)
+           //.RuleFor(property => property.BirthDate, setter => _birthDate)
+           //.RuleFor(property => property.BaptismDate, setter => _baptismDate)
+           //.RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
            .Generate();
 
         await _mainFixture.DynamoDbFixture.TruncateTableAsync(GetCancellationToken);

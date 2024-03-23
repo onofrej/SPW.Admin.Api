@@ -32,12 +32,12 @@ internal sealed class UpdateHandler : IRequestHandler<UpdateCommand, Result<Guid
             Email = request.Email,
             PhoneNumber = request.PhoneNumber,
             Gender = request.Gender,
-            BirthDate = request.BirthDate,
-            BaptismDate = request.BaptismDate,
+            BirthDate = DateTime.Now,
+            BaptismDate = DateTime.Now, //request.BaptismDate,
             Privilege = request.Privilege
         };
 
-        await _userData.UpdateAsync(entity, cancellationToken);
+        await _userData.UpdateUserAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

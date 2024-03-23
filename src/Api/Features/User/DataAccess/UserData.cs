@@ -1,54 +1,67 @@
-﻿namespace SPW.Admin.Api.Features.User.DataAccess;
+﻿using System.Data;
+using System.Threading;
+using Dapper;
+using Npgsql;
+
+namespace SPW.Admin.Api.Features.User.DataAccess;
 
 [ExcludeFromCodeCoverage]
 internal sealed class UserData : IUserData
 {
-    private readonly IDynamoDBContext _dynamoDBContext;
-    private readonly IAmazonDynamoDB _amazonDynamoDBClient;
-    private readonly Table _table;
+    private readonly string _connectionString;
 
-    public UserData(IDynamoDBContext dynamoDBContext, IAmazonDynamoDB amazonDynamoDBClient)
+    public UserData(IConfiguration configuration)
     {
-        _dynamoDBContext = dynamoDBContext;
-        _amazonDynamoDBClient = amazonDynamoDBClient;
-        _table = Table.LoadTable(_amazonDynamoDBClient, UserEntity.TableName);
+        _connectionString = configuration.GetSection("PostgreSQL:ConnectionString").Value!;
     }
 
-    public async Task InsertAsync(UserEntity userEntity, CancellationToken cancellationToken)
+    public async Task<UserEntity> GetUserByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        var document = new Document
-        {
-            ["id"] = userEntity.Id,
-            ["creation_date"] = userEntity.CreationDate,
-            ["name"] = userEntity.Name,
-            ["email"] = userEntity.Email,
-            ["phonenumber"] = userEntity.PhoneNumber,
-            ["gender"] = userEntity.Gender,
-            ["birthdate"] = userEntity.BirthDate,
-            ["baptismdate"] = userEntity.BaptismDate,
-            ["privilege"] = userEntity.Privilege
-        };
-
-        await _table.PutItemAsync(document, cancellationToken);
+        using var connection = new NpgsqlConnection(_connectionString);
+        await connection.OpenAsync(cancellationToken);
+        var query = "SELECT * FROM \"user\" WHERE id = @Id";
+        return await connection.QueryFirstOrDefaultAsync<UserEntity>(query, new { Id = id });
     }
 
-    public Task UpdateAsync(UserEntity userEntity, CancellationToken cancellationToken)
+    public async Task<IEnumerable<UserEntity>> GetAllUsersAsync(CancellationToken cancellationToken)
     {
-        return _dynamoDBContext.SaveAsync(userEntity, cancellationToken);
+        using var connection = new NpgsqlConnection(_connectionString);
+        await connection.OpenAsync(cancellationToken);
+        var query = "SELECT * FROM \"user\"";
+        return await connection.QueryAsync<UserEntity>(query, cancellationToken);
     }
 
-    public Task DeleteAsync(UserEntity userEntity, CancellationToken cancellationToken)
+    public async Task<int> CreateUserAsync(UserEntity user, CancellationToken cancellationToken)
     {
-        return _dynamoDBContext.DeleteAsync(userEntity, cancellationToken);
+        using var connection = new NpgsqlConnection(_connectionString);
+        await connection.OpenAsync(cancellationToken);
+        var query = @"INSERT INTO ""user"" (id, name, creation_date, email, phonenumber, gender, birthdate, baptismdate, privilege)
+                      VALUES (@Id, @Name, @CreationDate, @Email, @PhoneNumber, @Gender, @BirthDate, @BaptismDate, @Privilege)";
+        return await connection.ExecuteAsync(query, user);
     }
 
-    public async Task<UserEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<int> UpdateUserAsync(UserEntity user, CancellationToken cancellationToken)
     {
-        return await _dynamoDBContext.LoadAsync<UserEntity>(id, cancellationToken);
+        using var connection = new NpgsqlConnection(_connectionString);
+        await connection.OpenAsync(cancellationToken);
+        var query = @"UPDATE ""user"" SET
+                      name = @Name,
+                      creation_date = @CreationDate,
+                      email = @Email,
+                      phonenumber = @PhoneNumber,
+                      gender = @Gender,
+                      birthdate = @BirthDate,
+                      baptismdate = @BaptismDate,
+                      privilege = @Privilege
+                      WHERE id = @Id";
+        return await connection.ExecuteAsync(query, user);
     }
 
-    public async Task<IEnumerable<UserEntity>> GetAllAsync(CancellationToken cancellationToken)
+    public async Task<int> DeleteUserAsync(Guid id, CancellationToken cancellationToken)
     {
-        return await _dynamoDBContext.ScanAsync<UserEntity>(default).GetRemainingAsync(cancellationToken);
+        using var connection = new NpgsqlConnection(_connectionString);
+        await connection.OpenAsync(cancellationToken);
+        var query = "DELETE FROM \"user\" WHERE id = @Id";
+        return await connection.ExecuteAsync(query, new { Id = id });
     }
 }

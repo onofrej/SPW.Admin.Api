@@ -15,6 +15,6 @@ internal sealed class GetAllHandler : IRequestHandler<GetAllQuery, Result<IEnume
 
     public async Task<Result<IEnumerable<UserEntity>>> Handle(GetAllQuery request, CancellationToken cancellationToken)
     {
-        return new Result<IEnumerable<UserEntity>>(await _userData.GetAllAsync(cancellationToken));
+        return new Result<IEnumerable<UserEntity>>(await _userData.GetAllUsersAsync(cancellationToken));
     }
 }

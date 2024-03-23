@@ -57,7 +57,10 @@ jobs:
       
     - name: Restore dependencies
       run: dotnet restore
-      
+    
+    - name: Build
+      run: dotnet build --configuration Release
+
     - name: Test
       run: |
         docker-compose -f ./tests/IntegrationTests/docker-compose.yaml up -d

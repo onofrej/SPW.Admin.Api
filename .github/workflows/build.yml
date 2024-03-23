@@ -44,6 +44,7 @@ jobs:
   
   integration-tests:
     runs-on: ubuntu-latest
+    timeout-minutes: 2
     needs: unit-tests
     steps:
     - name: Checkout Repository
@@ -60,7 +61,6 @@ jobs:
     - name: Test
       run: |
         docker-compose -f ./tests/IntegrationTests/docker-compose.yaml up -d
-        sleep 5
         dotnet test ./tests/IntegrationTests/*.csproj
 
   # create_pull_request:

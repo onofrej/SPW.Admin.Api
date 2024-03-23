@@ -7,11 +7,13 @@ namespace SPW.Admin.IntegrationTests.Fixtures.DynamoDb;
 
 internal sealed class DynamoDbFixture : IDisposable
 {
+    private const string HashKey = "id";
+
     private readonly List<Table> _tables = new()
     {
-        new Table("user", "id", default),
-        new Table("circuit", "id", default),
-        new Table("point", "id", default)
+        new Table("user", HashKey, default),
+        new Table("circuit", HashKey, default),
+        new Table("point", HashKey, default)
     };
 
     private readonly IConfiguration _configuration;
@@ -41,11 +43,37 @@ internal sealed class DynamoDbFixture : IDisposable
         return collections.FirstOrDefault();
     }
 
-    public async Task InsertAsync<T>(T entity)
+    public async Task TruncateTableAsync(CancellationToken cancellationToken)
+    {
+        foreach (var table in _tables)
+        {
+            string tableName = table.Name!;
+
+            var scanRequest = new ScanRequest
+            {
+                TableName = tableName
+            };
+
+            var scanResponse = await _amazonDynamoDBClient.ScanAsync(scanRequest, cancellationToken);
+
+            foreach (var item in scanResponse.Items)
+            {
+                var deleteRequest = new DeleteItemRequest
+                {
+                    TableName = tableName,
+                    Key = new Dictionary<string, AttributeValue>() { { HashKey, new AttributeValue { S = item[HashKey].S } } },
+                };
+
+                await _amazonDynamoDBClient.DeleteItemAsync(deleteRequest, cancellationToken);
+            }
+        }
+    }
+
+    public async Task InsertAsync<T>(T entity, CancellationToken cancellationToken)
     {
         var dynamoDBContext = new DynamoDBContext(_amazonDynamoDBClient);
 
-        await dynamoDBContext.SaveAsync(entity);
+        await dynamoDBContext.SaveAsync(entity, cancellationToken);
     }
 
     private async Task CreateTablesAsync()

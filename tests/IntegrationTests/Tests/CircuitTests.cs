@@ -6,7 +6,8 @@ using SPW.Admin.IntegrationTests.Fixtures;
 
 namespace SPW.Admin.IntegrationTests.Tests;
 
-public class CircuitTests : BaseIntegratedTest, IClassFixture<MainFixture>
+[Collection(TestCollection.CollectionDefinition)]
+public class CircuitTests : BaseIntegratedTest
 {
     private const string RequestUri = "/circuits";
     private const string HashKey = "id";

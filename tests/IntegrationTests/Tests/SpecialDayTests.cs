@@ -1,5 +1,4 @@
-﻿using SPW.Admin.Api.Features.SpecialDay.Create;
-using SPW.Admin.IntegrationTests.Fixtures;
+﻿using SPW.Admin.IntegrationTests.Fixtures;
 
 namespace SPW.Admin.IntegrationTests.Tests;
 

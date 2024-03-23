@@ -6,6 +6,8 @@ internal sealed class DynamoDbFixture : IDisposable
 
     private readonly List<Table> _tables = new()
     {
+        new Table("validity", HashKey, default),
+        new Table("announcement", HashKey, default),
         new Table("user", HashKey, default),
         new Table("circuit", HashKey, default),
         new Table("point", HashKey, default)

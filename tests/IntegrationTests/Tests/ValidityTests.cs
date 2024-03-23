@@ -5,7 +5,8 @@ using SPW.Admin.IntegrationTests.Fixtures;
 
 namespace SPW.Admin.IntegrationTests.Tests;
 
-public class ValidityTests : BaseIntegratedTest, IClassFixture<MainFixture>
+[Collection(TestCollection.CollectionDefinition)]
+public class ValidityTests : BaseIntegratedTest
 {
     private const string RequestUri = "/validities";
     private const string HashKey = "id";

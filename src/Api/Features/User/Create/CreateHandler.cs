@@ -33,7 +33,8 @@ internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid
             Gender = request.Gender,
             BirthDate = request.BirthDate,
             BaptismDate = request.BaptismDate,
-            Privilege = request.Privilege
+            Privilege = request.Privilege,
+            CongregationId = request.CongregationId
         };
 
         await _userData.CreateUserAsync(entity, cancellationToken);

@@ -58,12 +58,13 @@ public sealed class EndPoints : ICarterModule
     {
         var command = new CreateCommand
         {
-            Name = request.Name!,
-            Email = request.Email!,
-            PhoneNumber = request.PhoneNumber!,
-            Gender = request.Gender!,
-            BirthDate = request.BirthDate!,
             BaptismDate = request.BaptismDate!,
+            BirthDate = request.BirthDate!,
+            CongregationId = request.CongregationId!,
+            Email = request.Email!,
+            Gender = request.Gender!,
+            Name = request.Name!,
+            PhoneNumber = request.PhoneNumber!,
             Privilege = request.Privilege!
         };
 

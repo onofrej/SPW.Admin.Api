@@ -30,8 +30,8 @@ internal sealed class UserData : IUserData
     {
         await using var npgsqlDataSource = _npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
-        var query = @"INSERT INTO ""user"" (id, name, creation_date, email, phonenumber, gender, birthdate, baptismdate, privilege)
-                      VALUES (@Id, @Name, @CreationDate, @Email, @PhoneNumber, @Gender, @BirthDate, @BaptismDate, @Privilege)";
+        var query = @"INSERT INTO ""user"" (id, name, creation_date, email, phone_number, gender, birth_date, baptism_date, privilege, congregation_id)
+                      VALUES (@Id, @Name, @CreationDate, @Email, @PhoneNumber, @Gender, @BirthDate, @BaptismDate, @Privilege, @CongregationId)";
         return await connection.ExecuteAsync(query, user);
     }
 
@@ -40,15 +40,16 @@ internal sealed class UserData : IUserData
         await using var npgsqlDataSource = _npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = @"UPDATE ""user"" SET
-                      name = @Name,
-                      creation_date = @CreationDate,
-                      email = @Email,
-                      phonenumber = @PhoneNumber,
-                      gender = @Gender,
-                      birthdate = @BirthDate,
-                      baptismdate = @BaptismDate,
-                      privilege = @Privilege
-                      WHERE id = @Id";
+            name = @Name,
+            creation_date = @CreationDate,
+            email = @Email,
+            phone_number = @PhoneNumber,
+            gender = @Gender,
+            birth_date = @BirthDate,
+            baptism_date = @BaptismDate,
+            privilege = @Privilege,
+            congregation_id = @CongregationId
+            WHERE id = @Id";
         return await connection.ExecuteAsync(query, user);
     }
 

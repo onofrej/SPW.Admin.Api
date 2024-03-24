@@ -22,6 +22,7 @@ builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineB
 
 builder.Services.AddSingleton(_ =>
 {
+    DefaultTypeMap.MatchNamesWithUnderscores = true;
     return new NpgsqlDataSourceBuilder(builder.Configuration.GetSection("PostgreSQL:ConnectionString").Value!);
 });
 

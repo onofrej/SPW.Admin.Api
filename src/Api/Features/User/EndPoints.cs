@@ -1,5 +1,4 @@
 ﻿using SPW.Admin.Api.Features.User.Create;
-using SPW.Admin.Api.Features.User.DataAccess;
 using SPW.Admin.Api.Features.User.Delete;
 using SPW.Admin.Api.Features.User.GetAll;
 using SPW.Admin.Api.Features.User.GetById;

@@ -1,11 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using FluentAssertions;
-using FluentValidation;
-using Moq;
-using SPW.Admin.Api.Features.User.Create;
-using SPW.Admin.Api.Features.User.DataAccess;
-
-namespace SPW.Admin.UnitTests.Features.User;
+﻿namespace SPW.Admin.UnitTests.Features.User;
 
 public class CreateHandlerTests
 {

@@ -1,5 +1,4 @@
 ﻿using SPW.Admin.Api.Features.Point.Create;
-using SPW.Admin.Api.Features.Point.DataAccess;
 using SPW.Admin.Api.Features.Point.Delete;
 using SPW.Admin.Api.Features.Point.GetAll;
 using SPW.Admin.Api.Features.Point.GetById;

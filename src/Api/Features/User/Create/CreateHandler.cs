@@ -1,5 +1,4 @@
-﻿using SPW.Admin.Api.Features.User.DataAccess;
-using SPW.Admin.Api.Shared.Models;
+﻿using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.User.Create;
 
@@ -37,7 +36,7 @@ internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid
             Privilege = request.Privilege
         };
 
-        await _userData.InsertAsync(entity, cancellationToken);
+        await _userData.CreateUserAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

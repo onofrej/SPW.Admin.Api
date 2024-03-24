@@ -1,5 +1,4 @@
-﻿using SPW.Admin.Api.Features.User.DataAccess;
-using SPW.Admin.Api.Shared.Models;
+﻿using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.User.GetById;
 
@@ -24,7 +23,7 @@ internal sealed class GetByIdHandler : IRequestHandler<GetByIdQuery, Result<User
             return new Result<UserEntity>(default, Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
-        var userEntity = await _userData.GetByIdAsync(request.Id, cancellationToken);
+        var userEntity = await _userData.GetUserByIdAsync(request.Id, cancellationToken);
 
         if (userEntity is null)
         {

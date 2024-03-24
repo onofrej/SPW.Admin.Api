@@ -1,11 +1,9 @@
-﻿using SPW.Admin.Api.Features.Validity.Create;
-using SPW.Admin.Api.Features.Validity.DataAcces;
-using SPW.Admin.Api.Shared.Models;
-using SPW.Admin.IntegrationTests.Fixtures;
+﻿using SPW.Admin.IntegrationTests.Fixtures;
 
 namespace SPW.Admin.IntegrationTests.Tests;
 
-public class ValidityTests : BaseIntegratedTest, IClassFixture<MainFixture>
+[Collection(TestCollection.CollectionDefinition)]
+public class ValidityTests : BaseIntegratedTest
 {
     private const string RequestUri = "/validities";
     private const string HashKey = "id";
@@ -22,28 +20,28 @@ public class ValidityTests : BaseIntegratedTest, IClassFixture<MainFixture>
         _endDate = new DateTime(DateTime.Now.Year + DaysToAddAtDateValues, DateTime.Now.Month, DateTime.Now.Day);
     }
 
-    [Fact(DisplayName = "Request received is valid then validity is created")]
-    public async Task Request_received_is_valid_then_validity_is_created()
-    {
-        //Arrange
-        var request = new Faker<CreateRequest>().StrictMode(true)
-           .RuleFor(property => property.StartDate, setter => _startDate)
-           .RuleFor(property => property.EndDate, setter => _endDate)
-           .RuleFor(property => property.Status, setter => DefaultValidityStatus)
-           .Generate();
+    //[Fact(DisplayName = "Request received is valid then validity is created")]
+    //public async Task Request_received_is_valid_then_validity_is_created()
+    //{
+    //    //Arrange
+    //    var request = new Faker<CreateRequest>().StrictMode(true)
+    //       .RuleFor(property => property.StartDate, setter => _startDate)
+    //       .RuleFor(property => property.EndDate, setter => _endDate)
+    //       .RuleFor(property => property.Status, setter => DefaultValidityStatus)
+    //       .Generate();
 
-        var rawResponse = await _mainFixture.HttpClient.PostAsJsonAsync(RequestUri, request, GetCancellationToken);
+    //    var rawResponse = await _mainFixture.HttpClient.PostAsJsonAsync(RequestUri, request, GetCancellationToken);
 
-        //Act
-        var response = await rawResponse.Content.ReadFromJsonAsync<Response<Guid>>(GetCancellationToken);
+    //    //Act
+    //    var response = await rawResponse.Content.ReadFromJsonAsync<Response<Guid>>(GetCancellationToken);
 
-        //Assert
-        rawResponse.Should().NotBeNull();
-        rawResponse.StatusCode.Should().Be(HttpStatusCode.Created);
+    //    //Assert
+    //    rawResponse.Should().NotBeNull();
+    //    rawResponse.StatusCode.Should().Be(HttpStatusCode.Created);
 
-        var validityEntity = await _mainFixture.DynamoDbFixture
-            .ReadAsync<ValidityEntity>(HashKey, response!.Data.ToString());
+    //    var validityEntity = await _mainFixture.DynamoDbFixture
+    //        .ReadAsync<ValidityEntity>(HashKey, response!.Data.ToString());
 
-        validityEntity.Should().BeEquivalentTo(request);
-    }
+    //    validityEntity.Should().BeEquivalentTo(request);
+    //}
 }

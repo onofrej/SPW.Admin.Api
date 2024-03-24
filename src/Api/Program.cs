@@ -1,8 +1,6 @@
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Configuration;
 using SPW.Admin.Api.DependencyInjection;
+using SPW.Admin.Api.Shared.Infrastructure;
 using SPW.Admin.Api.Shared.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,9 +20,12 @@ builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehavior<,>));
 
-builder.Services.AddScoped<IDynamoDBContext, DynamoDBContext>();
+builder.Services.AddSingleton(_ =>
+{
+    return new NpgsqlDataSourceBuilder(builder.Configuration.GetSection("PostgreSQL:ConnectionString").Value!);
+});
 
-builder.Services.AddAWSService<IAmazonDynamoDB>();
+builder.Services.AddSingleton<IConnectionProvider, ConnectionProvider>();
 
 builder.Logging.ClearProviders();
 

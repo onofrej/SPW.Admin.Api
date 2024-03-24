@@ -1,5 +1,4 @@
 ﻿using SPW.Admin.Api.Features.Announcement.Create;
-using SPW.Admin.Api.Features.Announcement.DataAccess;
 using SPW.Admin.Api.Features.Announcement.Delete;
 using SPW.Admin.Api.Features.Announcement.GetAll;
 using SPW.Admin.Api.Features.Announcement.GetById;

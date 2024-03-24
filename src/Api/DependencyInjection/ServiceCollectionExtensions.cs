@@ -1,12 +1,12 @@
-﻿using SPW.Admin.Api.Features.Announcement.DataAccess;
-using SPW.Admin.Api.Features.Authentication.DataAccess;
-using SPW.Admin.Api.Features.Circuit.DataAccess;
-using SPW.Admin.Api.Features.Holiday.DataAccess;
-using SPW.Admin.Api.Features.Point.DataAccess;
-using SPW.Admin.Api.Features.Schedule.DataAccess;
-using SPW.Admin.Api.Features.SpecialDay.DataAccess;
-using SPW.Admin.Api.Features.User.DataAccess;
-using SPW.Admin.Api.Features.Validity.DataAcces;
+﻿using SPW.Admin.Api.Features.Announcement;
+using SPW.Admin.Api.Features.Authentication;
+using SPW.Admin.Api.Features.Circuit;
+using SPW.Admin.Api.Features.Holiday;
+using SPW.Admin.Api.Features.Point;
+using SPW.Admin.Api.Features.Schedule;
+using SPW.Admin.Api.Features.SpecialDay;
+using SPW.Admin.Api.Features.User;
+using SPW.Admin.Api.Features.Validity;
 
 namespace SPW.Admin.Api.DependencyInjection;
 

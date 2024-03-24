@@ -1,5 +1,4 @@
 ﻿using SPW.Admin.Api.Features.Validity.Create;
-using SPW.Admin.Api.Features.Validity.DataAcces;
 using SPW.Admin.Api.Features.Validity.Delete;
 using SPW.Admin.Api.Features.Validity.GetAll;
 using SPW.Admin.Api.Features.Validity.GetById;

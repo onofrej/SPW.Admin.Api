@@ -86,13 +86,14 @@ public sealed class EndPoints : ICarterModule
     {
         var command = new UpdateCommand
         {
+            BaptismDate = request.BaptismDate!,
+            BirthDate = request.BirthDate!,
+            CongregationId = request.CongregationId,
+            Email = request.Email!,
+            Gender = request.Gender!,
             Id = request.Id,
             Name = request.Name!,
-            Email = request.Email!,
             PhoneNumber = request.PhoneNumber!,
-            Gender = request.Gender!,
-            BirthDate = request.BirthDate!,
-            BaptismDate = request.BaptismDate!,
             Privilege = request.Privilege!
         };
 

@@ -25,14 +25,15 @@ internal sealed class UpdateHandler : IRequestHandler<UpdateCommand, Result<Guid
 
         var entity = new UserEntity
         {
-            Id = request.Id,
-            Name = request.Name,
+            BaptismDate = request.BaptismDate,
+            BirthDate = request.BirthDate,
+            CongregationId = request.CongregationId,
             CreationDate = DateTime.UtcNow,
             Email = request.Email,
-            PhoneNumber = request.PhoneNumber,
             Gender = request.Gender,
-            BirthDate = DateTime.Now,
-            BaptismDate = DateTime.Now, //request.BaptismDate,
+            Id = request.Id,
+            Name = request.Name,
+            PhoneNumber = request.PhoneNumber,
             Privilege = request.Privilege
         };
 

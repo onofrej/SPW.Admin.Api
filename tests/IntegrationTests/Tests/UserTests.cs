@@ -1,5 +1,5 @@
-﻿using SPW.Admin.Api.Features.User.Create;
-using SPW.Admin.Api.Features.User.DataAccess;
+﻿using SPW.Admin.Api.Features.User;
+using SPW.Admin.Api.Features.User.Create;
 using SPW.Admin.Api.Features.User.Update;
 using SPW.Admin.Api.Shared.Models;
 using SPW.Admin.IntegrationTests.Fixtures;

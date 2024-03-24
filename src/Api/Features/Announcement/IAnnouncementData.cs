@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.Announcement.DataAccess;
+﻿namespace SPW.Admin.Api.Features.Announcement;
 
 internal interface IAnnouncementData
 {

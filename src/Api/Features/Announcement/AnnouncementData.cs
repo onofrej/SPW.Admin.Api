@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.Announcement.DataAccess;
+﻿namespace SPW.Admin.Api.Features.Announcement;
 
 [ExcludeFromCodeCoverage]
 internal sealed class AnnouncementData : IAnnouncementData
@@ -12,7 +12,7 @@ internal sealed class AnnouncementData : IAnnouncementData
     {
         _dynamoDBContext = dynamoDBContext;
         _amazonDynamoDBClient = amazonDynamoDBClient;
-        _table = Table.LoadTable(_amazonDynamoDBClient, AnnouncementEntity.TableName);
+        _table = Table.LoadTable(_amazonDynamoDBClient, "");
     }
 
     public async Task InsertAsync(AnnouncementEntity announcementEntity, CancellationToken cancellationToken)

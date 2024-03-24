@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.Point.DataAccess;
+﻿namespace SPW.Admin.Api.Features.Point;
 
 internal interface IPointData
 {

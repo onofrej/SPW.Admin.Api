@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.Circuit.DataAccess;
+﻿namespace SPW.Admin.Api.Features.Circuit;
 
 internal sealed class CircuitData : ICircuitData
 {
@@ -10,7 +10,7 @@ internal sealed class CircuitData : ICircuitData
     {
         _dynamoDBContext = dynamoDBContext;
         _amazonDynamoDBClient = amazonDynamoDBClient;
-        _table = Table.LoadTable(_amazonDynamoDBClient, CircuitEntity.TableName);
+        _table = Table.LoadTable(_amazonDynamoDBClient, "");
     }
 
     public async Task InsertAsync(CircuitEntity circuitEntity, CancellationToken cancellationToken)

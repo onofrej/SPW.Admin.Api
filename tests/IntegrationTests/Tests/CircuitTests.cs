@@ -1,5 +1,5 @@
-﻿using SPW.Admin.Api.Features.Circuit.Create;
-using SPW.Admin.Api.Features.Circuit.DataAccess;
+﻿using SPW.Admin.Api.Features.Circuit;
+using SPW.Admin.Api.Features.Circuit.Create;
 using SPW.Admin.Api.Features.Circuit.Update;
 using SPW.Admin.Api.Shared.Models;
 using SPW.Admin.IntegrationTests.Fixtures;

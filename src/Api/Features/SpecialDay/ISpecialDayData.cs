@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.SpecialDay.DataAccess;
+﻿namespace SPW.Admin.Api.Features.SpecialDay;
 
 internal interface ISpecialDayData
 {

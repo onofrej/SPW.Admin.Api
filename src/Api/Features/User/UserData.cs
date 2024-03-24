@@ -1,9 +1,4 @@
-﻿using System.Data;
-using System.Threading;
-using Dapper;
-using Npgsql;
-
-namespace SPW.Admin.Api.Features.User.DataAccess;
+﻿namespace SPW.Admin.Api.Features.User;
 
 [ExcludeFromCodeCoverage]
 internal sealed class UserData : IUserData

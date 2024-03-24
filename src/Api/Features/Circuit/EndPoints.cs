@@ -1,5 +1,4 @@
 ﻿using SPW.Admin.Api.Features.Circuit.Create;
-using SPW.Admin.Api.Features.Circuit.DataAccess;
 using SPW.Admin.Api.Features.Circuit.Delete;
 using SPW.Admin.Api.Features.Circuit.GetAll;
 using SPW.Admin.Api.Features.Circuit.GetById;

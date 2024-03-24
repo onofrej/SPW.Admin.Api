@@ -1,5 +1,4 @@
 ﻿using SPW.Admin.Api.Features.Point.Create;
-using SPW.Admin.Api.Features.Point.DataAccess;
 using SPW.Admin.Api.Features.Point.Update;
 using SPW.Admin.Api.Shared.Models;
 using SPW.Admin.IntegrationTests.Fixtures;

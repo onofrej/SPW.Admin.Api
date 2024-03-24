@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.SpecialDay.DataAccess;
+﻿namespace SPW.Admin.Api.Features.SpecialDay;
 
 [ExcludeFromCodeCoverage]
 internal sealed class SpecialDayData : ISpecialDayData
@@ -11,7 +11,7 @@ internal sealed class SpecialDayData : ISpecialDayData
     {
         _dynamoDBContext = dynamoDBContext;
         _amazonDynamoDBClient = amazonDynamoDBClient;
-        _table = Table.LoadTable(_amazonDynamoDBClient, SpecialDayEntity.TableName);
+        _table = Table.LoadTable(_amazonDynamoDBClient, "");
     }
 
     public async Task InsertAsync(SpecialDayEntity specialDayEntity, CancellationToken cancellationToken)

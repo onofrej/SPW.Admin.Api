@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.Circuit.DataAccess;
+﻿namespace SPW.Admin.Api.Features.Circuit;
 
 internal interface ICircuitData
 {

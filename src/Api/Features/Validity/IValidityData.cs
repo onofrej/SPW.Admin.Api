@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.Validity.DataAcces;
+﻿namespace SPW.Admin.Api.Features.Validity;
 
 internal interface IValidityData
 {

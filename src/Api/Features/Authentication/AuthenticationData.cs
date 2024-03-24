@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.Authentication.DataAccess;
+﻿namespace SPW.Admin.Api.Features.Authentication;
 
 [ExcludeFromCodeCoverage]
 internal sealed class AuthenticationData : IAuthenticationData

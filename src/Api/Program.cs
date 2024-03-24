@@ -1,10 +1,7 @@
-using System.Data;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Npgsql;
 using SPW.Admin.Api.DependencyInjection;
 using SPW.Admin.Api.Shared.Infrastructure;
 using SPW.Admin.Api.Shared.Middlewares;

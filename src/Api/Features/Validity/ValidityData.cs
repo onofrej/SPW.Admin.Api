@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.Validity.DataAcces;
+﻿namespace SPW.Admin.Api.Features.Validity;
 
 [ExcludeFromCodeCoverage]
 internal class ValidityData : IValidityData
@@ -11,7 +11,7 @@ internal class ValidityData : IValidityData
     {
         _dynamoDBContext = dynamoDBContext;
         _amazonDynamoDBClient = amazonDynamoDBClient;
-        _table = Table.LoadTable(_amazonDynamoDBClient, ValidityEntity.TableName);
+        _table = Table.LoadTable(_amazonDynamoDBClient, "");
     }
 
     public async Task InsertAsync(ValidityEntity validityEntity, CancellationToken cancellationToken)

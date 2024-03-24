@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.Schedule.DataAccess;
+﻿namespace SPW.Admin.Api.Features.Schedule;
 
 [ExcludeFromCodeCoverage]
 internal sealed class ScheduleData : IScheduleData
@@ -11,7 +11,7 @@ internal sealed class ScheduleData : IScheduleData
     {
         _dynamoDBContext = dynamoDBContext;
         _amazonDynamoDBClient = amazonDynamoDBClient;
-        _table = Table.LoadTable(_amazonDynamoDBClient, ScheduleEntity.TableName);
+        _table = Table.LoadTable(_amazonDynamoDBClient, "");
     }
 
     public async Task InsertAsync(ScheduleEntity scheduleEntity, CancellationToken cancellationToken)

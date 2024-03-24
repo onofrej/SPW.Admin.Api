@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.Holiday.DataAccess;
+﻿namespace SPW.Admin.Api.Features.Holiday;
 
 internal interface IHolidayData
 {

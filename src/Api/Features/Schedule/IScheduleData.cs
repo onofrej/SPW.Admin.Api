@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.Schedule.DataAccess;
+﻿namespace SPW.Admin.Api.Features.Schedule;
 
 internal interface IScheduleData
 {

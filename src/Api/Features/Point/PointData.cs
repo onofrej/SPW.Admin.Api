@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.Point.DataAccess;
+﻿namespace SPW.Admin.Api.Features.Point;
 
 [ExcludeFromCodeCoverage]
 internal sealed class PointData : IPointData
@@ -11,7 +11,7 @@ internal sealed class PointData : IPointData
     {
         _dynamoDBContext = dynamoDBContext;
         _amazonDynamoDBClient = amazonDynamoDBClient;
-        _table = Table.LoadTable(_amazonDynamoDBClient, PointEntity.TableName);
+        _table = Table.LoadTable(_amazonDynamoDBClient, "");
     }
 
     public async Task InsertAsync(PointEntity pointEntity, CancellationToken cancellationToken)
@@ -20,7 +20,7 @@ internal sealed class PointData : IPointData
         {
             ["id"] = pointEntity.Id,
             ["name"] = pointEntity.Name,
-            ["quantity_publishers"] = pointEntity.QuantityPublishers,
+            ["quantity_publishers"] = pointEntity.NumberOfPublishers,
             ["address"] = pointEntity.Address,
             ["imageurl"] = pointEntity.ImageUrl,
             ["googlemaps_url"] = pointEntity.GoogleMapsUrl

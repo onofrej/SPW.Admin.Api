@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.Holiday.DataAccess;
+﻿namespace SPW.Admin.Api.Features.Holiday;
 
 [ExcludeFromCodeCoverage]
 internal sealed class HolidayData : IHolidayData
@@ -11,7 +11,7 @@ internal sealed class HolidayData : IHolidayData
     {
         _dynamoDBContext = dynamoDBContext;
         _amazonDynamoDBClient = amazonDynamoDBClient;
-        _table = Table.LoadTable(_amazonDynamoDBClient, HolidayEntity.TableName);
+        _table = Table.LoadTable(_amazonDynamoDBClient, "");
     }
 
     public async Task InsertAsync(HolidayEntity holidayEntity, CancellationToken cancellationToken)

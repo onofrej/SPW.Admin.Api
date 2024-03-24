@@ -3,33 +3,33 @@
 [ExcludeFromCodeCoverage]
 internal sealed class UserData : IUserData
 {
-    private readonly string _connectionString;
+    private readonly NpgsqlDataSourceBuilder _npgsqlDataSourceBuilder;
 
-    public UserData(IConfiguration configuration)
+    public UserData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder)
     {
-        _connectionString = configuration.GetSection("PostgreSQL:ConnectionString").Value!;
+        _npgsqlDataSourceBuilder = npgsqlDataSourceBuilder;
     }
 
     public async Task<UserEntity> GetUserByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        using var connection = new NpgsqlConnection(_connectionString);
-        await connection.OpenAsync(cancellationToken);
+        await using var npgsqlDataSource = _npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = "SELECT * FROM \"user\" WHERE id = @Id";
         return await connection.QueryFirstOrDefaultAsync<UserEntity>(query, new { Id = id });
     }
 
     public async Task<IEnumerable<UserEntity>> GetAllUsersAsync(CancellationToken cancellationToken)
     {
-        using var connection = new NpgsqlConnection(_connectionString);
-        await connection.OpenAsync(cancellationToken);
+        await using var npgsqlDataSource = _npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = "SELECT * FROM \"user\"";
         return await connection.QueryAsync<UserEntity>(query, cancellationToken);
     }
 
     public async Task<int> CreateUserAsync(UserEntity user, CancellationToken cancellationToken)
     {
-        using var connection = new NpgsqlConnection(_connectionString);
-        await connection.OpenAsync(cancellationToken);
+        await using var npgsqlDataSource = _npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = @"INSERT INTO ""user"" (id, name, creation_date, email, phonenumber, gender, birthdate, baptismdate, privilege)
                       VALUES (@Id, @Name, @CreationDate, @Email, @PhoneNumber, @Gender, @BirthDate, @BaptismDate, @Privilege)";
         return await connection.ExecuteAsync(query, user);
@@ -37,8 +37,8 @@ internal sealed class UserData : IUserData
 
     public async Task<int> UpdateUserAsync(UserEntity user, CancellationToken cancellationToken)
     {
-        using var connection = new NpgsqlConnection(_connectionString);
-        await connection.OpenAsync(cancellationToken);
+        await using var npgsqlDataSource = _npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = @"UPDATE ""user"" SET
                       name = @Name,
                       creation_date = @CreationDate,
@@ -54,8 +54,8 @@ internal sealed class UserData : IUserData
 
     public async Task<int> DeleteUserAsync(Guid id, CancellationToken cancellationToken)
     {
-        using var connection = new NpgsqlConnection(_connectionString);
-        await connection.OpenAsync(cancellationToken);
+        await using var npgsqlDataSource = _npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = "DELETE FROM \"user\" WHERE id = @Id";
         return await connection.ExecuteAsync(query, new { Id = id });
     }

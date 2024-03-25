@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.Api.Features.Circuit.Delete;
+﻿namespace SPW.Admin.Api.Features.Congregation.Delete;
 
 [ExcludeFromCodeCoverage]
 public sealed class DeleteValidator : AbstractValidator<DeleteCommand>

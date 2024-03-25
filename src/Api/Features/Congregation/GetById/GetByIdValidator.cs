@@ -1,9 +1,9 @@
-﻿namespace SPW.Admin.Api.Features.Circuit.Delete;
+﻿namespace SPW.Admin.Api.Features.Congregation.GetById;
 
 [ExcludeFromCodeCoverage]
-public sealed class DeleteValidator : AbstractValidator<DeleteCommand>
+public sealed class GetByIdValidator : AbstractValidator<GetByIdQuery>
 {
-    public DeleteValidator()
+    public GetByIdValidator()
     {
         RuleFor(expression => expression.Id)
             .NotEmpty()

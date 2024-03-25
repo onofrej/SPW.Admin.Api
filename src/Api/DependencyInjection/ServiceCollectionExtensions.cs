@@ -1,6 +1,7 @@
 ﻿using SPW.Admin.Api.Features.Announcement;
 using SPW.Admin.Api.Features.Authentication;
 using SPW.Admin.Api.Features.Circuit;
+using SPW.Admin.Api.Features.Congregation;
 using SPW.Admin.Api.Features.Holiday;
 using SPW.Admin.Api.Features.Point;
 using SPW.Admin.Api.Features.Schedule;
@@ -24,6 +25,7 @@ internal static class ServiceCollectionExtensions
         services.AddScoped<IAnnouncementData, AnnouncementData>();
         services.AddScoped<ISpecialDayData, SpecialDayData>();
         services.AddScoped<IAuthenticationData, AuthenticationData>();
+        services.AddScoped<ICongregationData, CongregationData>();
 
         return services;
     }

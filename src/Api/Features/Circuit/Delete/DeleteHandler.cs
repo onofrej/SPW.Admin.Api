@@ -24,14 +24,14 @@ internal sealed class DeleteHandler : IRequestHandler<DeleteCommand, Result<Guid
                 Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
-        var circuitEntity = await _circuitData.GetByIdAsync(request.Id, cancellationToken);
+        var circuitEntity = await _circuitData.GetCircuitByIdAsync(request.Id, cancellationToken);
 
         if (circuitEntity is null)
         {
             return new Result<Guid>(Guid.Empty, Errors.ReturnCircuitNotFoundError());
         }
 
-        await _circuitData.DeleteAsync(circuitEntity, cancellationToken);
+        await _circuitData.DeleteCircuitAsync(circuitEntity.Id, cancellationToken);
 
         return new Result<Guid>(circuitEntity.Id);
     }

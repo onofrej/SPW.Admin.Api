@@ -2,13 +2,13 @@
 
 internal interface ICircuitData
 {
-    Task InsertAsync(CircuitEntity circuitEntity, CancellationToken cancellationToken);
+    Task<int> CreateCircuitAsync(CircuitEntity circuit, CancellationToken cancellationToken);
 
-    Task UpdateAsync(CircuitEntity circuitEntity, CancellationToken cancellationToken);
+    Task<int> DeleteCircuitAsync(Guid id, CancellationToken cancellationToken);
 
-    Task DeleteAsync(CircuitEntity circuitEntity, CancellationToken cancellationToken);
+    Task<IEnumerable<CircuitEntity>> GetAllCircuitsAsync(CancellationToken cancellationToken);
 
-    Task<CircuitEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<CircuitEntity> GetCircuitByIdAsync(Guid id, CancellationToken cancellationToken);
 
-    Task<IEnumerable<CircuitEntity>> GetAllAsync(CancellationToken cancellationToken);
+    Task<int> UpdateCircuitAsync(CircuitEntity circuit, CancellationToken cancellationToken);
 }

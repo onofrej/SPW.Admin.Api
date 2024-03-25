@@ -28,9 +28,10 @@ namespace SPW.Admin.Api.Features.Circuit.Create
             {
                 Id = Guid.NewGuid(),
                 Name = request.Name,
+                DomainId = request.DomainId
             };
 
-            await _circuitData.InsertAsync(entity, cancellationToken);
+            await _circuitData.CreateCircuitAsync(entity, cancellationToken);
 
             return new Result<Guid>(entity.Id);
         }

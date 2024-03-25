@@ -22,7 +22,7 @@ internal sealed class GetByIdHandler : IRequestHandler<GetByIdQuery, Result<Circ
         {
             return new Result<CircuitEntity>(default, Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
-        var circuitEntity = await _circuitData.GetByIdAsync(request.Id, cancellationToken);
+        var circuitEntity = await _circuitData.GetCircuitByIdAsync(request.Id, cancellationToken);
 
         if (circuitEntity is null)
         {

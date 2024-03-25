@@ -35,7 +35,7 @@ internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid
             CircuitId = request.CircuitId,
         };
 
-        var queryCircuitById = await _circuitData.GetByIdAsync(request.CircuitId, cancellationToken);
+        var queryCircuitById = await _circuitData.GetCircuitByIdAsync(request.CircuitId, cancellationToken);
 
         if (queryCircuitById is null)
         {

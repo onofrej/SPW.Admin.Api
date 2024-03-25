@@ -7,4 +7,5 @@ public sealed class UpdateCommand : IRequest<Result<Guid>>
 {
     public Guid Id { get; set; }
     public string Name { get; set; } = string.Empty;
+    public Guid DomainId { get; set; } = default;
 }

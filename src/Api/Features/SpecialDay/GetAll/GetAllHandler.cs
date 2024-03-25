@@ -14,6 +14,6 @@ internal sealed class GetAllHandler : IRequestHandler<GetAllQuery, Result<IEnume
 
     public async Task<Result<IEnumerable<SpecialDayEntity>>> Handle(GetAllQuery request, CancellationToken cancellationToken)
     {
-        return new Result<IEnumerable<SpecialDayEntity>>(await _specialDayData.GetAllAsync(cancellationToken));
+        return new Result<IEnumerable<SpecialDayEntity>>(await _specialDayData.GetAllSpecialDaysAsync(cancellationToken));
     }
 }

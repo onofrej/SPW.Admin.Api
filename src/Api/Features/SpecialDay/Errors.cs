@@ -9,7 +9,4 @@ internal static class Errors
 
     internal static Error ReturnSpecialDayNotFoundError() => new(errorCode: "SPD002",
         errorMessage: "Special day not found");
-
-    internal static Error ReturnCircuitNotFoundError() => new(errorCode: "SPD003",
-        errorMessage: "Circuit not found");
 }

@@ -23,8 +23,7 @@ internal sealed class DomainData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder
     {
         await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
-        var query = @"INSERT INTO ""domain"" (id, name)
-                      VALUES (@Id, @Name)";
+        var query = @"INSERT INTO ""domain"" (id, name) VALUES (@Id, @Name)";
         return await connection.ExecuteAsync(query, domain);
     }
 
@@ -32,9 +31,7 @@ internal sealed class DomainData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder
     {
         await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
-        var query = @"UPDATE ""domain"" SET
-            name = @Name
-            WHERE id = @Id";
+        var query = @"UPDATE ""domain"" SET name = @Name WHERE id = @Id";
         return await connection.ExecuteAsync(query, domain);
     }
 

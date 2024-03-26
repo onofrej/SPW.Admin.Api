@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Configuration;
 using SPW.Admin.Api.DependencyInjection;
 using SPW.Admin.Api.Shared.Infrastructure;
 using SPW.Admin.Api.Shared.Middlewares;

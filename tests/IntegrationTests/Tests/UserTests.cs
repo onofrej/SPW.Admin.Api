@@ -8,23 +8,14 @@ using SPW.Admin.IntegrationTests.Fixtures;
 namespace SPW.Admin.IntegrationTests.Tests;
 
 [Collection(TestCollection.CollectionDefinition)]
-public class UserTests : BaseIntegratedTest
+public class UserTests(MainFixture mainFixture) : BaseIntegratedTest
 {
     private const string RequestUri = "/users";
     private const string HashKey = "id";
     private const int DaysToAddAtDateValues = 10;
-    private readonly MainFixture _mainFixture;
-    private readonly DateTime _birthDate;
-    private readonly DateTime _baptismDate;
-    private readonly DateTime _creationDate;
-
-    public UserTests(MainFixture mainFixture)
-    {
-        _mainFixture = mainFixture;
-        _birthDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-        _baptismDate = new DateTime(DateTime.Now.Year + DaysToAddAtDateValues, DateTime.Now.Month, DateTime.Now.Day);
-        _creationDate = new DateTime(DateTime.Now.Year + DaysToAddAtDateValues, DateTime.Now.Month, DateTime.Now.Day);
-    }
+    private readonly DateTime _birthDate = new(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+    private readonly DateTime _baptismDate = new(DateTime.Now.Year + DaysToAddAtDateValues, DateTime.Now.Month, DateTime.Now.Day);
+    private readonly DateTime _creationDate = new(DateTime.Now.Year + DaysToAddAtDateValues, DateTime.Now.Month, DateTime.Now.Day);
 
     [Fact(DisplayName = "Request received is valid then user is created")]
     public async Task Request_received_is_valid_then_user_is_created()
@@ -40,7 +31,7 @@ public class UserTests : BaseIntegratedTest
             //.RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
             .Generate();
 
-        var rawResponse = await _mainFixture.HttpClient.PostAsJsonAsync(RequestUri, request, GetCancellationToken);
+        var rawResponse = await mainFixture.HttpClient.PostAsJsonAsync(RequestUri, request, GetCancellationToken);
 
         //Act
         var response = await rawResponse.Content.ReadFromJsonAsync<Response<Guid>>(GetCancellationToken);
@@ -49,7 +40,7 @@ public class UserTests : BaseIntegratedTest
         rawResponse.Should().NotBeNull();
         rawResponse.StatusCode.Should().Be(HttpStatusCode.Created);
 
-        var userEntity = await _mainFixture.DynamoDbFixture
+        var userEntity = await mainFixture.DynamoDbFixture
             .ReadAsync<UserEntity>(HashKey, response!.Data.ToString());
 
         userEntity.Should().BeEquivalentTo(request);
@@ -72,7 +63,7 @@ public class UserTests : BaseIntegratedTest
 
         var entity = faker.Generate();
 
-        await _mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
+        await mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
 
         var request = new Faker<UpdateRequest>().StrictMode(true)
             //.RuleFor(property => property.Id, setter => entity.Id)
@@ -86,14 +77,14 @@ public class UserTests : BaseIntegratedTest
             .Generate();
 
         //Act
-        var rawResponse = await _mainFixture.HttpClient.PutAsJsonAsync(RequestUri, request, GetCancellationToken);
+        var rawResponse = await mainFixture.HttpClient.PutAsJsonAsync(RequestUri, request, GetCancellationToken);
         var response = await rawResponse.Content.ReadFromJsonAsync<Response<Guid>>(GetCancellationToken);
 
         //Assert
         rawResponse.Should().NotBeNull();
         rawResponse.StatusCode.Should().Be(HttpStatusCode.OK);
 
-        var newUserEntity = await _mainFixture.DynamoDbFixture
+        var newUserEntity = await mainFixture.DynamoDbFixture
             .ReadAsync<UserEntity>(HashKey, response!.Data.ToString());
 
         newUserEntity.Should().BeEquivalentTo(request);
@@ -115,16 +106,16 @@ public class UserTests : BaseIntegratedTest
            //.RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
            .Generate();
 
-        await _mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
+        await mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
 
         //Act
-        var rawResponse = await _mainFixture.HttpClient.DeleteAsync($"{RequestUri}/{entity.Id}");
+        var rawResponse = await mainFixture.HttpClient.DeleteAsync($"{RequestUri}/{entity.Id}");
 
         //Assert
         rawResponse.Should().NotBeNull();
         rawResponse.StatusCode.Should().Be(HttpStatusCode.NoContent);
 
-        var userEntity = await _mainFixture.DynamoDbFixture
+        var userEntity = await mainFixture.DynamoDbFixture
             .ReadAsync<UserEntity>(HashKey, entity.ToString());
 
         userEntity.Should().BeNull();
@@ -146,10 +137,10 @@ public class UserTests : BaseIntegratedTest
            //.RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
            .Generate();
 
-        await _mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
+        await mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
 
         //Act
-        var rawResponse = await _mainFixture.HttpClient.GetAsync($"{RequestUri}/{entity.Id}", GetCancellationToken);
+        var rawResponse = await mainFixture.HttpClient.GetAsync($"{RequestUri}/{entity.Id}", GetCancellationToken);
         var response = await rawResponse.Content.ReadFromJsonAsync<Response<UserEntity>>(GetCancellationToken);
 
         //Assert
@@ -175,12 +166,12 @@ public class UserTests : BaseIntegratedTest
            //.RuleFor(property => property.Privilege, setter => setter.PickRandom(new string[] { "Elder", "Pioneer", "Ministerial Servant" }))
            .Generate();
 
-        await _mainFixture.DynamoDbFixture.TruncateTableAsync(GetCancellationToken);
+        await mainFixture.DynamoDbFixture.TruncateTableAsync(GetCancellationToken);
 
-        await _mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
+        await mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
 
         //Act
-        var rawResponse = await _mainFixture.HttpClient.GetAsync(RequestUri, GetCancellationToken);
+        var rawResponse = await mainFixture.HttpClient.GetAsync(RequestUri, GetCancellationToken);
         var response = await rawResponse.Content.ReadFromJsonAsync<Response<IEnumerable<UserEntity>>>(GetCancellationToken);
 
         //Assert

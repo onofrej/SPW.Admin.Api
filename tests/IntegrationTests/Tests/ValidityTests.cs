@@ -1,7 +1,4 @@
-﻿using SPW.Admin.Api.Features.Validity.Create;
-using SPW.Admin.Api.Features.Validity.DataAcces;
-using SPW.Admin.Api.Shared.Models;
-using SPW.Admin.IntegrationTests.Fixtures;
+﻿using SPW.Admin.IntegrationTests.Fixtures;
 
 namespace SPW.Admin.IntegrationTests.Tests;
 

@@ -4,5 +4,5 @@
 public sealed class CreateRequest
 {
     public string? Name { get; set; }
-    public string? Date { get; set; }
+    public DateTime Date { get; set; }
 }

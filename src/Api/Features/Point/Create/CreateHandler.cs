@@ -1,5 +1,4 @@
-﻿using SPW.Admin.Api.Features.Point.DataAccess;
-using SPW.Admin.Api.Shared.Models;
+﻿using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.Point.Create;
 
@@ -28,7 +27,7 @@ internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid
         {
             Id = Guid.NewGuid(),
             Name = request.Name,
-            QuantityPublishers = request.QuantityPublishers,
+            NumberOfPublishers = request.QuantityPublishers,
             Address = request.Address,
             ImageUrl = request.ImageUrl,
             GoogleMapsUrl = request.GoogleMapsUrl,

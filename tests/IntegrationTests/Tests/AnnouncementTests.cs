@@ -1,5 +1,5 @@
-﻿using SPW.Admin.Api.Features.Announcement.Create;
-using SPW.Admin.Api.Features.Announcement.DataAccess;
+﻿using SPW.Admin.Api.Features.Announcement;
+using SPW.Admin.Api.Features.Announcement.Create;
 using SPW.Admin.Api.Features.Announcement.Update;
 using SPW.Admin.Api.Shared.Models;
 using SPW.Admin.IntegrationTests.Fixtures;

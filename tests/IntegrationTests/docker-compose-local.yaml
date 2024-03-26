@@ -1,10 +1,35 @@
 ﻿services:
-    localstack:
-        image: localstack/localstack
-        container_name: localstack
-        ports:
-            - "4566:4566"
-        environment:
-            - SERVICES=dynamodb
-            - AWS_DEFAULT_OUTPUT=json
-            - DEFAULT_REGION=us-east-1
+
+  postgresql:
+    image: postgres:latest
+    container_name: postgresql
+    restart: always
+    ports:
+        - "5432:5432"
+    environment:
+        POSTGRES_USER: admin
+        POSTGRES_PASSWORD: integrated-test-pwd
+        POSTGRES_DB: db-spw
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin1234
+    restart: always
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgresql
+
+  # pgadmin:
+  #   image: dpage/pgadmin4:latest
+  #   restart: always
+  #   ports:
+  #     - "8080:80"
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: guest
+  #     PGADMIN_DEFAULT_PASSWORD: guest
+  #   depends_on:
+  #     - postgresql

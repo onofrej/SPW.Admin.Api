@@ -1,5 +1,4 @@
-﻿using SPW.Admin.Api.Features.User.DataAccess;
-using SPW.Admin.Api.Shared.Models;
+﻿using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.User.Update;
 
@@ -26,18 +25,19 @@ internal sealed class UpdateHandler : IRequestHandler<UpdateCommand, Result<Guid
 
         var entity = new UserEntity
         {
-            Id = request.Id,
-            Name = request.Name,
+            BaptismDate = request.BaptismDate,
+            BirthDate = request.BirthDate,
+            CongregationId = request.CongregationId,
             CreationDate = DateTime.UtcNow,
             Email = request.Email,
-            PhoneNumber = request.PhoneNumber,
             Gender = request.Gender,
-            BirthDate = request.BirthDate,
-            BaptismDate = request.BaptismDate,
+            Id = request.Id,
+            Name = request.Name,
+            PhoneNumber = request.PhoneNumber,
             Privilege = request.Privilege
         };
 
-        await _userData.UpdateAsync(entity, cancellationToken);
+        await _userData.UpdateUserAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

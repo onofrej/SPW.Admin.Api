@@ -1,5 +1,4 @@
 ﻿using SPW.Admin.Api.Features.Schedule.Create;
-using SPW.Admin.Api.Features.Schedule.DataAccess;
 using SPW.Admin.Api.Features.Schedule.Delete;
 using SPW.Admin.Api.Features.Schedule.GetAll;
 using SPW.Admin.Api.Features.Schedule.GetById;

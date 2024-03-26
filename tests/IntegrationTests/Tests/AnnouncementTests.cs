@@ -6,7 +6,8 @@ using SPW.Admin.IntegrationTests.Fixtures;
 
 namespace SPW.Admin.IntegrationTests.Tests;
 
-public class AnnouncementTests : BaseIntegratedTest, IClassFixture<MainFixture>
+[Collection(TestCollection.CollectionDefinition)]
+public class AnnouncementTests : BaseIntegratedTest
 {
     private const string RequestUri = "/announcements";
     private const string HashKey = "id";
@@ -52,7 +53,7 @@ public class AnnouncementTests : BaseIntegratedTest, IClassFixture<MainFixture>
 
         var entity = faker.Generate();
 
-        await _mainFixture.DynamoDbFixture.InsertAsync(entity);
+        await _mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
 
         var request = new Faker<UpdateRequest>().StrictMode(true)
             .RuleFor(property => property.Id, setter => entity.Id)
@@ -84,7 +85,7 @@ public class AnnouncementTests : BaseIntegratedTest, IClassFixture<MainFixture>
            .RuleFor(property => property.Message, setter => string.Join(" ", setter.Lorem.Words(3)))
            .Generate();
 
-        await _mainFixture.DynamoDbFixture.InsertAsync(entity);
+        await _mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
 
         //Act
         var rawResponse = await _mainFixture.HttpClient.DeleteAsync($"{RequestUri}/{entity.Id}");
@@ -109,7 +110,7 @@ public class AnnouncementTests : BaseIntegratedTest, IClassFixture<MainFixture>
            .RuleFor(property => property.Message, setter => string.Join(" ", setter.Lorem.Words(3)))
            .Generate();
 
-        await _mainFixture.DynamoDbFixture.InsertAsync(entity);
+        await _mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
 
         //Act
         var rawResponse = await _mainFixture.HttpClient.GetAsync($"{RequestUri}/{entity.Id}", GetCancellationToken);
@@ -132,7 +133,9 @@ public class AnnouncementTests : BaseIntegratedTest, IClassFixture<MainFixture>
            .RuleFor(property => property.Message, setter => string.Join(" ", setter.Lorem.Words(3)))
            .Generate();
 
-        await _mainFixture.DynamoDbFixture.InsertAsync(entity);
+        await _mainFixture.DynamoDbFixture.TruncateTableAsync(GetCancellationToken);
+
+        await _mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
 
         //Act
         var rawResponse = await _mainFixture.HttpClient.GetAsync(RequestUri, GetCancellationToken);

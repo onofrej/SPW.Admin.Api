@@ -6,7 +6,8 @@ using SPW.Admin.IntegrationTests.Fixtures;
 
 namespace SPW.Admin.IntegrationTests.Tests;
 
-public class PointTests : BaseIntegratedTest, IClassFixture<MainFixture>
+[Collection(TestCollection.CollectionDefinition)]
+public class PointTests : BaseIntegratedTest
 {
     private const string RequestUri = "/points";
     private const string HashKey = "id";
@@ -58,7 +59,7 @@ public class PointTests : BaseIntegratedTest, IClassFixture<MainFixture>
 
         var entity = faker.Generate();
 
-        await _mainFixture.DynamoDbFixture.InsertAsync(entity);
+        await _mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
 
         var request = new Faker<UpdateRequest>().StrictMode(true)
             .RuleFor(property => property.Id, setter => entity.Id)
@@ -97,7 +98,7 @@ public class PointTests : BaseIntegratedTest, IClassFixture<MainFixture>
            .RuleFor(property => property.GoogleMapsUrl, setter => setter.Internet.Url())
            .Generate();
 
-        await _mainFixture.DynamoDbFixture.InsertAsync(entity);
+        await _mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
 
         //Act
         var rawResponse = await _mainFixture.HttpClient.DeleteAsync($"{RequestUri}/{entity.Id}");
@@ -125,7 +126,7 @@ public class PointTests : BaseIntegratedTest, IClassFixture<MainFixture>
            .RuleFor(property => property.GoogleMapsUrl, setter => setter.Internet.Url())
            .Generate();
 
-        await _mainFixture.DynamoDbFixture.InsertAsync(entity);
+        await _mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
 
         //Act
         var rawResponse = await _mainFixture.HttpClient.GetAsync($"{RequestUri}/{entity.Id}", GetCancellationToken);
@@ -150,7 +151,9 @@ public class PointTests : BaseIntegratedTest, IClassFixture<MainFixture>
            .RuleFor(property => property.ImageUrl, setter => setter.Image.PicsumUrl())
            .RuleFor(property => property.GoogleMapsUrl, setter => setter.Internet.Url()).Generate();
 
-        await _mainFixture.DynamoDbFixture.InsertAsync(entity);
+        await _mainFixture.DynamoDbFixture.TruncateTableAsync(GetCancellationToken);
+
+        await _mainFixture.DynamoDbFixture.InsertAsync(entity, GetCancellationToken);
 
         //Act
         var rawResponse = await _mainFixture.HttpClient.GetAsync(RequestUri, GetCancellationToken);

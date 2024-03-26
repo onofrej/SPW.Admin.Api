@@ -1,4 +1,4 @@
-﻿namespace SPW.Admin.IntegrationTests;
+﻿namespace SPW.Admin.IntegrationTests.Common;
 
 public abstract class BaseIntegratedTest
 {

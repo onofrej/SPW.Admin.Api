@@ -2,6 +2,7 @@
 using SPW.Admin.Api.Features.Announcement.Create;
 using SPW.Admin.Api.Features.Announcement.Update;
 using SPW.Admin.Api.Shared.Models;
+using SPW.Admin.IntegrationTests.Common;
 using SPW.Admin.IntegrationTests.Fixtures;
 
 namespace SPW.Admin.IntegrationTests.Tests;

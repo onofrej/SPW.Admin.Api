@@ -1,4 +1,5 @@
-﻿using SPW.Admin.IntegrationTests.Fixtures;
+﻿using SPW.Admin.IntegrationTests.Common;
+using SPW.Admin.IntegrationTests.Fixtures;
 
 namespace SPW.Admin.IntegrationTests.Tests;
 

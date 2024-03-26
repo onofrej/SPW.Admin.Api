@@ -1,49 +1,51 @@
 ﻿namespace SPW.Admin.Api.Features.Validity;
 
 [ExcludeFromCodeCoverage]
-internal class ValidityData : IValidityData
+internal sealed class ValidityData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder) : IValidityData
 {
-    private readonly IDynamoDBContext _dynamoDBContext;
-    private readonly IAmazonDynamoDB _amazonDynamoDBClient;
-    private readonly Table _table;
-
-    public ValidityData(IDynamoDBContext dynamoDBContext, IAmazonDynamoDB amazonDynamoDBClient)
+    public async Task<ValidityEntity> GetValidityByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        _dynamoDBContext = dynamoDBContext;
-        _amazonDynamoDBClient = amazonDynamoDBClient;
-        _table = Table.LoadTable(_amazonDynamoDBClient, "");
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "SELECT * FROM \"validity\" WHERE id = @Id";
+        return await connection.QueryFirstOrDefaultAsync<ValidityEntity?>(query, new { Id = id });
     }
 
-    public async Task InsertAsync(ValidityEntity validityEntity, CancellationToken cancellationToken)
+    public async Task<IEnumerable<ValidityEntity>> GetAllValiditiesAsync(CancellationToken cancellationToken)
     {
-        var document = new Document
-        {
-            ["id"] = validityEntity.Id,
-            ["startdate"] = validityEntity.StartDate,
-            ["enddate"] = validityEntity.EndDate,
-            ["status"] = validityEntity.Status
-        };
-
-        await _table.PutItemAsync(document, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "SELECT * FROM \"validity\"";
+        return await connection.QueryAsync<ValidityEntity>(query, cancellationToken);
     }
 
-    public Task UpdateAsync(ValidityEntity validityEntity, CancellationToken cancellationToken)
+    public async Task<int> CreateValidityAsync(ValidityEntity validity, CancellationToken cancellationToken)
     {
-        return _dynamoDBContext.SaveAsync(validityEntity, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = @"INSERT INTO ""validity"" (id, start_date, end_date, status, domain_id)
+                      VALUES (@Id, @StartDate, @EndDate, @Status, @DomainId)";
+        return await connection.ExecuteAsync(query, validity);
     }
 
-    public Task DeleteAsync(ValidityEntity validityEntity, CancellationToken cancellationToken)
+    public async Task<int> UpdateValidityAsync(ValidityEntity validity, CancellationToken cancellationToken)
     {
-        return _dynamoDBContext.DeleteAsync(validityEntity, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = @"UPDATE ""validity"" SET
+            start_date = @StartDate,
+            end_date = @EndDate,
+            status = @Status,
+            domain_id = @DomainId
+            WHERE id = @Id";
+        return await connection.ExecuteAsync(query, validity);
     }
 
-    public async Task<ValidityEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<int> DeleteValidityAsync(Guid id, CancellationToken cancellationToken)
     {
-        return await _dynamoDBContext.LoadAsync<ValidityEntity>(id, cancellationToken);
-    }
-
-    public async Task<IEnumerable<ValidityEntity>> GetAllAsync(CancellationToken cancellationToken)
-    {
-        return await _dynamoDBContext.ScanAsync<ValidityEntity>(default).GetRemainingAsync(cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "DELETE FROM \"validity\" WHERE id = @Id";
+        return await connection.ExecuteAsync(query, new { Id = id });
     }
 }

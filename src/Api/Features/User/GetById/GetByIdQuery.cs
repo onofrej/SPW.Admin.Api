@@ -2,4 +2,4 @@
 
 namespace SPW.Admin.Api.Features.User.GetById;
 
-public record GetByIdQuery(Guid Id) : IRequest<Result<UserEntity>>;
+public record GetByIdQuery(Guid Id) : IRequest<Result<PointEntity>>;

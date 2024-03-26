@@ -1,17 +1,10 @@
 ﻿namespace SPW.Admin.Api.Features.Congregation;
 
-internal sealed class CongregationData : ICongregationData
+internal sealed class CongregationData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder) : ICongregationData
 {
-    private readonly NpgsqlDataSourceBuilder _npgsqlDataSourceBuilder;
-
-    public CongregationData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder)
-    {
-        _npgsqlDataSourceBuilder = npgsqlDataSourceBuilder;
-    }
-
     public async Task<CongregationEntity> GetCongregationByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        await using var npgsqlDataSource = _npgsqlDataSourceBuilder.Build();
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = "SELECT * FROM \"congregation\" WHERE id = @Id";
         return await connection.QueryFirstOrDefaultAsync<CongregationEntity>(query, new { Id = id });
@@ -19,7 +12,7 @@ internal sealed class CongregationData : ICongregationData
 
     public async Task<IEnumerable<CongregationEntity>> GetAllCongregationsAsync(CancellationToken cancellationToken)
     {
-        await using var npgsqlDataSource = _npgsqlDataSourceBuilder.Build();
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = "SELECT * FROM \"congregation\"";
         return await connection.QueryAsync<CongregationEntity>(query, cancellationToken);
@@ -27,7 +20,7 @@ internal sealed class CongregationData : ICongregationData
 
     public async Task<int> CreateCongregationAsync(CongregationEntity congregation, CancellationToken cancellationToken)
     {
-        await using var npgsqlDataSource = _npgsqlDataSourceBuilder.Build();
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = @"INSERT INTO ""congregation"" (id, name, number, circuit_id)
                       VALUES (@Id, @Name, @Number, @CircuitId)";
@@ -36,7 +29,7 @@ internal sealed class CongregationData : ICongregationData
 
     public async Task<int> UpdateCongregationAsync(CongregationEntity congregation, CancellationToken cancellationToken)
     {
-        await using var npgsqlDataSource = _npgsqlDataSourceBuilder.Build();
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = @"UPDATE ""congregation"" SET
             name = @Name,
@@ -48,7 +41,7 @@ internal sealed class CongregationData : ICongregationData
 
     public async Task<int> DeleteCongregationAsync(Guid id, CancellationToken cancellationToken)
     {
-        await using var npgsqlDataSource = _npgsqlDataSourceBuilder.Build();
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = "DELETE FROM \"congregation\" WHERE id = @Id";
         return await connection.ExecuteAsync(query, new { Id = id });

@@ -7,4 +7,5 @@ public sealed class CreateCommand : IRequest<Result<Guid>>
     public DateTime StartDate { get; set; } = DateTime.Now;
     public DateTime EndDate { get; set; } = DateTime.Now;
     public bool Status { get; set; } = true;
+    public Guid DomainId { get; set; } = default;
 }

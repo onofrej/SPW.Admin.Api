@@ -1,51 +1,53 @@
 ﻿namespace SPW.Admin.Api.Features.Point;
 
 [ExcludeFromCodeCoverage]
-internal sealed class PointData : IPointData
+internal sealed class PointData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder) : IPointData
 {
-    private readonly IDynamoDBContext _dynamoDBContext;
-    private readonly IAmazonDynamoDB _amazonDynamoDBClient;
-    private readonly Table _table;
-
-    public PointData(IDynamoDBContext dynamoDBContext, IAmazonDynamoDB amazonDynamoDBClient)
+    public async Task<PointEntity?> GetPointByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        _dynamoDBContext = dynamoDBContext;
-        _amazonDynamoDBClient = amazonDynamoDBClient;
-        _table = Table.LoadTable(_amazonDynamoDBClient, "");
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "SELECT * FROM \"point\" WHERE id = @Id";
+        return await connection.QueryFirstOrDefaultAsync<PointEntity>(query, new { Id = id });
     }
 
-    public async Task InsertAsync(PointEntity pointEntity, CancellationToken cancellationToken)
+    public async Task<IEnumerable<PointEntity>> GetAllPointsAsync(CancellationToken cancellationToken)
     {
-        var document = new Document
-        {
-            ["id"] = pointEntity.Id,
-            ["name"] = pointEntity.Name,
-            ["quantity_publishers"] = pointEntity.NumberOfPublishers,
-            ["address"] = pointEntity.Address,
-            ["imageurl"] = pointEntity.ImageUrl,
-            ["googlemaps_url"] = pointEntity.GoogleMapsUrl
-        };
-
-        await _table.PutItemAsync(document, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "SELECT * FROM \"point\"";
+        return await connection.QueryAsync<PointEntity>(query, cancellationToken);
     }
 
-    public Task UpdateAsync(PointEntity pointEntity, CancellationToken cancellationToken)
+    public async Task<int> CreatePointAsync(PointEntity point, CancellationToken cancellationToken)
     {
-        return _dynamoDBContext.SaveAsync(pointEntity, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = @"INSERT INTO ""point"" (id, name, number_of_publishers, address, image_url, google_maps_url, domain_id)
+                      VALUES (@Id, @Name, @NumberOfPublishers, @Address, @ImageUrl, @GoogleMapsUrl, @DomainId)";
+        return await connection.ExecuteAsync(query, point);
     }
 
-    public Task DeleteAsync(PointEntity pointEntity, CancellationToken cancellationToken)
+    public async Task<int> UpdatePointAsync(PointEntity point, CancellationToken cancellationToken)
     {
-        return _dynamoDBContext.DeleteAsync(pointEntity, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = @"UPDATE ""point"" SET
+            name = @Name,
+            number_of_publishers = @NumberOfPublishers,
+            address = @Address,
+            image_url = @ImageUrl,
+            google_maps_url = @GoogleMapsUrl,
+            domain_id = @DomainId
+            WHERE id = @Id";
+        return await connection.ExecuteAsync(query, point);
     }
 
-    public async Task<PointEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<int> DeletePointAsync(Guid id, CancellationToken cancellationToken)
     {
-        return await _dynamoDBContext.LoadAsync<PointEntity>(id, cancellationToken);
-    }
-
-    public async Task<IEnumerable<PointEntity>> GetAllAsync(CancellationToken cancellationToken)
-    {
-        return await _dynamoDBContext.ScanAsync<PointEntity>(default).GetRemainingAsync(cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "DELETE FROM \"point\" WHERE id = @Id";
+        return await connection.ExecuteAsync(query, new { Id = id });
     }
 }

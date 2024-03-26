@@ -2,13 +2,13 @@
 
 internal interface IValidityData
 {
-    Task InsertAsync(ValidityEntity validityEntity, CancellationToken cancellationToken);
+    Task<int> CreateValidityAsync(ValidityEntity validity, CancellationToken cancellationToken);
 
-    Task UpdateAsync(ValidityEntity validityEntity, CancellationToken cancellationToken);
+    Task<int> DeleteValidityAsync(Guid id, CancellationToken cancellationToken);
 
-    Task DeleteAsync(ValidityEntity validityEntity, CancellationToken cancellationToken);
+    Task<IEnumerable<ValidityEntity>> GetAllValiditiesAsync(CancellationToken cancellationToken);
 
-    Task<ValidityEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<ValidityEntity> GetValidityByIdAsync(Guid id, CancellationToken cancellationToken);
 
-    Task<IEnumerable<ValidityEntity>> GetAllAsync(CancellationToken cancellationToken);
+    Task<int> UpdateValidityAsync(ValidityEntity validity, CancellationToken cancellationToken);
 }

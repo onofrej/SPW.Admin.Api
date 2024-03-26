@@ -1,7 +1,0 @@
-﻿namespace SPW.Admin.Api.Features.Authentication.Services;
-
-public class UserToken
-{
-    public string? Token { get; set; }
-    public DateTime Expiration { get; set; }
-}

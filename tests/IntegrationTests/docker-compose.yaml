@@ -9,12 +9,13 @@
             - AWS_DEFAULT_OUTPUT=json
             - DEFAULT_REGION=us-east-1
 
-    dynamodb-admin:
-        image: aaronshaf/dynamodb-admin:latest
-        container_name: dynamodb-viewer
+    postgresql:
+        image: postgres:latest
+        container_name: postgresql
+        restart: always
         ports:
-          - "8001:8001"
+            - "5432:5432"
         environment:
-          DYNAMO_ENDPOINT: http://localstack:4566
-        depends_on:
-          - localstack
+            POSTGRES_USER: admin
+            POSTGRES_PASSWORD: integrated-test-pwd
+            POSTGRES_DB: db-spw

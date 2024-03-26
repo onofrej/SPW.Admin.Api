@@ -10,4 +10,5 @@ public class UpdateCommand : IRequest<Result<Guid>>
     public string? Address { get; set; } = string.Empty;
     public string? ImageUrl { get; set; } = string.Empty;
     public string? GoogleMapsUrl { get; set; } = string.Empty;
+    public Guid DomainId { get; set; } = default;
 }

@@ -3,7 +3,7 @@
 namespace SPW.Admin.Api.Features.User.GetAll;
 
 [ExcludeFromCodeCoverage]
-internal sealed class GetAllHandler : IRequestHandler<GetAllQuery, Result<IEnumerable<UserEntity>>>
+internal sealed class GetAllHandler : IRequestHandler<GetAllQuery, Result<IEnumerable<PointEntity>>>
 {
     private readonly IUserData _userData;
 
@@ -12,8 +12,8 @@ internal sealed class GetAllHandler : IRequestHandler<GetAllQuery, Result<IEnume
         _userData = userData;
     }
 
-    public async Task<Result<IEnumerable<UserEntity>>> Handle(GetAllQuery request, CancellationToken cancellationToken)
+    public async Task<Result<IEnumerable<PointEntity>>> Handle(GetAllQuery request, CancellationToken cancellationToken)
     {
-        return new Result<IEnumerable<UserEntity>>(await _userData.GetAllUsersAsync(cancellationToken));
+        return new Result<IEnumerable<PointEntity>>(await _userData.GetAllUsersAsync(cancellationToken));
     }
 }

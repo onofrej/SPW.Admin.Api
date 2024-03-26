@@ -12,5 +12,9 @@ public sealed class UpdateValidator : AbstractValidator<UpdateCommand>
         RuleFor(expression => expression.Message)
             .NotEmpty()
             .WithMessage("Annoucement message cannot be empty");
+
+        RuleFor(expression => expression.DomainId)
+            .NotEmpty()
+            .WithMessage("Domain Id cannot be empty");
     }
 }

@@ -28,10 +28,11 @@ internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid
             Id = Guid.NewGuid(),
             StartDate = DateTime.UtcNow,
             EndDate = DateTime.UtcNow,
-            Status = true
+            Status = true,
+            DomainId = request.DomainId
         };
 
-        await _validityData.InsertAsync(entity, cancellationToken);
+        await _validityData.CreateValidityAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

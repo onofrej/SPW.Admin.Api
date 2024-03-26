@@ -23,7 +23,7 @@ internal sealed class UpdateHandler : IRequestHandler<UpdateCommand, Result<Guid
                 Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
-        var entity = new UserEntity
+        var entity = new PointEntity
         {
             BaptismDate = request.BaptismDate,
             BirthDate = request.BirthDate,

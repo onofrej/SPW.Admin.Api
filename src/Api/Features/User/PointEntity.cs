@@ -1,7 +1,7 @@
 ﻿namespace SPW.Admin.Api.Features.User;
 
 [ExcludeFromCodeCoverage]
-internal sealed class UserEntity
+internal sealed class PointEntity
 {
     public DateTime BaptismDate { get; set; }
     public DateTime BirthDate { get; set; }

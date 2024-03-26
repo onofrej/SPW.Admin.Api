@@ -10,4 +10,5 @@ public sealed class CreateCommand : IRequest<Result<Guid>>
     public string Address { get; set; } = string.Empty;
     public string ImageUrl { get; set; } = string.Empty;
     public string GoogleMapsUrl { get; set; } = string.Empty;
+    public Guid DomainId { get; set; } = default;
 }

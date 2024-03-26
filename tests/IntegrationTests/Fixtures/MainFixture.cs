@@ -1,5 +1,6 @@
 ﻿using SPW.Admin.IntegrationTests.Factories;
 using SPW.Admin.IntegrationTests.Fixtures.DynamoDb;
+using SPW.Admin.IntegrationTests.Fixtures.PostgreSql;
 
 namespace SPW.Admin.IntegrationTests.Fixtures;
 
@@ -7,6 +8,7 @@ public sealed class MainFixture : IDisposable
 {
     private readonly IConfiguration _configuration;
     private readonly DynamoDbFixture _dynamoDbFixture;
+    private readonly PostgreSqlFixture _postgreSqlFixture;
     private readonly CustomWebApplicationFactory _customWebApplicationFactory;
     private readonly HttpClient _httpClient;
 
@@ -19,6 +21,7 @@ public sealed class MainFixture : IDisposable
 
         InitializeEnvironmentVariables();
 
+        _postgreSqlFixture = new PostgreSqlFixture(_configuration);
         _dynamoDbFixture = new DynamoDbFixture(_configuration);
 
         _customWebApplicationFactory = new CustomWebApplicationFactory();
@@ -29,9 +32,12 @@ public sealed class MainFixture : IDisposable
 
     internal DynamoDbFixture DynamoDbFixture => _dynamoDbFixture;
 
+    internal PostgreSqlFixture PostgreSqlFixture => _postgreSqlFixture;
+
     public void Dispose()
     {
         _dynamoDbFixture.Dispose();
+        _postgreSqlFixture.Dispose();
 
         GC.SuppressFinalize(this);
     }

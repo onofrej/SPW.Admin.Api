@@ -23,7 +23,7 @@ internal sealed class GetByIdHandler : IRequestHandler<GetByIdQuery, Result<Vali
             return new Result<ValidityEntity>(default, Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
-        var userEntity = await _validityData.GetByIdAsync(request.Id, cancellationToken);
+        var userEntity = await _validityData.GetValidityByIdAsync(request.Id, cancellationToken);
 
         if (userEntity is null)
         {

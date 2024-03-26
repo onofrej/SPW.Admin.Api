@@ -26,5 +26,9 @@ public sealed class CreateValidator : AbstractValidator<CreateCommand>
         RuleFor(expression => expression.GoogleMapsUrl)
             .NotEmpty()
             .WithMessage("Google Maps Url cannot be empty");
+
+        RuleFor(expression => expression.DomainId)
+            .NotEmpty()
+            .WithMessage("Domain Id cannot be empty");
     }
 }

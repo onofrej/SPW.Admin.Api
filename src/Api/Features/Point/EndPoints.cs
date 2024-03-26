@@ -60,6 +60,7 @@ public sealed class EndPoints : ICarterModule
             Address = request.Address!,
             ImageUrl = request.ImageUrl!,
             GoogleMapsUrl = request.GoogleMapsUrl!,
+            DomainId = request.DomainId!
         };
 
         var result = await _sender.Send(command, cancellationToken);
@@ -84,6 +85,7 @@ public sealed class EndPoints : ICarterModule
             Address = request.Address!,
             ImageUrl = request.ImageUrl!,
             GoogleMapsUrl = request.GoogleMapsUrl!,
+            DomainId = request.DomainId
         };
 
         var result = await _sender.Send(command, cancellationToken);

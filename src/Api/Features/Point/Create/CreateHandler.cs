@@ -31,9 +31,10 @@ internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid
             Address = request.Address,
             ImageUrl = request.ImageUrl,
             GoogleMapsUrl = request.GoogleMapsUrl,
+            DomainId = request.DomainId
         };
 
-        await _pointData.InsertAsync(entity, cancellationToken);
+        await _pointData.CreatePointAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

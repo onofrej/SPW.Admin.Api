@@ -28,9 +28,10 @@ internal sealed class UpdateHandler : IRequestHandler<UpdateCommand, Result<Guid
             Id = request.Id,
             Title = request.Title,
             Message = request.Message,
+            DomainId = request.DomainId
         };
 
-        await _announcementData.UpdateAsync(entity, cancellationToken);
+        await _announcementData.UpdateAnnoucementAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

@@ -2,4 +2,4 @@
 
 namespace SPW.Admin.Api.Features.User.GetAll;
 
-public record GetAllQuery() : IRequest<Result<IEnumerable<UserEntity>>>;
+public record GetAllQuery() : IRequest<Result<IEnumerable<PointEntity>>>;

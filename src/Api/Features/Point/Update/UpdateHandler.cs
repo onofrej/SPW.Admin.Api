@@ -31,9 +31,10 @@ internal sealed class UpdateHandler : IRequestHandler<UpdateCommand, Result<Guid
             Address = request.Address,
             ImageUrl = request.ImageUrl,
             GoogleMapsUrl = request.GoogleMapsUrl,
+            DomainId = request.DomainId,
         };
 
-        await _pointData.UpdateAsync(entity, cancellationToken);
+        await _pointData.UpdatePointAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

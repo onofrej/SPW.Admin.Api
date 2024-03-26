@@ -8,7 +8,7 @@ internal interface IUserData
 
     Task<IEnumerable<UserEntity>> GetAllUsersAsync(CancellationToken cancellationToken);
 
-    Task<UserEntity> GetUserByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<UserEntity?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken);
 
     Task<int> UpdateUserAsync(UserEntity user, CancellationToken cancellationToken);
 }

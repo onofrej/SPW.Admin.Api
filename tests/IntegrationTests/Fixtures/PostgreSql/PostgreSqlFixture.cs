@@ -11,7 +11,7 @@ internal sealed class PostgreSqlFixture : IDisposable
     {
         string rootPath = AppDomain.CurrentDomain.BaseDirectory;
         string filePath = rootPath[..(rootPath.IndexOf(ApplicationName) + ApplicationName.Length)];
-        string databaseScriptPath = string.Concat(filePath, "\\infra\\terraform\\scripts\\database-script.sql");
+        string databaseScriptPath = string.Concat(filePath, "/infra/terraform/scripts/database-script.sql");
 
         _connectionString = _configuration.GetSection("PostgreSQL:ConnectionString").Value!;
 

@@ -24,7 +24,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release
 
-  Unit tests:
+  Unit-tests:
     runs-on: ubuntu-latest
     needs: Build
     steps:
@@ -42,7 +42,7 @@ jobs:
     - name: Test
       run: dotnet test ./tests/UnitTests/*.csproj --no-restore --logger:"trx" /p:CollectCoverage=\"true\" /p:CoverletOutputFormat=\"opencover\" /p:Exclude=\"[xunit.*]*\"
   
-  Integration tests:
+  Integration-tests:
     runs-on: ubuntu-latest
     timeout-minutes: 2
     needs: unit-tests

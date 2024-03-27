@@ -1,6 +1,4 @@
-﻿using System.Threading;
-
-namespace SPW.Admin.IntegrationTests.Fixtures.PostgreSql;
+﻿namespace SPW.Admin.IntegrationTests.Fixtures.PostgreSql;
 
 internal sealed class PostgreSqlFixture : IDisposable
 {
@@ -22,7 +20,7 @@ internal sealed class PostgreSqlFixture : IDisposable
     private static string GetProjectRootPath()
     {
         string currentDirectory = AppDomain.CurrentDomain.BaseDirectory
-            [..AppDomain.CurrentDomain.BaseDirectory.IndexOf("IntegrationTests")];
+            [..AppDomain.CurrentDomain.BaseDirectory.IndexOf(PathReference)];
 
         string projectRootPath = Path.Combine(currentDirectory, "..");
 

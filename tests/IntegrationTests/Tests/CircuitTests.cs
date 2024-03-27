@@ -1,8 +1,4 @@
-﻿using SPW.Admin.Api.Features.Circuit;
-using SPW.Admin.Api.Features.Circuit.Create;
-using SPW.Admin.Api.Features.Circuit.Update;
-using SPW.Admin.Api.Shared.Models;
-using SPW.Admin.IntegrationTests.Common;
+﻿using SPW.Admin.IntegrationTests.Common;
 using SPW.Admin.IntegrationTests.Fixtures;
 
 namespace SPW.Admin.IntegrationTests.Tests;

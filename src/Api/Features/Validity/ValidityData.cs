@@ -35,8 +35,7 @@ internal sealed class ValidityData(NpgsqlDataSourceBuilder npgsqlDataSourceBuild
         var query = @"UPDATE ""validity"" SET
             start_date = @StartDate,
             end_date = @EndDate,
-            status = @Status,
-            domain_id = @DomainId
+            status = @Status
             WHERE id = @Id";
         return await connection.ExecuteAsync(query, validity);
     }

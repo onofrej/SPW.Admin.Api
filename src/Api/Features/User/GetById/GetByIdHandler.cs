@@ -3,7 +3,7 @@
 namespace SPW.Admin.Api.Features.User.GetById;
 
 [ExcludeFromCodeCoverage]
-internal sealed class GetByIdHandler : IRequestHandler<GetByIdQuery, Result<PointEntity>>
+internal sealed class GetByIdHandler : IRequestHandler<GetByIdQuery, Result<UserEntity>>
 {
     private readonly IUserData _userData;
     private readonly IValidator<GetByIdQuery> _validator;
@@ -14,22 +14,22 @@ internal sealed class GetByIdHandler : IRequestHandler<GetByIdQuery, Result<Poin
         _validator = validator;
     }
 
-    public async Task<Result<PointEntity>> Handle(GetByIdQuery request, CancellationToken cancellationToken)
+    public async Task<Result<UserEntity>> Handle(GetByIdQuery request, CancellationToken cancellationToken)
     {
         var validationResult = _validator.Validate(request);
 
         if (!validationResult.IsValid)
         {
-            return new Result<PointEntity>(default, Errors.ReturnInvalidEntriesError(validationResult.ToString()));
+            return new Result<UserEntity>(default, Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
         var userEntity = await _userData.GetUserByIdAsync(request.Id, cancellationToken);
 
         if (userEntity is null)
         {
-            return new Result<PointEntity>(default, Errors.ReturnUserNotFoundError());
+            return new Result<UserEntity>(default, Errors.ReturnUserNotFoundError());
         }
 
-        return new Result<PointEntity>(userEntity);
+        return new Result<UserEntity>(userEntity);
     }
 }

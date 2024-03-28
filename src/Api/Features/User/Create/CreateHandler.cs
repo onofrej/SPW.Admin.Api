@@ -23,7 +23,7 @@ internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid
                 Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
-        var entity = new PointEntity
+        var entity = new UserEntity
         {
             Id = Guid.NewGuid(),
             Name = request.Name,

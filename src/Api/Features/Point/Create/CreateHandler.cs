@@ -27,7 +27,7 @@ internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid
         {
             Id = Guid.NewGuid(),
             Name = request.Name,
-            NumberOfPublishers = request.QuantityPublishers,
+            NumberOfPublishers = request.NumberOfPublishers,
             Address = request.Address,
             ImageUrl = request.ImageUrl,
             GoogleMapsUrl = request.GoogleMapsUrl,

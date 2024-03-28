@@ -36,8 +36,7 @@ internal sealed class AnnouncementData(NpgsqlDataSourceBuilder npgsqlDataSourceB
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = @"UPDATE ""announcement"" SET
             title = @Title,
-            message = @Message,
-            domain_id = @DomainId
+            message = @Message
             WHERE id = @Id";
         return await connection.ExecuteAsync(query, announcement);
     }

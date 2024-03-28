@@ -2,13 +2,13 @@
 
 internal interface IUserData
 {
-    Task<int> CreateUserAsync(PointEntity user, CancellationToken cancellationToken);
+    Task<int> CreateUserAsync(UserEntity user, CancellationToken cancellationToken);
 
     Task<int> DeleteUserAsync(Guid id, CancellationToken cancellationToken);
 
-    Task<IEnumerable<PointEntity>> GetAllUsersAsync(CancellationToken cancellationToken);
+    Task<IEnumerable<UserEntity>> GetAllUsersAsync(CancellationToken cancellationToken);
 
-    Task<PointEntity?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<UserEntity?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken);
 
-    Task<int> UpdateUserAsync(PointEntity user, CancellationToken cancellationToken);
+    Task<int> UpdateUserAsync(UserEntity user, CancellationToken cancellationToken);
 }

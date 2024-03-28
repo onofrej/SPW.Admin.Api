@@ -32,8 +32,7 @@ internal sealed class CircuitData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilde
         await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = @"UPDATE ""circuit"" SET
-            name = @Name,
-            domain_id = @DomainId
+            name = @Name
             WHERE id = @Id";
         return await connection.ExecuteAsync(query, circuit);
     }

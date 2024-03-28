@@ -7,5 +7,4 @@ public sealed class UpdateRequest
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public bool Status { get; set; }
-    public Guid DomainId { get; set; }
 }

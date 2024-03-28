@@ -9,11 +9,11 @@ public sealed class CreateValidator : AbstractValidator<CreateCommand>
             .NotEmpty()
             .WithMessage("Point name cannot be empty");
 
-        RuleFor(expression => expression.QuantityPublishers)
+        RuleFor(expression => expression.NumberOfPublishers)
             .NotEmpty()
-            .WithMessage("Quantity publishers cannot be empty")
+            .WithMessage("Number of publishers cannot be empty")
             .GreaterThan(0)
-            .WithMessage("Quantity publishers cannot be less than zero");
+            .WithMessage("Number of publishers cannot be less than zero");
 
         RuleFor(expression => expression.Address)
             .NotEmpty()

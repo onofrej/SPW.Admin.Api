@@ -37,8 +37,7 @@ internal sealed class PointData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder)
             number_of_publishers = @NumberOfPublishers,
             address = @Address,
             image_url = @ImageUrl,
-            google_maps_url = @GoogleMapsUrl,
-            domain_id = @DomainId
+            google_maps_url = @GoogleMapsUrl
             WHERE id = @Id";
         return await connection.ExecuteAsync(query, point);
     }

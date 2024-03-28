@@ -5,5 +5,4 @@ public sealed class UpdateRequest
 {
     public Guid Id { get; set; }
     public string? Name { get; set; }
-    public Guid DomainId { get; set; }
 }

@@ -3,23 +3,23 @@
 [ExcludeFromCodeCoverage]
 internal sealed class UserData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder) : IUserData
 {
-    public async Task<PointEntity?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<UserEntity> GetUserByIdAsync(Guid id, CancellationToken cancellationToken)
     {
         await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = "SELECT * FROM \"user\" WHERE id = @Id";
-        return await connection.QueryFirstOrDefaultAsync<PointEntity?>(query, new { Id = id });
+        return await connection.QueryFirstOrDefaultAsync<UserEntity>(query, new { Id = id });
     }
 
-    public async Task<IEnumerable<PointEntity>> GetAllUsersAsync(CancellationToken cancellationToken)
+    public async Task<IEnumerable<UserEntity>> GetAllUsersAsync(CancellationToken cancellationToken)
     {
         await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = "SELECT * FROM \"user\"";
-        return await connection.QueryAsync<PointEntity>(query, cancellationToken);
+        return await connection.QueryAsync<UserEntity>(query, cancellationToken);
     }
 
-    public async Task<int> CreateUserAsync(PointEntity user, CancellationToken cancellationToken)
+    public async Task<int> CreateUserAsync(UserEntity user, CancellationToken cancellationToken)
     {
         await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
@@ -28,7 +28,7 @@ internal sealed class UserData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder) 
         return await connection.ExecuteAsync(query, user);
     }
 
-    public async Task<int> UpdateUserAsync(PointEntity user, CancellationToken cancellationToken)
+    public async Task<int> UpdateUserAsync(UserEntity user, CancellationToken cancellationToken)
     {
         await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);

@@ -14,9 +14,5 @@ public class UpdateValidator : AbstractValidator<UpdateCommand>
            .WithMessage("End date cannot be empty")
            .GreaterThan(expression => expression.StartDate)
            .WithMessage("End date cannot be lower than Start Date");
-
-        RuleFor(expression => expression.DomainId)
-           .NotEmpty()
-           .WithMessage("Domain Id cannot be empty");
     }
 }

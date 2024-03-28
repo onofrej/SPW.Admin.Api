@@ -26,8 +26,8 @@ internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid
         var entity = new ValidityEntity
         {
             Id = Guid.NewGuid(),
-            StartDate = DateTime.UtcNow,
-            EndDate = DateTime.UtcNow,
+            StartDate = request.StartDate,
+            EndDate = request.EndDate,
             Status = true,
             DomainId = request.DomainId
         };

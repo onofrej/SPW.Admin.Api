@@ -33,7 +33,7 @@ public sealed class EndPoints : ICarterModule
 
         Log.Information("Users retreived with success - count: {count}", result.Data!.Count());
 
-        return Results.Ok(new Response<IEnumerable<PointEntity>>(result.Data));
+        return Results.Ok(new Response<IEnumerable<UserEntity>>(result.Data));
     }
 
     public static async Task<IResult> GetByIdAsync([FromRoute] Guid id, ISender _sender, CancellationToken cancellationToken)
@@ -49,7 +49,7 @@ public sealed class EndPoints : ICarterModule
 
         Log.Information("User by id retrieved with success: {input}", query);
 
-        return Results.Ok(new Response<PointEntity>(result.Data));
+        return Results.Ok(new Response<UserEntity>(result.Data));
     }
 
     public static async Task<IResult> CreateUserAsync(CreateRequest request,

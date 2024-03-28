@@ -56,7 +56,7 @@ public sealed class EndPoints : ICarterModule
         var command = new CreateCommand
         {
             Name = request.Name!,
-            QuantityPublishers = request.QuantityPublishers,
+            NumberOfPublishers = request.NumberOfPublishers,
             Address = request.Address!,
             ImageUrl = request.ImageUrl!,
             GoogleMapsUrl = request.GoogleMapsUrl!,
@@ -81,11 +81,10 @@ public sealed class EndPoints : ICarterModule
         {
             Id = request.Id,
             Name = request.Name!,
-            QuantityPublishers = request.QuantityPublishers,
+            NumberOfPublishers = request.NumberOfPublishers,
             Address = request.Address!,
             ImageUrl = request.ImageUrl!,
-            GoogleMapsUrl = request.GoogleMapsUrl!,
-            DomainId = request.DomainId
+            GoogleMapsUrl = request.GoogleMapsUrl!
         };
 
         var result = await _sender.Send(command, cancellationToken);

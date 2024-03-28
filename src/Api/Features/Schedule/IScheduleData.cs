@@ -1,6 +1,4 @@
-﻿using SPW.Admin.Api.Features.Domain;
-
-namespace SPW.Admin.Api.Features.Schedule;
+﻿namespace SPW.Admin.Api.Features.Schedule;
 
 internal interface IScheduleData
 {

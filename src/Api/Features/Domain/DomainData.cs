@@ -19,20 +19,20 @@ internal sealed class DomainData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder
         return await connection.QueryAsync<DomainEntity>(query, cancellationToken);
     }
 
-    public async Task<int> CreateDomainAsync(DomainEntity domain, CancellationToken cancellationToken)
+    public async Task<int> CreateDomainAsync(DomainEntity entity, CancellationToken cancellationToken)
     {
         await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = @"INSERT INTO ""domain"" (id, name) VALUES (@Id, @Name)";
-        return await connection.ExecuteAsync(query, domain);
+        return await connection.ExecuteAsync(query, entity);
     }
 
-    public async Task<int> UpdateDomainAsync(DomainEntity domain, CancellationToken cancellationToken)
+    public async Task<int> UpdateDomainAsync(DomainEntity entity, CancellationToken cancellationToken)
     {
         await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = @"UPDATE ""domain"" SET name = @Name WHERE id = @Id";
-        return await connection.ExecuteAsync(query, domain);
+        return await connection.ExecuteAsync(query, entity);
     }
 
     public async Task<int> DeleteDomainAsync(Guid id, CancellationToken cancellationToken)

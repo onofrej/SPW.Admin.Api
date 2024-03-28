@@ -10,8 +10,8 @@ namespace SPW.Admin.IntegrationTests.Tests;
 [Collection(TestCollection.CollectionDefinition)]
 public class DomainTests(MainFixture mainFixture) : BaseIntegratedTest
 {
-    private const string GetByIdQuery = "SELECT * FROM \"domain\" WHERE id = @Id";
-    private const string InsertQuery = @"INSERT INTO ""domain"" (id, name) VALUES (@Id, @Name)";
+    internal const string GetByIdQuery = "SELECT * FROM \"domain\" WHERE id = @Id";
+    internal const string InsertQuery = @"INSERT INTO ""domain"" (id, name) VALUES (@Id, @Name)";
     private const string RequestUri = "/domains";
 
     [Fact(DisplayName = "Request received is valid then domain is created")]

@@ -3,27 +3,19 @@
 namespace SPW.Admin.Api.Features.Schedule.GetById;
 
 [ExcludeFromCodeCoverage]
-internal sealed class GetByIdHandler : IRequestHandler<GetByIdQuery, Result<ScheduleEntity>>
+internal sealed class GetByIdHandler(IScheduleData scheduleData, IValidator<GetByIdQuery> validator) :
+    IRequestHandler<GetByIdQuery, Result<ScheduleEntity>>
 {
-    private readonly IScheduleData _scheduleData;
-    private readonly IValidator<GetByIdQuery> _validator;
-
-    public GetByIdHandler(IScheduleData scheduleData, IValidator<GetByIdQuery> validator)
-    {
-        _scheduleData = scheduleData;
-        _validator = validator;
-    }
-
     public async Task<Result<ScheduleEntity>> Handle(GetByIdQuery request, CancellationToken cancellationToken)
     {
-        var validationResult = _validator.Validate(request);
+        var validationResult = validator.Validate(request);
 
         if (!validationResult.IsValid)
         {
             return new Result<ScheduleEntity>(default, Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
-        var scheduleEntity = await _scheduleData.GetByIdAsync(request.Id, cancellationToken);
+        var scheduleEntity = await scheduleData.GetScheduleByIdAsync(request.Id, cancellationToken);
 
         if (scheduleEntity is null)
         {

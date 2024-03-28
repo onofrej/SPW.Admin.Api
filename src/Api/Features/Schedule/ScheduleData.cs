@@ -1,47 +1,45 @@
 ﻿namespace SPW.Admin.Api.Features.Schedule;
 
 [ExcludeFromCodeCoverage]
-internal sealed class ScheduleData : IScheduleData
+internal sealed class ScheduleData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder) : IScheduleData
 {
-    private readonly IDynamoDBContext _dynamoDBContext;
-    private readonly IAmazonDynamoDB _amazonDynamoDBClient;
-    private readonly Table _table;
-
-    public ScheduleData(IDynamoDBContext dynamoDBContext, IAmazonDynamoDB amazonDynamoDBClient)
+    public async Task<ScheduleEntity?> GetScheduleByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        _dynamoDBContext = dynamoDBContext;
-        _amazonDynamoDBClient = amazonDynamoDBClient;
-        _table = Table.LoadTable(_amazonDynamoDBClient, "");
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "SELECT * FROM \"schedule\" WHERE id = @Id";
+        return await connection.QueryFirstOrDefaultAsync<ScheduleEntity?>(query, new { Id = id });
     }
 
-    public async Task InsertAsync(ScheduleEntity scheduleEntity, CancellationToken cancellationToken)
+    public async Task<IEnumerable<ScheduleEntity>> GetAllSchedulesAsync(CancellationToken cancellationToken)
     {
-        var document = new Document
-        {
-            ["id"] = scheduleEntity.Id,
-            ["time"] = scheduleEntity.Time
-        };
-
-        await _table.PutItemAsync(document, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "SELECT * FROM \"schedule\"";
+        return await connection.QueryAsync<ScheduleEntity>(query, cancellationToken);
     }
 
-    public Task UpdateAsync(ScheduleEntity scheduleEntity, CancellationToken cancellationToken)
+    public async Task<int> CreateScheduleAsync(ScheduleEntity entity, CancellationToken cancellationToken)
     {
-        return _dynamoDBContext.SaveAsync(scheduleEntity, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = @"INSERT INTO ""schedule"" (id, ""time"", domain_id) VALUES (@Id, @Time, @DomainId)";
+        return await connection.ExecuteAsync(query, entity);
     }
 
-    public Task DeleteAsync(ScheduleEntity scheduleEntity, CancellationToken cancellationToken)
+    public async Task<int> UpdateScheduleAsync(ScheduleEntity entity, CancellationToken cancellationToken)
     {
-        return _dynamoDBContext.DeleteAsync(scheduleEntity, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = @"UPDATE ""schedule"" SET ""time"" = @Time WHERE id = @Id";
+        return await connection.ExecuteAsync(query, entity);
     }
 
-    public async Task<ScheduleEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<int> DeleteScheduleAsync(Guid id, CancellationToken cancellationToken)
     {
-        return await _dynamoDBContext.LoadAsync<ScheduleEntity>(id, cancellationToken);
-    }
-
-    public async Task<IEnumerable<ScheduleEntity>> GetAllAsync(CancellationToken cancellationToken)
-    {
-        return await _dynamoDBContext.ScanAsync<ScheduleEntity>(default).GetRemainingAsync(cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "DELETE FROM \"schedule\" WHERE id = @Id";
+        return await connection.ExecuteAsync(query, new { Id = id });
     }
 }

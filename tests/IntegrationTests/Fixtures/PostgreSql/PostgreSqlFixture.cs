@@ -1,23 +1,30 @@
-﻿using System.Threading;
-
-namespace SPW.Admin.IntegrationTests.Fixtures.PostgreSql;
+﻿namespace SPW.Admin.IntegrationTests.Fixtures.PostgreSql;
 
 internal sealed class PostgreSqlFixture : IDisposable
 {
-    private const string ApplicationName = "SPW.Admin.Api";
+    private const string PathReference = "IntegrationTests";
     private readonly string _connectionString;
 
     public PostgreSqlFixture(IConfiguration _configuration)
     {
-        string rootPath = AppDomain.CurrentDomain.BaseDirectory;
-        string filePath = rootPath[..(rootPath.IndexOf(ApplicationName) + ApplicationName.Length)];
-        string databaseScriptPath = string.Concat(filePath, "\\infra\\terraform\\scripts\\database-script.sql");
+        string rootPath = GetProjectRootPath();
+        string databaseScriptPath = string.Concat(rootPath, "/infra/terraform/rds/scripts/database-script.sql");
 
         _connectionString = _configuration.GetSection("PostgreSQL:ConnectionString").Value!;
 
         ArgumentException.ThrowIfNullOrEmpty(_connectionString);
 
         CreateDatabase(databaseScriptPath);
+    }
+
+    private static string GetProjectRootPath()
+    {
+        string currentDirectory = AppDomain.CurrentDomain.BaseDirectory
+            [..AppDomain.CurrentDomain.BaseDirectory.IndexOf(PathReference)];
+
+        string projectRootPath = Path.Combine(currentDirectory, "..");
+
+        return Path.GetFullPath(projectRootPath);
     }
 
     private void CreateDatabase(string databaseScriptPath)

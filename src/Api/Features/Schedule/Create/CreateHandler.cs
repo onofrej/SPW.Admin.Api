@@ -2,20 +2,12 @@
 
 namespace SPW.Admin.Api.Features.Schedule.Create;
 
-internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid>>
+internal sealed class CreateHandler(IScheduleData scheduleData, IValidator<CreateCommand> validator) :
+    IRequestHandler<CreateCommand, Result<Guid>>
 {
-    private readonly IScheduleData _scheduleData;
-    private readonly IValidator<CreateCommand> _validator;
-
-    public CreateHandler(IScheduleData scheduleData, IValidator<CreateCommand> validator)
-    {
-        _scheduleData = scheduleData;
-        _validator = validator;
-    }
-
     public async Task<Result<Guid>> Handle(CreateCommand request, CancellationToken cancellationToken)
     {
-        var validationResult = _validator.Validate(request);
+        var validationResult = validator.Validate(request);
 
         if (!validationResult.IsValid)
         {
@@ -26,10 +18,11 @@ internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid
         var entity = new ScheduleEntity
         {
             Id = Guid.NewGuid(),
+            DomainId = request.DomainId,
             Time = request.Time
         };
 
-        await _scheduleData.InsertAsync(entity, cancellationToken);
+        await scheduleData.CreateScheduleAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

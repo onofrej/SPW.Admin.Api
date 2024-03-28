@@ -10,6 +10,10 @@ builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 
 builder.Services.InitializeApplicationDependencies();
 
+builder.Services.AddScoped<IDynamoDBContext, DynamoDBContext>();
+
+builder.Services.AddAWSService<IAmazonDynamoDB>();
+
 builder.Services.AddCarter();
 
 builder.Services.AddMediatR(configuration =>

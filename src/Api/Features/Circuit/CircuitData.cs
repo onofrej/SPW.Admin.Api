@@ -1,46 +1,47 @@
 ﻿namespace SPW.Admin.Api.Features.Circuit;
 
-internal sealed class CircuitData : ICircuitData
+internal sealed class CircuitData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder) : ICircuitData
 {
-    private readonly IDynamoDBContext _dynamoDBContext;
-    private readonly IAmazonDynamoDB _amazonDynamoDBClient;
-    private readonly Table _table;
-
-    public CircuitData(IDynamoDBContext dynamoDBContext, IAmazonDynamoDB amazonDynamoDBClient)
+    public async Task<CircuitEntity> GetCircuitByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        _dynamoDBContext = dynamoDBContext;
-        _amazonDynamoDBClient = amazonDynamoDBClient;
-        _table = Table.LoadTable(_amazonDynamoDBClient, "");
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "SELECT * FROM \"circuit\" WHERE id = @Id";
+        return await connection.QueryFirstOrDefaultAsync<CircuitEntity>(query, new { Id = id });
     }
 
-    public async Task InsertAsync(CircuitEntity circuitEntity, CancellationToken cancellationToken)
+    public async Task<IEnumerable<CircuitEntity>> GetAllCircuitsAsync(CancellationToken cancellationToken)
     {
-        var document = new Document
-        {
-            ["id"] = circuitEntity.Id,
-            ["name"] = circuitEntity.Name
-        };
-
-        await _table.PutItemAsync(document, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "SELECT * FROM \"circuit\"";
+        return await connection.QueryAsync<CircuitEntity>(query, cancellationToken);
     }
 
-    public Task UpdateAsync(CircuitEntity circuitEntity, CancellationToken cancellationToken)
+    public async Task<int> CreateCircuitAsync(CircuitEntity circuit, CancellationToken cancellationToken)
     {
-        return _dynamoDBContext.SaveAsync(circuitEntity, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = @"INSERT INTO ""circuit"" (id, name, domain_id)
+                      VALUES (@Id, @Name, @DomainId)";
+        return await connection.ExecuteAsync(query, circuit);
     }
 
-    public Task DeleteAsync(CircuitEntity circuitEntity, CancellationToken cancellationToken)
+    public async Task<int> UpdateCircuitAsync(CircuitEntity circuit, CancellationToken cancellationToken)
     {
-        return _dynamoDBContext.DeleteAsync(circuitEntity, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = @"UPDATE ""circuit"" SET
+            name = @Name
+            WHERE id = @Id";
+        return await connection.ExecuteAsync(query, circuit);
     }
 
-    public async Task<CircuitEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<int> DeleteCircuitAsync(Guid id, CancellationToken cancellationToken)
     {
-        return await _dynamoDBContext.LoadAsync<CircuitEntity>(id, cancellationToken);
-    }
-
-    public async Task<IEnumerable<CircuitEntity>> GetAllAsync(CancellationToken cancellationToken)
-    {
-        return await _dynamoDBContext.ScanAsync<CircuitEntity>(default).GetRemainingAsync(cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "DELETE FROM \"circuit\" WHERE id = @Id";
+        return await connection.ExecuteAsync(query, new { Id = id });
     }
 }

@@ -1,14 +1,12 @@
-﻿namespace SPW.Admin.Api.Features.Point;
+﻿
+
+namespace SPW.Admin.Api.Features.Point;
 
 internal interface IPointData
 {
-    Task InsertAsync(PointEntity pointEntity, CancellationToken cancellationToken);
-
-    Task UpdateAsync(PointEntity pointEntity, CancellationToken cancellationToken);
-
-    Task DeleteAsync(PointEntity pointEntity, CancellationToken cancellationToken);
-
-    Task<PointEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken);
-
-    Task<IEnumerable<PointEntity>> GetAllAsync(CancellationToken cancellationToken);
+    Task<int> CreatePointAsync(PointEntity point, CancellationToken cancellationToken);
+    Task<int> DeletePointAsync(Guid id, CancellationToken cancellationToken);
+    Task<IEnumerable<PointEntity>> GetAllPointsAsync(CancellationToken cancellationToken);
+    Task<PointEntity?> GetPointByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<int> UpdatePointAsync(PointEntity point, CancellationToken cancellationToken);
 }

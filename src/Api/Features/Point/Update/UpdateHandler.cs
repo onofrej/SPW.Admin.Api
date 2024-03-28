@@ -27,13 +27,13 @@ internal sealed class UpdateHandler : IRequestHandler<UpdateCommand, Result<Guid
         {
             Id = request.Id,
             Name = request.Name,
-            NumberOfPublishers = request.QuantityPublishers,
+            NumberOfPublishers = request.NumberOfPublishers,
             Address = request.Address,
             ImageUrl = request.ImageUrl,
             GoogleMapsUrl = request.GoogleMapsUrl,
         };
 
-        await _pointData.UpdateAsync(entity, cancellationToken);
+        await _pointData.UpdatePointAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

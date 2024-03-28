@@ -1,6 +1,6 @@
 ﻿using SPW.Admin.Api.Features.Announcement;
-using SPW.Admin.Api.Features.Authentication;
 using SPW.Admin.Api.Features.Circuit;
+using SPW.Admin.Api.Features.Congregation;
 using SPW.Admin.Api.Features.Domain;
 using SPW.Admin.Api.Features.Holiday;
 using SPW.Admin.Api.Features.Point;
@@ -17,8 +17,8 @@ internal static class ServiceCollectionExtensions
     internal static IServiceCollection InitializeApplicationDependencies(this IServiceCollection services)
     {
         services.AddScoped<IAnnouncementData, AnnouncementData>();
-        services.AddScoped<IAuthenticationData, AuthenticationData>();
         services.AddScoped<ICircuitData, CircuitData>();
+        services.AddScoped<ICongregationData, CongregationData>();
         services.AddScoped<IDomainData, DomainData>();
         services.AddScoped<IHolidayData, HolidayData>();
         services.AddScoped<IPointData, PointData>();

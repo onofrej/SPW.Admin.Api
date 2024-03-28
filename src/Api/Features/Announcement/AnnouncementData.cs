@@ -1,49 +1,51 @@
-﻿namespace SPW.Admin.Api.Features.Announcement;
+﻿using SPW.Admin.Api.Features.Circuit;
+
+namespace SPW.Admin.Api.Features.Announcement;
 
 [ExcludeFromCodeCoverage]
-internal sealed class AnnouncementData : IAnnouncementData
-
+internal sealed class AnnouncementData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder) : IAnnouncementData
 {
-    private readonly IDynamoDBContext _dynamoDBContext;
-    private readonly IAmazonDynamoDB _amazonDynamoDBClient;
-    private readonly Table _table;
-
-    public AnnouncementData(IDynamoDBContext dynamoDBContext, IAmazonDynamoDB amazonDynamoDBClient)
+    public async Task<AnnouncementEntity> GetAnnouncementByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        _dynamoDBContext = dynamoDBContext;
-        _amazonDynamoDBClient = amazonDynamoDBClient;
-        _table = Table.LoadTable(_amazonDynamoDBClient, "");
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "SELECT * FROM \"announcement\" WHERE id = @Id";
+        return await connection.QueryFirstOrDefaultAsync<AnnouncementEntity>(query, new { Id = id });
     }
 
-    public async Task InsertAsync(AnnouncementEntity announcementEntity, CancellationToken cancellationToken)
+    public async Task<IEnumerable<AnnouncementEntity>> GetAllAnnouncementsAsync(CancellationToken cancellationToken)
     {
-        var document = new Document
-        {
-            ["id"] = announcementEntity.Id,
-            ["title"] = announcementEntity.Title,
-            ["message"] = announcementEntity.Message,
-        };
-
-        await _table.PutItemAsync(document, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "SELECT * FROM \"announcement\"";
+        return await connection.QueryAsync<AnnouncementEntity>(query, cancellationToken);
     }
 
-    public Task UpdateAsync(AnnouncementEntity announcementEntity, CancellationToken cancellationToken)
+    public async Task<int> CreateAnnoucnementAsync(AnnouncementEntity announcement, CancellationToken cancellationToken)
     {
-        return _dynamoDBContext.SaveAsync(announcementEntity, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = @"INSERT INTO ""announcement"" (id, title, message, domain_id)
+                      VALUES (@Id, @Title, @Message, @DomainId)";
+        return await connection.ExecuteAsync(query, announcement);
     }
 
-    public Task DeleteAsync(AnnouncementEntity announcementEntity, CancellationToken cancellationToken)
+    public async Task<int> UpdateAnnoucementAsync(AnnouncementEntity announcement, CancellationToken cancellationToken)
     {
-        return _dynamoDBContext.DeleteAsync(announcementEntity, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = @"UPDATE ""announcement"" SET
+            title = @Title,
+            message = @Message
+            WHERE id = @Id";
+        return await connection.ExecuteAsync(query, announcement);
     }
 
-    public async Task<AnnouncementEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<int> DeleteAnnouncementAsync(Guid id, CancellationToken cancellationToken)
     {
-        return await _dynamoDBContext.LoadAsync<AnnouncementEntity>(id, cancellationToken);
-    }
-
-    public async Task<IEnumerable<AnnouncementEntity>> GetAllAsync(CancellationToken cancellationToken)
-    {
-        return await _dynamoDBContext.ScanAsync<AnnouncementEntity>(default).GetRemainingAsync(cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "DELETE FROM \"announcement\" WHERE id = @Id";
+        return await connection.ExecuteAsync(query, new { Id = id });
     }
 }

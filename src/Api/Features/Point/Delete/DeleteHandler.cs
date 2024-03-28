@@ -23,14 +23,14 @@ internal sealed class DeleteHandler : IRequestHandler<DeleteCommand, Result<Guid
                 Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
-        var pointEntity = await _pointData.GetByIdAsync(request.Id, cancellationToken);
+        var pointEntity = await _pointData.GetPointByIdAsync(request.Id, cancellationToken);
 
         if (pointEntity is null)
         {
             return new Result<Guid>(Guid.Empty, Errors.ReturnPointNotFoundError());
         }
 
-        await _pointData.DeleteAsync(pointEntity, cancellationToken);
+        await _pointData.DeletePointAsync(pointEntity.Id, cancellationToken);
 
         return new Result<Guid>(request.Id);
     }

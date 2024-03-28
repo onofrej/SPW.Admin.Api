@@ -6,7 +6,7 @@ namespace SPW.Admin.Api.Features.Validity.Update;
 public sealed class UpdateCommand : IRequest<Result<Guid>>
 {
     public Guid Id { get; set; }
-    public DateTime StartDate { get; set; } = DateTime.Now;
-    public DateTime EndDate { get; set; } = DateTime.Now;
+    public DateTime StartDate { get; set; } = default;
+    public DateTime EndDate { get; set; } = default;
     public bool Status { get; set; } = true;
 }

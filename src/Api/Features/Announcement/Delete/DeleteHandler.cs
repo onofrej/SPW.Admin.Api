@@ -23,14 +23,14 @@ internal sealed class DeleteHandler : IRequestHandler<DeleteCommand, Result<Guid
                 Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
-        var announcementEntity = await _announcementData.GetByIdAsync(request.Id, cancellationToken);
+        var announcementEntity = await _announcementData.GetAnnouncementByIdAsync(request.Id, cancellationToken);
 
         if (announcementEntity is null)
         {
             return new Result<Guid>(Guid.Empty, Errors.ReturnAnnouncementNotFoundError());
         }
 
-        await _announcementData.DeleteAsync(announcementEntity, cancellationToken);
+        await _announcementData.DeleteAnnouncementAsync(announcementEntity.Id, cancellationToken);
 
         return new Result<Guid>(request.Id);
     }

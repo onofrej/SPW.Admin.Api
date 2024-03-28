@@ -23,7 +23,7 @@ internal sealed class GetByIdHandler : IRequestHandler<GetByIdQuery, Result<Anno
             return new Result<AnnouncementEntity>(default, Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
-        var announcementEntity = await _announcementData.GetByIdAsync(request.Id, cancellationToken);
+        var announcementEntity = await _announcementData.GetAnnouncementByIdAsync(request.Id, cancellationToken);
 
         if (announcementEntity is null)
         {

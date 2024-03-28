@@ -23,7 +23,7 @@ internal sealed class GetByIdHandler : IRequestHandler<GetByIdQuery, Result<Spec
             return new Result<SpecialDayEntity>(default, Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
-        var specialDayEntity = await _specialDayData.GetByIdAsync(request.Id, cancellationToken);
+        var specialDayEntity = await _specialDayData.GetSpecialDayByIdAsync(request.Id, cancellationToken);
 
         if (specialDayEntity is null)
         {

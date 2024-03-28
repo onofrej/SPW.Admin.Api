@@ -3,12 +3,12 @@
 [ExcludeFromCodeCoverage]
 internal sealed class UserData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder) : IUserData
 {
-    public async Task<UserEntity?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<UserEntity> GetUserByIdAsync(Guid id, CancellationToken cancellationToken)
     {
         await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
         var query = "SELECT * FROM \"user\" WHERE id = @Id";
-        return await connection.QueryFirstOrDefaultAsync<UserEntity?>(query, new { Id = id });
+        return await connection.QueryFirstOrDefaultAsync<UserEntity>(query, new { Id = id });
     }
 
     public async Task<IEnumerable<UserEntity>> GetAllUsersAsync(CancellationToken cancellationToken)

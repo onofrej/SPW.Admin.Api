@@ -2,13 +2,13 @@
 
 internal interface ISpecialDayData
 {
-    Task InsertAsync(SpecialDayEntity specialDateEntity, CancellationToken cancellationToken);
+    Task<int> CreateSpecialDayAsync(SpecialDayEntity specialDay, CancellationToken cancellationToken);
 
-    Task UpdateAsync(SpecialDayEntity specialDateEntity, CancellationToken cancellationToken);
+    Task<int> DeleteSpecialDayAsync(Guid id, CancellationToken cancellationToken);
 
-    Task DeleteAsync(SpecialDayEntity specialDateEntity, CancellationToken cancellationToken);
+    Task<IEnumerable<SpecialDayEntity>> GetAllSpecialDaysAsync(CancellationToken cancellationToken);
 
-    Task<SpecialDayEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<SpecialDayEntity> GetSpecialDayByIdAsync(Guid id, CancellationToken cancellationToken);
 
-    Task<IEnumerable<SpecialDayEntity>> GetAllAsync(CancellationToken cancellationToken);
+    Task<int> UpdateSpecialDayAsync(SpecialDayEntity specialDay, CancellationToken cancellationToken);
 }

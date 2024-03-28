@@ -23,7 +23,7 @@ internal sealed class GetByIdHandler : IRequestHandler<GetByIdQuery, Result<Poin
             return new Result<PointEntity>(default, Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
-        var pointEntity = await _pointData.GetByIdAsync(request.Id, cancellationToken);
+        var pointEntity = await _pointData.GetPointByIdAsync(request.Id, cancellationToken);
 
         if (pointEntity is null)
         {

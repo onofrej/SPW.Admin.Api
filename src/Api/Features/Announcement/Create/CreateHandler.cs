@@ -29,9 +29,10 @@ internal class CreateHandler : IRequestHandler<CreateCommand, Result<Guid>>
             Id = Guid.NewGuid(),
             Title = request.Title,
             Message = request.Message,
+            DomainId = request.DomainId
         };
 
-        await _announcementData.InsertAsync(entity, cancellationToken);
+        await _announcementData.CreateAnnoucnementAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

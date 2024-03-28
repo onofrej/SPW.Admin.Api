@@ -29,7 +29,7 @@ internal sealed class UpdateHandler : IRequestHandler<UpdateCommand, Result<Guid
             Name = request.Name,
         };
 
-        await _circuitData.UpdateAsync(entity, cancellationToken);
+        await _circuitData.UpdateCircuitAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

@@ -1,50 +1,51 @@
 ﻿namespace SPW.Admin.Api.Features.SpecialDay;
 
 [ExcludeFromCodeCoverage]
-internal sealed class SpecialDayData : ISpecialDayData
+internal sealed class SpecialDayData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder) : ISpecialDayData
 {
-    private readonly IDynamoDBContext _dynamoDBContext;
-    private readonly IAmazonDynamoDB _amazonDynamoDBClient;
-    private readonly Table _table;
-
-    public SpecialDayData(IDynamoDBContext dynamoDBContext, IAmazonDynamoDB amazonDynamoDBClient)
+    public async Task<SpecialDayEntity> GetSpecialDayByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        _dynamoDBContext = dynamoDBContext;
-        _amazonDynamoDBClient = amazonDynamoDBClient;
-        _table = Table.LoadTable(_amazonDynamoDBClient, "");
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "SELECT * FROM \"special_day\" WHERE id = @Id";
+        return await connection.QueryFirstOrDefaultAsync<SpecialDayEntity>(query, new { Id = id });
     }
 
-    public async Task InsertAsync(SpecialDayEntity specialDayEntity, CancellationToken cancellationToken)
+    public async Task<IEnumerable<SpecialDayEntity>> GetAllSpecialDaysAsync(CancellationToken cancellationToken)
     {
-        var document = new Document
-        {
-            ["id"] = specialDayEntity.Id,
-            ["name"] = specialDayEntity.Name,
-            ["startdate"] = specialDayEntity.StartDate,
-            ["enddate"] = specialDayEntity.EndDate,
-            ["circuitId"] = specialDayEntity.CircuitId
-        };
-
-        await _table.PutItemAsync(document, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "SELECT * FROM \"special_day\"";
+        return await connection.QueryAsync<SpecialDayEntity>(query, cancellationToken);
     }
 
-    public Task UpdateAsync(SpecialDayEntity specialDayEntity, CancellationToken cancellationToken)
+    public async Task<int> CreateSpecialDayAsync(SpecialDayEntity specialDay, CancellationToken cancellationToken)
     {
-        return _dynamoDBContext.SaveAsync(specialDayEntity, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = @"INSERT INTO ""special_day"" (id, name, start_date, end_date, circuit_id)
+                      VALUES (@Id, @Name, @StartDate, @EndDate, @CircuitId)";
+        return await connection.ExecuteAsync(query, specialDay);
     }
 
-    public Task DeleteAsync(SpecialDayEntity specialDayEntity, CancellationToken cancellationToken)
+    public async Task<int> UpdateSpecialDayAsync(SpecialDayEntity specialDay, CancellationToken cancellationToken)
     {
-        return _dynamoDBContext.DeleteAsync(specialDayEntity, cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = @"UPDATE ""special_day"" SET
+            name = @Name,
+            start_date = @StartDate,
+            end_date = @EndDate,
+            circuit_id = @CircuitId
+            WHERE id = @Id";
+        return await connection.ExecuteAsync(query, specialDay);
     }
 
-    public async Task<SpecialDayEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<int> DeleteSpecialDayAsync(Guid id, CancellationToken cancellationToken)
     {
-        return await _dynamoDBContext.LoadAsync<SpecialDayEntity>(id, cancellationToken);
-    }
-
-    public async Task<IEnumerable<SpecialDayEntity>> GetAllAsync(CancellationToken cancellationToken)
-    {
-        return await _dynamoDBContext.ScanAsync<SpecialDayEntity>(default).GetRemainingAsync(cancellationToken);
+        await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
+        using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
+        var query = "DELETE FROM \"special_day\" WHERE id = @Id";
+        return await connection.ExecuteAsync(query, new { Id = id });
     }
 }

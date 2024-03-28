@@ -10,4 +10,6 @@ internal sealed class ValidityEntity
     public DateTime EndDate { get; set; }
 
     public bool Status { get; set; }
+
+    public Guid DomainId { get; set; }
 }

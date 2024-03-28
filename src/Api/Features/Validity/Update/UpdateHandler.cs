@@ -31,7 +31,7 @@ internal sealed class UpdateHandler : IRequestHandler<UpdateCommand, Result<Guid
             Status = request.Status,
         };
 
-        await _validityData.UpdateAsync(entity, cancellationToken);
+        await _validityData.UpdateValidityAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

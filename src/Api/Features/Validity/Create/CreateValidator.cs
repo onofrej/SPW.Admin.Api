@@ -13,5 +13,9 @@ public sealed class CreateValidator : AbstractValidator<CreateCommand>
            .WithMessage("End date cannot be empty")
            .GreaterThan(expression => expression.StartDate)
            .WithMessage("End date cannot be lower than Start Date");
+
+        RuleFor(expression => expression.DomainId)
+            .NotEmpty()
+            .WithMessage("Domain Id cannot be empty");
     }
 }

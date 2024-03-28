@@ -59,7 +59,8 @@ public sealed class EndPoints : ICarterModule
         {
             StartDate = request.StartDate,
             EndDate = request.EndDate,
-            Status = request.Status
+            Status = request.Status,
+            DomainId = request.DomainId
         };
 
         var result = await _sender.Send(command, cancellationToken);
@@ -83,7 +84,7 @@ public sealed class EndPoints : ICarterModule
             Id = request.Id,
             StartDate = request.StartDate,
             EndDate = request.EndDate,
-            Status = request.Status
+            Status = request.Status,
         };
 
         var result = await _sender.Send(command, cancellationToken);

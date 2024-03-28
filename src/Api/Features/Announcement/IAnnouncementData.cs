@@ -1,14 +1,12 @@
-﻿namespace SPW.Admin.Api.Features.Announcement;
+﻿
+
+namespace SPW.Admin.Api.Features.Announcement;
 
 internal interface IAnnouncementData
 {
-    Task InsertAsync(AnnouncementEntity announcementEntity, CancellationToken cancellationToken);
-
-    Task UpdateAsync(AnnouncementEntity announcementEntity, CancellationToken cancellationToken);
-
-    Task DeleteAsync(AnnouncementEntity announcementEntity, CancellationToken cancellationToken);
-
-    Task<AnnouncementEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken);
-
-    Task<IEnumerable<AnnouncementEntity>> GetAllAsync(CancellationToken cancellationToken);
+    Task<int> CreateAnnoucnementAsync(AnnouncementEntity announcement, CancellationToken cancellationToken);
+    Task<int> DeleteAnnouncementAsync(Guid id, CancellationToken cancellationToken);
+    Task<IEnumerable<AnnouncementEntity>> GetAllAnnouncementsAsync(CancellationToken cancellationToken);
+    Task<AnnouncementEntity> GetAnnouncementByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<int> UpdateAnnoucementAsync(AnnouncementEntity announcement, CancellationToken cancellationToken);
 }

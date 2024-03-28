@@ -55,7 +55,8 @@ public sealed class EndPoints : ICarterModule
     {
         var command = new CreateCommand
         {
-            Name = request.Name!
+            Name = request.Name!,
+            DomainId = request.DomainId
         };
 
         var result = await _sender.Send(command, cancellationToken);

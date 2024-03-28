@@ -4,4 +4,5 @@
 public sealed class CreateRequest
 {
     public string? Name { get; set; }
+    public Guid DomainId { get; set; }
 }

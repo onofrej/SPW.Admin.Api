@@ -1,14 +1,16 @@
-﻿namespace SPW.Admin.Api.Features.Schedule;
+﻿using SPW.Admin.Api.Features.Domain;
+
+namespace SPW.Admin.Api.Features.Schedule;
 
 internal interface IScheduleData
 {
-    Task InsertAsync(ScheduleEntity scheduleEntity, CancellationToken cancellationToken);
+    Task<int> CreateScheduleAsync(ScheduleEntity entity, CancellationToken cancellationToken);
 
-    Task UpdateAsync(ScheduleEntity scheduleEntity, CancellationToken cancellationToken);
+    Task<int> DeleteScheduleAsync(Guid id, CancellationToken cancellationToken);
 
-    Task DeleteAsync(ScheduleEntity scheduleEntity, CancellationToken cancellationToken);
+    Task<IEnumerable<ScheduleEntity>> GetAllSchedulesAsync(CancellationToken cancellationToken);
 
-    Task<ScheduleEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<ScheduleEntity?> GetScheduleByIdAsync(Guid id, CancellationToken cancellationToken);
 
-    Task<IEnumerable<ScheduleEntity>> GetAllAsync(CancellationToken cancellationToken);
+    Task<int> UpdateScheduleAsync(ScheduleEntity entity, CancellationToken cancellationToken);
 }

@@ -58,6 +58,7 @@ public sealed class EndPoints : ICarterModule
     {
         var command = new CreateCommand
         {
+            DomainId = request.DomainId,
             Time = request.Time!
         };
 

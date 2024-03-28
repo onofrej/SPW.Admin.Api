@@ -9,30 +9,36 @@ using SPW.Admin.IntegrationTests.Fixtures;
 namespace SPW.Admin.IntegrationTests.Tests;
 
 [Collection(TestCollection.CollectionDefinition)]
-public class ScheduleTests(MainFixture mainFixture) : BaseIntegratedTest
+public class ScheduleTests : BaseIntegratedTest
 {
     private const string GetByIdQuery = "SELECT * FROM \"schedule\" WHERE id = @Id";
-    private const string InsertQuery = @"INSERT INTO ""schedule"" (id, ""time"") VALUES (@Id, @Time)";
+    private const string InsertQuery = @"INSERT INTO ""schedule"" (id, ""time"", domain_id) VALUES (@Id, @Time, @DomainId)";
     private const string RequestUri = "/schedules";
     private const int HourToAdd = 3;
+    private readonly MainFixture _mainFixture;
 
     private readonly DomainEntity _domainEntity = new Faker<DomainEntity>().StrictMode(true)
         .RuleFor(property => property.Name, setter => setter.Company.CompanyName())
         .RuleFor(property => property.Id, setter => Guid.NewGuid())
         .Generate();
 
+    public ScheduleTests(MainFixture mainFixture)
+    {
+        _mainFixture = mainFixture;
+
+        _mainFixture.PostgreSqlFixture.CreateAsync(_domainEntity, DomainTests.InsertQuery, GetCancellationToken).Wait();
+    }
+
     [Fact(DisplayName = "Request received is valid then schedule is created")]
     public async Task Request_received_is_valid_then_schedule_is_created()
     {
         //Arrange
-        await mainFixture.PostgreSqlFixture.CreateAsync(_domainEntity, DomainTests.InsertQuery, GetCancellationToken);
-
         var request = new Faker<CreateRequest>().StrictMode(true)
             .RuleFor(property => property.Time, setter => $"{DateTime.Now:HH:mm}-{DateTime.Now.AddHours(HourToAdd):HH:mm}")
             .RuleFor(property => property.DomainId, setter => _domainEntity.Id)
             .Generate();
 
-        var rawResponse = await mainFixture.HttpClient.PostAsJsonAsync(RequestUri, request, GetCancellationToken);
+        var rawResponse = await _mainFixture.HttpClient.PostAsJsonAsync(RequestUri, request, GetCancellationToken);
 
         //Act
         var response = await rawResponse.Content.ReadFromJsonAsync<Response<Guid>>(GetCancellationToken);
@@ -41,7 +47,7 @@ public class ScheduleTests(MainFixture mainFixture) : BaseIntegratedTest
         rawResponse.Should().NotBeNull();
         rawResponse.StatusCode.Should().Be(HttpStatusCode.Created);
 
-        var scheduleEntity = await mainFixture.PostgreSqlFixture
+        var scheduleEntity = await _mainFixture.PostgreSqlFixture
             .GetByIdAsync<ScheduleEntity>(GetByIdQuery, response!.Data, GetCancellationToken);
 
         scheduleEntity.Should().BeEquivalentTo(request);
@@ -52,26 +58,27 @@ public class ScheduleTests(MainFixture mainFixture) : BaseIntegratedTest
     {
         //Arrange
         var entity = new Faker<ScheduleEntity>().StrictMode(true)
-            .RuleFor(property => property.Time, setter => setter.Company.CompanyName())
+            .RuleFor(property => property.DomainId, setter => _domainEntity.Id)
             .RuleFor(property => property.Id, setter => Guid.NewGuid())
+            .RuleFor(property => property.Time, setter => $"{DateTime.Now:HH:mm}-{DateTime.Now.AddHours(HourToAdd):HH:mm}")
             .Generate();
 
-        await mainFixture.PostgreSqlFixture.CreateAsync(entity, InsertQuery, GetCancellationToken);
+        await _mainFixture.PostgreSqlFixture.CreateAsync(entity, InsertQuery, GetCancellationToken);
 
         var request = new Faker<UpdateRequest>().StrictMode(true)
             .RuleFor(property => property.Id, setter => entity.Id)
-            .RuleFor(property => property.Time, setter => setter.Company.CompanyName())
+            .RuleFor(property => property.Time, setter => $"{DateTime.Now:HH:mm}-{DateTime.Now.AddHours(HourToAdd):HH:mm}")
             .Generate();
 
         //Act
-        var rawResponse = await mainFixture.HttpClient.PutAsJsonAsync(RequestUri, request, GetCancellationToken);
+        var rawResponse = await _mainFixture.HttpClient.PutAsJsonAsync(RequestUri, request, GetCancellationToken);
         var response = await rawResponse.Content.ReadFromJsonAsync<Response<Guid>>(GetCancellationToken);
 
         //Assert
         rawResponse.Should().NotBeNull();
         rawResponse.StatusCode.Should().Be(HttpStatusCode.OK);
 
-        var newScheduleEntity = await mainFixture.PostgreSqlFixture
+        var newScheduleEntity = await _mainFixture.PostgreSqlFixture
             .GetByIdAsync<ScheduleEntity>(GetByIdQuery, entity.Id, GetCancellationToken);
 
         newScheduleEntity.Should().BeEquivalentTo(request);
@@ -82,20 +89,21 @@ public class ScheduleTests(MainFixture mainFixture) : BaseIntegratedTest
     {
         //Arrange
         var entity = new Faker<ScheduleEntity>().StrictMode(true)
-            .RuleFor(property => property.Time, setter => setter.Company.CompanyName())
+            .RuleFor(property => property.DomainId, setter => _domainEntity.Id)
             .RuleFor(property => property.Id, setter => Guid.NewGuid())
+            .RuleFor(property => property.Time, setter => $"{DateTime.Now:HH:mm}-{DateTime.Now.AddHours(HourToAdd):HH:mm}")
             .Generate();
 
-        await mainFixture.PostgreSqlFixture.CreateAsync(entity, InsertQuery, GetCancellationToken);
+        await _mainFixture.PostgreSqlFixture.CreateAsync(entity, InsertQuery, GetCancellationToken);
 
         //Act
-        var rawResponse = await mainFixture.HttpClient.DeleteAsync($"{RequestUri}/{entity.Id}");
+        var rawResponse = await _mainFixture.HttpClient.DeleteAsync($"{RequestUri}/{entity.Id}");
 
         //Assert
         rawResponse.Should().NotBeNull();
         rawResponse.StatusCode.Should().Be(HttpStatusCode.NoContent);
 
-        var scheduleEntity = await mainFixture.PostgreSqlFixture
+        var scheduleEntity = await _mainFixture.PostgreSqlFixture
             .GetByIdAsync<ScheduleEntity>(GetByIdQuery, entity.Id, GetCancellationToken);
 
         scheduleEntity.Should().BeNull();
@@ -106,14 +114,15 @@ public class ScheduleTests(MainFixture mainFixture) : BaseIntegratedTest
     {
         //Arrange
         var entity = new Faker<ScheduleEntity>().StrictMode(true)
-            .RuleFor(property => property.Time, setter => setter.Company.CompanyName())
+            .RuleFor(property => property.DomainId, setter => _domainEntity.Id)
             .RuleFor(property => property.Id, setter => Guid.NewGuid())
+            .RuleFor(property => property.Time, setter => $"{DateTime.Now:HH:mm}-{DateTime.Now.AddHours(HourToAdd):HH:mm}")
             .Generate();
 
-        await mainFixture.PostgreSqlFixture.CreateAsync(entity, InsertQuery, GetCancellationToken);
+        await _mainFixture.PostgreSqlFixture.CreateAsync(entity, InsertQuery, GetCancellationToken);
 
         //Act
-        var rawResponse = await mainFixture.HttpClient.GetAsync($"{RequestUri}/{entity.Id}", GetCancellationToken);
+        var rawResponse = await _mainFixture.HttpClient.GetAsync($"{RequestUri}/{entity.Id}", GetCancellationToken);
         var response = await rawResponse.Content.ReadFromJsonAsync<Response<ScheduleEntity>>(GetCancellationToken);
 
         //Assert
@@ -129,17 +138,18 @@ public class ScheduleTests(MainFixture mainFixture) : BaseIntegratedTest
         //Arrange
         var numberOfItemsToCreate = 10;
         var entities = new Faker<ScheduleEntity>().StrictMode(true)
-            .RuleFor(property => property.Time, setter => setter.Company.CompanyName())
+            .RuleFor(property => property.DomainId, setter => _domainEntity.Id)
             .RuleFor(property => property.Id, setter => Guid.NewGuid())
+            .RuleFor(property => property.Time, setter => $"{DateTime.Now:HH:mm}-{DateTime.Now.AddHours(HourToAdd):HH:mm}")
             .Generate(numberOfItemsToCreate);
 
         foreach (var entity in entities)
         {
-            await mainFixture.PostgreSqlFixture.CreateAsync(entity, InsertQuery, GetCancellationToken);
+            await _mainFixture.PostgreSqlFixture.CreateAsync(entity, InsertQuery, GetCancellationToken);
         }
 
         //Act
-        var rawResponse = await mainFixture.HttpClient.GetAsync(RequestUri, GetCancellationToken);
+        var rawResponse = await _mainFixture.HttpClient.GetAsync(RequestUri, GetCancellationToken);
         var response = await rawResponse.Content.ReadFromJsonAsync<Response<IEnumerable<ScheduleEntity>>>(GetCancellationToken);
 
         //Assert

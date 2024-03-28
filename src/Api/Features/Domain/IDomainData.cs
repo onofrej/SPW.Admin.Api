@@ -2,7 +2,7 @@
 
 internal interface IDomainData
 {
-    Task<int> CreateDomainAsync(DomainEntity domain, CancellationToken cancellationToken);
+    Task<int> CreateDomainAsync(DomainEntity entity, CancellationToken cancellationToken);
 
     Task<int> DeleteDomainAsync(Guid id, CancellationToken cancellationToken);
 
@@ -10,5 +10,5 @@ internal interface IDomainData
 
     Task<DomainEntity?> GetDomainByIdAsync(Guid id, CancellationToken cancellationToken);
 
-    Task<int> UpdateDomainAsync(DomainEntity domain, CancellationToken cancellationToken);
+    Task<int> UpdateDomainAsync(DomainEntity entity, CancellationToken cancellationToken);
 }

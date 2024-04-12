@@ -26,6 +26,7 @@ internal static class ServiceCollectionExtensions
         services.AddScoped<ISpecialDayData, SpecialDayData>();
         services.AddScoped<IUserData, UserData>();
         services.AddScoped<IValidityData, ValidityData>();
+        services.AddScoped<IHolidayData, HolidayData>();
 
         return services;
     }

@@ -30,7 +30,7 @@ internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid
             Date = request.Date
         };
 
-        await _holidayData.InsertAsync(entity, cancellationToken);
+        await _holidayData.CreateHolidayAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

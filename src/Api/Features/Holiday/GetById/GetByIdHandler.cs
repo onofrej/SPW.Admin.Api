@@ -23,7 +23,7 @@ internal sealed class GetByIdHandler : IRequestHandler<GetByIdQuery, Result<Holi
             return new Result<HolidayEntity>(default, Errors.ReturnInvalidEntriesError(validationResult.ToString()));
         }
 
-        var holidayEntity = await _holidayData.GetByIdAsync(request.Id, cancellationToken);
+        var holidayEntity = await _holidayData.GetHolidayByIdAsync(request.Id, cancellationToken);
 
         if (holidayEntity is null)
         {

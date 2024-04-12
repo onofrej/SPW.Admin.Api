@@ -2,13 +2,13 @@
 
 internal interface IHolidayData
 {
-    Task InsertAsync(HolidayEntity holidayEntity, CancellationToken cancellationToken);
+    Task<int> CreateHolidayAsync(HolidayEntity entity, CancellationToken cancellationToken);
 
-    Task UpdateAsync(HolidayEntity holidayEntity, CancellationToken cancellationToken);
+    Task<int> DeleteHolidayAsync(Guid id, CancellationToken cancellationToken);
 
-    Task DeleteAsync(HolidayEntity holidayEntity, CancellationToken cancellationToken);
+    Task<IEnumerable<HolidayEntity>> GetAllHolidayAsync(CancellationToken cancellationToken);
 
-    Task<HolidayEntity> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<HolidayEntity> GetHolidayByIdAsync(Guid id, CancellationToken cancellationToken);
 
-    Task<IEnumerable<HolidayEntity>> GetAllAsync(CancellationToken cancellationToken);
+    Task<int> UpdateHolidayAsync(HolidayEntity entity, CancellationToken cancellationToken);
 }

@@ -8,7 +8,8 @@ using SPW.Admin.IntegrationTests.Fixtures;
 
 namespace SPW.Admin.IntegrationTests.Tests;
 
-public class HolidayTests : BaseIntegratedTest, IClassFixture<MainFixture>
+[Collection(TestCollection.CollectionDefinition)]
+public class HolidayTests : BaseIntegratedTest
 {
     private const string RequestUri = "/holidays";
     private const string GetByIdQuery = @"SELECT * FROM ""holiday"" WHERE id = @Id";

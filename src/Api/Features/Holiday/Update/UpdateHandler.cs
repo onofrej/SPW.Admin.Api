@@ -25,6 +25,7 @@ internal sealed class UpdateHandler : IRequestHandler<UpdateCommand, Result<Guid
 
         var entity = new HolidayEntity
         {
+            DomainId = request.DomainId,
             Id = request.Id,
             Name = request.Name,
             Date = request.Date

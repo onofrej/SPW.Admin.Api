@@ -1,25 +1,33 @@
-﻿using SPW.Admin.Api.Features.Holiday;
+﻿using SPW.Admin.Api.Features.Domain;
+using SPW.Admin.Api.Features.Holiday;
 using SPW.Admin.Api.Features.Holiday.Create;
 using SPW.Admin.Api.Features.Holiday.Update;
 using SPW.Admin.Api.Shared.Models;
 using SPW.Admin.IntegrationTests.Common;
 using SPW.Admin.IntegrationTests.Fixtures;
+
 namespace SPW.Admin.IntegrationTests.Tests;
 
 public class HolidayTests : BaseIntegratedTest, IClassFixture<MainFixture>
 {
     private const string RequestUri = "/holidays";
     private const string GetByIdQuery = @"SELECT * FROM ""holiday"" WHERE id = @Id";
-    private const string InsertQuery = @"INSERT INTO ""holiday"" (id, name, date) VALUES (@Id, @Name, @Date)";
-
+    private const string InsertQuery = @"INSERT INTO ""holiday"" (id, name, date, domain_id) VALUES (@Id, @Name, @Date, @DomainId)";
     private readonly MainFixture _mainFixture;
-    private readonly DateTime _mockHolidayDate;
-    private readonly string _mockHolidayName = "Mock name";
+    private const int DaysToAddAtDateValues = 10;
+
+    private readonly DateTime _creationDate = new(DateTime.Now.Year + DaysToAddAtDateValues,
+        DateTime.Now.Month, DateTime.Now.Day);
+
+    private readonly DomainEntity _domainEntity = new Faker<DomainEntity>().StrictMode(true)
+       .RuleFor(property => property.Name, setter => setter.Company.CompanyName())
+       .RuleFor(property => property.Id, setter => Guid.NewGuid())
+       .Generate();
 
     public HolidayTests(MainFixture mainFixture)
     {
         _mainFixture = mainFixture;
-        _mockHolidayDate = DateTime.Now.Date;
+        _mainFixture.PostgreSqlFixture.CreateAsync(_domainEntity, DomainTests.InsertQuery, GetCancellationToken).Wait();
     }
 
     [Fact(DisplayName = "Request received is valid then holiday is created")]
@@ -27,13 +35,14 @@ public class HolidayTests : BaseIntegratedTest, IClassFixture<MainFixture>
     {
         // Arrange
         var request = new Faker<CreateRequest>().StrictMode(true)
-            .RuleFor(property => property.Name, setter => _mockHolidayName)
-            .RuleFor(property => property.Date, setter => _mockHolidayDate)
+            .RuleFor(property => property.Name, setter => setter.Company.CompanyName())
+            .RuleFor(property => property.Date, setter => _creationDate)
+            .RuleFor(property => property.DomainId, setter => _domainEntity.Id)
             .Generate();
 
+        // Act
         var rawResponse = await _mainFixture.HttpClient.PostAsJsonAsync(RequestUri, request, GetCancellationToken);
 
-        // Act
         var response = await rawResponse.Content.ReadFromJsonAsync<Response<Guid>>(GetCancellationToken);
 
         // Assert
@@ -50,13 +59,11 @@ public class HolidayTests : BaseIntegratedTest, IClassFixture<MainFixture>
     public async Task Request_received_is_valid_and_holiday_exists_then_holiday_is_updated()
     {
         // Arrange
-        Random rng = new Random();
-        int days = rng.Next(1, 32);
-
         var entity = new Faker<HolidayEntity>().StrictMode(true)
             .RuleFor(property => property.Id, setter => Guid.NewGuid())
-            .RuleFor(property => property.Name, setter => _mockHolidayName)
-            .RuleFor(property => property.Date, setter => _mockHolidayDate)
+            .RuleFor(property => property.Name, setter => setter.Company.CompanyName())
+            .RuleFor(property => property.Date, setter => _creationDate)
+            .RuleFor(property => property.DomainId, setter => _domainEntity.Id)
             .Generate();
 
         await _mainFixture.PostgreSqlFixture.CreateAsync(entity, InsertQuery, GetCancellationToken);
@@ -64,11 +71,12 @@ public class HolidayTests : BaseIntegratedTest, IClassFixture<MainFixture>
         var request = new Faker<UpdateRequest>().StrictMode(true)
             .RuleFor(property => property.Id, setter => entity.Id)
             .RuleFor(property => property.Name, setter => "Carnival or something, I don't know")
-            .RuleFor(property => property.Date, setter => entity.Date.AddDays(days))
+            .RuleFor(property => property.Date, setter => _creationDate)
             .Generate();
 
         // Act
         var rawResponse = await _mainFixture.HttpClient.PutAsJsonAsync(RequestUri, request, GetCancellationToken);
+
         var response = await rawResponse.Content.ReadFromJsonAsync<Response<Guid>>(GetCancellationToken);
 
         // Assert
@@ -76,7 +84,7 @@ public class HolidayTests : BaseIntegratedTest, IClassFixture<MainFixture>
         rawResponse.StatusCode.Should().Be(HttpStatusCode.OK);
 
         var newHolidayEntity = await _mainFixture.PostgreSqlFixture
-            .GetByIdAsync<HolidayEntity>(GetByIdQuery, entity.Id, GetCancellationToken);
+            .GetByIdAsync<HolidayEntity>(GetByIdQuery, response!.Data, GetCancellationToken);
 
         newHolidayEntity.Should().BeEquivalentTo(request);
     }
@@ -87,8 +95,9 @@ public class HolidayTests : BaseIntegratedTest, IClassFixture<MainFixture>
         // Arrange
         var entity = new Faker<HolidayEntity>().StrictMode(true)
             .RuleFor(property => property.Id, setter => Guid.NewGuid())
-            .RuleFor(property => property.Name, setter => _mockHolidayName)
-            .RuleFor(property => property.Date, setter => _mockHolidayDate)
+            .RuleFor(property => property.Name, setter => setter.Company.CompanyName())
+            .RuleFor(property => property.Date, setter => _creationDate)
+            .RuleFor(property => property.DomainId, setter => _domainEntity.Id)
             .Generate();
 
         await _mainFixture.PostgreSqlFixture.CreateAsync(entity, InsertQuery, GetCancellationToken);
@@ -112,8 +121,9 @@ public class HolidayTests : BaseIntegratedTest, IClassFixture<MainFixture>
         // Arrange
         var entity = new Faker<HolidayEntity>().StrictMode(true)
             .RuleFor(property => property.Id, setter => Guid.NewGuid())
-            .RuleFor(property => property.Name, setter => _mockHolidayName)
-            .RuleFor(property => property.Date, setter => _mockHolidayDate)
+            .RuleFor(property => property.Name, setter => setter.Company.CompanyName())
+            .RuleFor(property => property.Date, setter => _creationDate)
+            .RuleFor(property => property.DomainId, setter => _domainEntity.Id)
             .Generate();
 
         await _mainFixture.PostgreSqlFixture.CreateAsync(entity, InsertQuery, GetCancellationToken);
@@ -134,10 +144,13 @@ public class HolidayTests : BaseIntegratedTest, IClassFixture<MainFixture>
     {
         // Arrange
         int numberOfItemsToCreate = 10;
+
+        // Arrange
         var entities = new Faker<HolidayEntity>().StrictMode(true)
             .RuleFor(property => property.Id, setter => Guid.NewGuid())
-            .RuleFor(property => property.Name, setter => _mockHolidayName)
-            .RuleFor(property => property.Date, setter => _mockHolidayDate)
+            .RuleFor(property => property.Name, setter => setter.Company.CompanyName())
+            .RuleFor(property => property.Date, setter => _creationDate)
+            .RuleFor(property => property.DomainId, setter => _domainEntity.Id)
             .Generate(numberOfItemsToCreate);
 
         foreach (var entity in entities)

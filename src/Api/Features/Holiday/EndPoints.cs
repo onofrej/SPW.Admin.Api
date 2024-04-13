@@ -58,6 +58,7 @@ public sealed class EndPoints : ICarterModule
     {
         var command = new CreateCommand
         {
+            DomainId = request.DomainId,
             Name = request.Name!,
             Date = request.Date!
         };
@@ -80,6 +81,7 @@ public sealed class EndPoints : ICarterModule
     {
         var command = new UpdateCommand
         {
+            DomainId = request.DomainId,
             Id = request.Id,
             Name = request.Name!,
             Date = request.Date!

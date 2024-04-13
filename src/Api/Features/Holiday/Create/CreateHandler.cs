@@ -25,9 +25,10 @@ internal sealed class CreateHandler : IRequestHandler<CreateCommand, Result<Guid
 
         var entity = new HolidayEntity
         {
+            Date = request.Date,
+            DomainId = request.DomainId,
             Id = Guid.NewGuid(),
-            Name = request.Name,
-            Date = request.Date
+            Name = request.Name
         };
 
         await _holidayData.CreateHolidayAsync(entity, cancellationToken);

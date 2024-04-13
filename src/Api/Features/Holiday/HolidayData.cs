@@ -7,7 +7,7 @@ internal sealed class HolidayData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilde
     {
         await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
-        var query = @"INSERT INTO ""holiday"" (id, name, date) VALUES (@Id, @Name, @Date)";
+        var query = @"INSERT INTO ""holiday"" (id, name, date, domain_id) VALUES (@Id, @Name, @Date, @DomainId)";
         return await connection.ExecuteAsync(query, entity);
     }
 
@@ -39,7 +39,7 @@ internal sealed class HolidayData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilde
     {
         await using var npgsqlDataSource = npgsqlDataSourceBuilder.Build();
         using var connection = await npgsqlDataSource.OpenConnectionAsync(cancellationToken);
-        var query = @"UPDATE ""holiday"" SET name = @Name, date = @Date";
+        var query = @"UPDATE ""holiday"" SET name = @Name, date = @Date WHERE id = @Id";
         return await connection.ExecuteAsync(query, entity);
     }
 }

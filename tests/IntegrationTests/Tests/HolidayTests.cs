@@ -73,6 +73,7 @@ public class HolidayTests : BaseIntegratedTest
             .RuleFor(property => property.Id, setter => entity.Id)
             .RuleFor(property => property.Name, setter => "Carnival or something, I don't know")
             .RuleFor(property => property.Date, setter => _creationDate)
+            .RuleFor(property => property.DomainId, setter => _domainEntity.Id)
             .Generate();
 
         // Act

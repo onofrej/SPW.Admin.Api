@@ -6,14 +6,11 @@ namespace SPW.Admin.UnitTests.Features.Circuit.GetAll;
 public class GetAllHandlerTests
 {
     private readonly Mock<ICircuitData> _circuitDataMock;
-
-    //private readonly Mock<IValidator<GetAllQuery>> _validatorMock;
     private readonly GetAllHandler _handler;
 
     public GetAllHandlerTests()
     {
         _circuitDataMock = new Mock<ICircuitData>();
-        //_validatorMock = new Mock<IValidator<GetAllQuery>>();
         _handler = new GetAllHandler(_circuitDataMock.Object);
     }
 
@@ -31,8 +28,6 @@ public class GetAllHandlerTests
         var cancellationToken = CancellationToken.None;
 
         _circuitDataMock.Setup(c => c.GetAllCircuitsAsync(cancellationToken)).ReturnsAsync(request);
-
-        var handler = new GetAllHandler(_circuitDataMock.Object);
 
         // Act
         var result = await _handler.Handle(getAllQuery, cancellationToken);

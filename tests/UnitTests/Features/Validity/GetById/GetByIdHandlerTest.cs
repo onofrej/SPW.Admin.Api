@@ -1,40 +1,42 @@
-﻿using SPW.Admin.Api.Features.Circuit;
-using SPW.Admin.Api.Features.Circuit.GetById;
+﻿using SPW.Admin.Api.Features.Validity;
+using SPW.Admin.Api.Features.Validity.GetById;
 
-namespace SPW.Admin.UnitTests.Features.Circuit.GetById;
+namespace SPW.Admin.UnitTests.Features.Validity.GetById;
 
 public class GetByIdHandlerTest
 {
-    private readonly Mock<ICircuitData> _circuitDataMock;
+    private readonly Mock<IValidityData> _validityDataMock;
     private readonly Mock<IValidator<GetByIdQuery>> _validatorMock;
     private readonly GetByIdHandler _handler;
 
     public GetByIdHandlerTest()
     {
-        _circuitDataMock = new Mock<ICircuitData>();
+        _validityDataMock = new Mock<IValidityData>();
         _validatorMock = new Mock<IValidator<GetByIdQuery>>();
-        _handler = new GetByIdHandler(_circuitDataMock.Object, _validatorMock.Object);
+        _handler = new GetByIdHandler(_validityDataMock.Object, _validatorMock.Object);
     }
 
     [Fact]
-    public async Task Handle_WithValidRequest_ReturnResultWithCircuit()
+    public async Task Handle_WithValidRequest_ReturnResultWithValidity()
     {
         // Arrange
-        var request = new CircuitEntity
+        var request = new ValidityEntity
         {
             Id = Guid.NewGuid(),
-            Name = "Circuit1",
-            DomainId = Guid.NewGuid()
+            StartDate = DateTime.UtcNow,
+            EndDate = DateTime.UtcNow.AddDays(15),
+            Status = true,
+            DomainId = Guid.NewGuid(),
         };
         var expectedResultId = request.Id;
         var cancellationToken = CancellationToken.None;
 
         _validatorMock.Setup(v => v.Validate(It.IsAny<GetByIdQuery>())).Returns(new ValidationResult());
 
-        _circuitDataMock.Setup(c => c.GetCircuitByIdAsync(request.Id, cancellationToken)).ReturnsAsync(request);
+        _validityDataMock.Setup(c => c.GetValidityByIdAsync(request.Id, cancellationToken)).ReturnsAsync(request);
 
         //Act
-        var handler = new GetByIdHandler(_circuitDataMock.Object, _validatorMock.Object);
+        var handler = new GetByIdHandler(_validityDataMock.Object, _validatorMock.Object);
 
         var result = await handler.Handle(new GetByIdQuery(request.Id), cancellationToken);
 
@@ -43,7 +45,7 @@ public class GetByIdHandlerTest
         result.HasFailed.Should().BeFalse();
         result.Data!.Id.Should().Be(expectedResultId);
 
-        _circuitDataMock.Verify(expression => expression.GetCircuitByIdAsync(request.Id, It.IsAny<CancellationToken>()), Times.Once);
+        _validityDataMock.Verify(expression => expression.GetValidityByIdAsync(request.Id, It.IsAny<CancellationToken>()), Times.Once);
     }
 
     [Fact]

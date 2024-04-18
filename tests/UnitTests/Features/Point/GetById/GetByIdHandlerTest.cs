@@ -1,29 +1,33 @@
-﻿using SPW.Admin.Api.Features.Circuit;
-using SPW.Admin.Api.Features.Circuit.GetById;
+﻿using SPW.Admin.Api.Features.Point;
+using SPW.Admin.Api.Features.Point.GetById;
 
-namespace SPW.Admin.UnitTests.Features.Circuit.GetById;
+namespace SPW.Admin.UnitTests.Features.Point.GetById;
 
 public class GetByIdHandlerTest
 {
-    private readonly Mock<ICircuitData> _circuitDataMock;
+    private readonly Mock<IPointData> _pointDataMock;
     private readonly Mock<IValidator<GetByIdQuery>> _validatorMock;
     private readonly GetByIdHandler _handler;
 
     public GetByIdHandlerTest()
     {
-        _circuitDataMock = new Mock<ICircuitData>();
+        _pointDataMock = new Mock<IPointData>();
         _validatorMock = new Mock<IValidator<GetByIdQuery>>();
-        _handler = new GetByIdHandler(_circuitDataMock.Object, _validatorMock.Object);
+        _handler = new GetByIdHandler(_pointDataMock.Object, _validatorMock.Object);
     }
 
     [Fact]
-    public async Task Handle_WithValidRequest_ReturnResultWithCircuit()
+    public async Task Handle_WithValidRequest_ReturnResultWithPoint()
     {
         // Arrange
-        var request = new CircuitEntity
+        var request = new PointEntity
         {
             Id = Guid.NewGuid(),
-            Name = "Circuit1",
+            Name = "Point 1",
+            NumberOfPublishers = 2,
+            Address = "Point 1 Address",
+            ImageUrl = "Point1Image",
+            GoogleMapsUrl = "Point1GoogleMapsUrl",
             DomainId = Guid.NewGuid()
         };
         var expectedResultId = request.Id;
@@ -31,10 +35,10 @@ public class GetByIdHandlerTest
 
         _validatorMock.Setup(v => v.Validate(It.IsAny<GetByIdQuery>())).Returns(new ValidationResult());
 
-        _circuitDataMock.Setup(c => c.GetCircuitByIdAsync(request.Id, cancellationToken)).ReturnsAsync(request);
+        _pointDataMock.Setup(c => c.GetPointByIdAsync(request.Id, cancellationToken)).ReturnsAsync(request);
 
         //Act
-        var handler = new GetByIdHandler(_circuitDataMock.Object, _validatorMock.Object);
+        var handler = new GetByIdHandler(_pointDataMock.Object, _validatorMock.Object);
 
         var result = await handler.Handle(new GetByIdQuery(request.Id), cancellationToken);
 
@@ -43,7 +47,7 @@ public class GetByIdHandlerTest
         result.HasFailed.Should().BeFalse();
         result.Data!.Id.Should().Be(expectedResultId);
 
-        _circuitDataMock.Verify(expression => expression.GetCircuitByIdAsync(request.Id, It.IsAny<CancellationToken>()), Times.Once);
+        _pointDataMock.Verify(expression => expression.GetPointByIdAsync(request.Id, It.IsAny<CancellationToken>()), Times.Once);
     }
 
     [Fact]

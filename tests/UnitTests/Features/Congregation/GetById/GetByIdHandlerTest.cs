@@ -1,40 +1,41 @@
-﻿using SPW.Admin.Api.Features.Circuit;
-using SPW.Admin.Api.Features.Circuit.GetById;
+﻿using SPW.Admin.Api.Features.Congregation;
+using SPW.Admin.Api.Features.Congregation.GetById;
 
-namespace SPW.Admin.UnitTests.Features.Circuit.GetById;
+namespace SPW.Admin.UnitTests.Features.Congregation.GetById;
 
 public class GetByIdHandlerTest
 {
-    private readonly Mock<ICircuitData> _circuitDataMock;
+    private readonly Mock<ICongregationData> _congregationDataMock;
     private readonly Mock<IValidator<GetByIdQuery>> _validatorMock;
     private readonly GetByIdHandler _handler;
 
     public GetByIdHandlerTest()
     {
-        _circuitDataMock = new Mock<ICircuitData>();
+        _congregationDataMock = new Mock<ICongregationData>();
         _validatorMock = new Mock<IValidator<GetByIdQuery>>();
-        _handler = new GetByIdHandler(_circuitDataMock.Object, _validatorMock.Object);
+        _handler = new GetByIdHandler(_congregationDataMock.Object, _validatorMock.Object);
     }
 
     [Fact]
-    public async Task Handle_WithValidRequest_ReturnResultWithCircuit()
+    public async Task Handle_WithValidRequest_ReturnResultWithCongregation()
     {
         // Arrange
-        var request = new CircuitEntity
+        var request = new CongregationEntity
         {
             Id = Guid.NewGuid(),
-            Name = "Circuit1",
-            DomainId = Guid.NewGuid()
+            Name = "Congregation 1",
+            Number = "0001",
+            CircuitId = Guid.NewGuid(),
         };
         var expectedResultId = request.Id;
         var cancellationToken = CancellationToken.None;
 
         _validatorMock.Setup(v => v.Validate(It.IsAny<GetByIdQuery>())).Returns(new ValidationResult());
 
-        _circuitDataMock.Setup(c => c.GetCircuitByIdAsync(request.Id, cancellationToken)).ReturnsAsync(request);
+        _congregationDataMock.Setup(c => c.GetCongregationByIdAsync(request.Id, cancellationToken)).ReturnsAsync(request);
 
         //Act
-        var handler = new GetByIdHandler(_circuitDataMock.Object, _validatorMock.Object);
+        var handler = new GetByIdHandler(_congregationDataMock.Object, _validatorMock.Object);
 
         var result = await handler.Handle(new GetByIdQuery(request.Id), cancellationToken);
 
@@ -43,7 +44,7 @@ public class GetByIdHandlerTest
         result.HasFailed.Should().BeFalse();
         result.Data!.Id.Should().Be(expectedResultId);
 
-        _circuitDataMock.Verify(expression => expression.GetCircuitByIdAsync(request.Id, It.IsAny<CancellationToken>()), Times.Once);
+        _congregationDataMock.Verify(expression => expression.GetCongregationByIdAsync(request.Id, It.IsAny<CancellationToken>()), Times.Once);
     }
 
     [Fact]

@@ -1,19 +1,19 @@
-﻿using SPW.Admin.Api.Features.Congregation;
-using SPW.Admin.Api.Features.Congregation.Create;
+﻿using SPW.Admin.Api.Features.Announcement;
+using SPW.Admin.Api.Features.Announcement.Create;
 
-namespace SPW.Admin.UnitTests.Features.Congregation;
+namespace SPW.Admin.UnitTests.Features.Announcement.Create;
 
 public class CreateHandlerTest
 {
-    private readonly Mock<ICongregationData> _congregationDataMock;
+    private readonly Mock<IAnnouncementData> _announcementDataMock;
     private readonly Mock<IValidator<CreateCommand>> _validatorMock;
     private readonly CreateHandler _handler;
 
     public CreateHandlerTest()
     {
-        _congregationDataMock = new Mock<ICongregationData>();
+        _announcementDataMock = new Mock<IAnnouncementData>();
         _validatorMock = new Mock<IValidator<CreateCommand>>();
-        _handler = new CreateHandler(_congregationDataMock.Object, _validatorMock.Object);
+        _handler = new CreateHandler(_announcementDataMock.Object, _validatorMock.Object);
     }
 
     [Fact]
@@ -26,8 +26,8 @@ public class CreateHandlerTest
 
         _validatorMock.Setup(expression => expression.Validate(request)).Returns(validationResult);
 
-        _congregationDataMock.Setup(expression => expression.CreateCongregationAsync(It.IsAny<CongregationEntity>(), It.IsAny<CancellationToken>()))
-            .Callback<CongregationEntity, CancellationToken>((entity, _) => entity.Id = expectedId);
+        _announcementDataMock.Setup(expression => expression.CreateAnnoucnementAsync(It.IsAny<AnnouncementEntity>(), It.IsAny<CancellationToken>()))
+            .Callback<AnnouncementEntity, CancellationToken>((entity, _) => entity.Id = expectedId);
 
         // Act
         var result = await _handler.Handle(request, CancellationToken.None);
@@ -37,7 +37,7 @@ public class CreateHandlerTest
         result.HasFailed.Should().BeFalse();
         result.Data.Should().Be(expectedId);
 
-        _congregationDataMock.Verify(expression => expression.CreateCongregationAsync(It.IsAny<CongregationEntity>(),
+        _announcementDataMock.Verify(expression => expression.CreateAnnoucnementAsync(It.IsAny<AnnouncementEntity>(),
                     It.IsAny<CancellationToken>()), Times.Once);
     }
 
@@ -59,6 +59,6 @@ public class CreateHandlerTest
         result.HasFailed.Should().BeTrue();
         result.Error.Should().BeEquivalentTo(Errors.ReturnInvalidEntriesError(validationErrorMessage));
 
-        _congregationDataMock.Verify(expression => expression.CreateCongregationAsync(It.IsAny<CongregationEntity>(), It.IsAny<CancellationToken>()), Times.Never);
+        _announcementDataMock.Verify(expression => expression.CreateAnnoucnementAsync(It.IsAny<AnnouncementEntity>(), It.IsAny<CancellationToken>()), Times.Never);
     }
 }

@@ -15,7 +15,7 @@ public class GetAllHandlerTests
     }
 
     [Fact]
-    public async Task Handle_WithValidRequest_ReturnResultWithCircuits()
+    public async Task Handle_WithValidRequest_ReturnResultWithAnnouncements()
     {
         // Arrange
         var request = new List<CircuitEntity>
@@ -40,9 +40,9 @@ public class GetAllHandlerTests
         circuitEntities.Should().NotBeNull();
         circuitEntities.Should().HaveCount(request.Count);
 
-        foreach (var expectedCircuit in request)
+        foreach (var expectedCircuits in request)
         {
-            circuitEntities.Should().ContainEquivalentOf(expectedCircuit);
+            circuitEntities.Should().ContainEquivalentOf(expectedCircuits);
         }
 
         _circuitDataMock.Verify(c => c.GetAllCircuitsAsync(cancellationToken), Times.Once);

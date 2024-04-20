@@ -45,7 +45,10 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release
 
-      - name: Test and Coverage test
+      - name: Test
+        run: dotnet test ./tests/UnitTests/*.csproj --no-restore --logger:"trx" /p:CollectCoverage=\"true\" /p:CoverletOutputFormat=\"opencover\" /p:Exclude=\"[xunit.*]*\"
+
+      - name: Coverage test
         run: coverlet ./tests/UnitTests/bin/Debug/net8.0/SPW.Admin.UnitTests.dll --target "dotnet" --targetargs "test ./tests/UnitTests/UnitTests.csproj --no-build"
 
   Integration-tests:

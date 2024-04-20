@@ -18,6 +18,9 @@ jobs:
         with:
           dotnet-version: "8.x" # Change to the version of .NET Core you need
 
+      - name: Install Coverlet
+        run: dotnet tool install --global coverlet.console
+
       - name: Restore dependencies
         run: dotnet restore
 

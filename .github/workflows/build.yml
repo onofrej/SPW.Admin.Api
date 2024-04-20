@@ -43,8 +43,8 @@ jobs:
         run: dotnet restore
 
       - name: Test and Coverage test
-        run:  coverlet ./tests/UnitTests/bin/Debug/net8.0/SPW.Admin.UnitTests.dll --target "dotnet" --targetargs "test --no-build"
-             
+        run: coverlet ./tests/UnitTests/bin/Debug/net8.0/SPW.Admin.UnitTests.dll --target "dotnet" --targetargs "test ./tests/UnitTests/UnitTests.csproj --no-build"
+
   Integration-tests:
     runs-on: ubuntu-latest
     timeout-minutes: 2

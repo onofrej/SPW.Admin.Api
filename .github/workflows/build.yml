@@ -42,8 +42,8 @@ jobs:
       - name: Test
         run: dotnet test ./tests/UnitTests/*.csproj --no-restore --logger:"trx" /p:CollectCoverage=\"true\" /p:CoverletOutputFormat=\"opencover\" /p:Exclude=\"[xunit.*]*\"
 
-      - name: Generate coverage report
-        run: dotnet test /p:CollectCoverage=true /p:CoverletOutput=TestResults/ /p:CoverletOutputFormat=lcov
+      - name: Codecov
+        uses: codecov/codecov-action@v1
 
   Integration-tests:
     runs-on: ubuntu-latest

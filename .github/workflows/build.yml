@@ -42,11 +42,9 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
 
-      - name: Test
+      - name: Test and Coverage test
         run: dotnet test ./tests/UnitTests/*.csproj --no-restore --logger:"trx" /p:CollectCoverage=\"true\" /p:CoverletOutputFormat=\"opencover\" /p:Exclude=\"[xunit.*]*\"
-
-      - name: Coverage Test
-        run: coverlet ./tests/UnitTests/bin/Debug/net8.0/SPW.Admin.UnitTests.dll --target "dotnet" --targetargs "test --no-build"
+             coverlet ./tests/UnitTests/bin/Debug/net8.0/SPW.Admin.UnitTests.dll --target "dotnet" --targetargs "test --no-build"
 
   Integration-tests:
     runs-on: ubuntu-latest

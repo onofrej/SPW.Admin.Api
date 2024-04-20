@@ -45,10 +45,12 @@ jobs:
       - name: Test
         run: dotnet test ./tests/UnitTests/*.csproj --no-restore --logger:"trx" /p:CollectCoverage=\"true\" /p:CoverletOutputFormat=\"opencover\" /p:Exclude=\"[xunit.*]*\"
 
-      - name: Unit Test Coverage Report
-        run: |
-          export PATH="$PATH:$HOME/.dotnet/tools"
-          coverlet ./tests/UnitTests/bin/Debug/net8.0/SPW.Admin.UnitTests.dll --target "dotnet" --targetargs "test ./tests/UnitTests/UnitTests.csproj --no-build"
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: ./coverage.opencover.xml
+
   Integration-tests:
     runs-on: ubuntu-latest
     timeout-minutes: 2

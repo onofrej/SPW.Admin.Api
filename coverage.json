@@ -274,8 +274,8 @@
       "SPW.Admin.Api.Features.Validity.Errors": {
         "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Validity.Errors::ReturnInvalidEntriesError(System.String)": {
           "Lines": {
-            "7": 0,
-            "8": 0
+            "7": 6,
+            "8": 6
           },
           "Branches": []
         },
@@ -292,11 +292,11 @@
       "SPW.Admin.Api.Features.Validity.Update.UpdateHandler": {
         "System.Void SPW.Admin.Api.Features.Validity.Update.UpdateHandler::.ctor(SPW.Admin.Api.Features.Validity.IValidityData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Validity.Update.UpdateCommand>)": {
           "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0,
-            "13": 0,
-            "14": 0
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
           },
           "Branches": []
         }
@@ -304,22 +304,22 @@
       "SPW.Admin.Api.Features.Validity.Update.UpdateHandler/<Handle>d__3": {
         "System.Void SPW.Admin.Api.Features.Validity.Update.UpdateHandler/<Handle>d__3::MoveNext()": {
           "Lines": {
-            "17": 0,
-            "18": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0,
-            "29": 0,
-            "30": 0,
-            "31": 0,
-            "32": 0,
-            "34": 0,
-            "36": 0,
-            "37": 0
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "34": 1,
+            "36": 1,
+            "37": 2
           },
           "Branches": [
             {
@@ -328,7 +328,7 @@
               "EndOffset": 64,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 20,
@@ -336,7 +336,7 @@
               "EndOffset": 97,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -346,7 +346,7 @@
       "SPW.Admin.Api.Features.Validity.GetById.GetByIdQuery": {
         "System.Guid SPW.Admin.Api.Features.Validity.GetById.GetByIdQuery::get_Id()": {
           "Lines": {
-            "5": 0
+            "5": 2
           },
           "Branches": []
         }
@@ -356,7 +356,7 @@
       "SPW.Admin.Api.Features.Validity.GetAll.GetAllQuery": {
         "System.Void SPW.Admin.Api.Features.Validity.GetAll.GetAllQuery::.ctor()": {
           "Lines": {
-            "5": 0
+            "5": 1
           },
           "Branches": []
         }
@@ -366,25 +366,25 @@
       "SPW.Admin.Api.Features.Validity.Create.CreateCommand": {
         "System.DateTime SPW.Admin.Api.Features.Validity.Create.CreateCommand::get_StartDate()": {
           "Lines": {
-            "7": 0
+            "7": 3
           },
           "Branches": []
         },
         "System.DateTime SPW.Admin.Api.Features.Validity.Create.CreateCommand::get_EndDate()": {
           "Lines": {
-            "8": 0
+            "8": 3
           },
           "Branches": []
         },
         "System.Boolean SPW.Admin.Api.Features.Validity.Create.CreateCommand::get_Status()": {
           "Lines": {
-            "9": 0
+            "9": 2
           },
           "Branches": []
         },
         "System.Guid SPW.Admin.Api.Features.Validity.Create.CreateCommand::get_DomainId()": {
           "Lines": {
-            "10": 0
+            "10": 3
           },
           "Branches": []
         }
@@ -394,11 +394,11 @@
       "SPW.Admin.Api.Features.Validity.Create.CreateHandler": {
         "System.Void SPW.Admin.Api.Features.Validity.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.Validity.IValidityData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Validity.Create.CreateCommand>)": {
           "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0,
-            "13": 0,
-            "14": 0
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
           },
           "Branches": []
         }
@@ -406,23 +406,23 @@
       "SPW.Admin.Api.Features.Validity.Create.CreateHandler/<Handle>d__3": {
         "System.Void SPW.Admin.Api.Features.Validity.Create.CreateHandler/<Handle>d__3::MoveNext()": {
           "Lines": {
-            "17": 0,
-            "18": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0,
-            "29": 0,
-            "30": 0,
-            "31": 0,
-            "32": 0,
-            "33": 0,
-            "35": 0,
-            "37": 0,
-            "38": 0
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "35": 1,
+            "37": 1,
+            "38": 2
           },
           "Branches": [
             {
@@ -431,7 +431,7 @@
               "EndOffset": 64,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 20,
@@ -439,7 +439,7 @@
               "EndOffset": 97,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -472,8 +472,8 @@
       "SPW.Admin.Api.Features.User.Errors": {
         "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.User.Errors::ReturnInvalidEntriesError(System.String)": {
           "Lines": {
-            "7": 0,
-            "8": 0
+            "7": 2,
+            "8": 2
           },
           "Branches": []
         },
@@ -570,7 +570,7 @@
       "SPW.Admin.Api.Features.User.Create.CreateHandler": {
         "System.Void SPW.Admin.Api.Features.User.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.User.IUserData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.User.Create.CreateCommand>)": {
           "Lines": {
-            "5": 0
+            "5": 2
           },
           "Branches": []
         }
@@ -578,28 +578,28 @@
       "SPW.Admin.Api.Features.User.Create.CreateHandler/<Handle>d__3": {
         "System.Void SPW.Admin.Api.Features.User.Create.CreateHandler/<Handle>d__3::MoveNext()": {
           "Lines": {
-            "9": 0,
-            "10": 0,
-            "12": 0,
-            "13": 0,
-            "14": 0,
-            "15": 0,
-            "18": 0,
-            "19": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "24": 0,
-            "25": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0,
-            "29": 0,
-            "30": 0,
-            "32": 0,
-            "34": 0,
-            "35": 0
+            "9": 2,
+            "10": 2,
+            "12": 2,
+            "13": 1,
+            "14": 1,
+            "15": 1,
+            "18": 1,
+            "19": 1,
+            "20": 1,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "24": 1,
+            "25": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "32": 1,
+            "34": 1,
+            "35": 2
           },
           "Branches": [
             {
@@ -608,7 +608,7 @@
               "EndOffset": 64,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 12,
@@ -616,7 +616,7 @@
               "EndOffset": 97,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -626,8 +626,8 @@
       "SPW.Admin.Api.Features.SpecialDay.Errors": {
         "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.SpecialDay.Errors::ReturnInvalidEntriesError(System.String)": {
           "Lines": {
-            "7": 0,
-            "8": 0
+            "7": 6,
+            "8": 6
           },
           "Branches": []
         },
@@ -644,11 +644,11 @@
       "SPW.Admin.Api.Features.SpecialDay.Update.UpdateHandler": {
         "System.Void SPW.Admin.Api.Features.SpecialDay.Update.UpdateHandler::.ctor(SPW.Admin.Api.Features.SpecialDay.ISpecialDayData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.SpecialDay.Update.UpdateCommand>)": {
           "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0,
-            "13": 0,
-            "14": 0
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
           },
           "Branches": []
         }
@@ -656,23 +656,23 @@
       "SPW.Admin.Api.Features.SpecialDay.Update.UpdateHandler/<Handle>d__3": {
         "System.Void SPW.Admin.Api.Features.SpecialDay.Update.UpdateHandler/<Handle>d__3::MoveNext()": {
           "Lines": {
-            "17": 0,
-            "18": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0,
-            "29": 0,
-            "30": 0,
-            "31": 0,
-            "32": 0,
-            "33": 0,
-            "35": 0,
-            "37": 0,
-            "38": 0
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "35": 1,
+            "37": 1,
+            "38": 2
           },
           "Branches": [
             {
@@ -681,7 +681,7 @@
               "EndOffset": 64,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 20,
@@ -689,7 +689,7 @@
               "EndOffset": 97,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -725,7 +725,7 @@
       "SPW.Admin.Api.Features.SpecialDay.GetById.GetByIdQuery": {
         "System.Guid SPW.Admin.Api.Features.SpecialDay.GetById.GetByIdQuery::get_Id()": {
           "Lines": {
-            "5": 0
+            "5": 2
           },
           "Branches": []
         }
@@ -735,7 +735,7 @@
       "SPW.Admin.Api.Features.SpecialDay.GetAll.GetAllQuery": {
         "System.Void SPW.Admin.Api.Features.SpecialDay.GetAll.GetAllQuery::.ctor()": {
           "Lines": {
-            "5": 0
+            "5": 1
           },
           "Branches": []
         }
@@ -745,11 +745,11 @@
       "SPW.Admin.Api.Features.SpecialDay.Delete.DeleteHandler": {
         "System.Void SPW.Admin.Api.Features.SpecialDay.Delete.DeleteHandler::.ctor(SPW.Admin.Api.Features.SpecialDay.ISpecialDayData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.SpecialDay.Delete.DeleteCommand>)": {
           "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0,
-            "13": 0,
-            "14": 0
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
           },
           "Branches": []
         }
@@ -757,19 +757,19 @@
       "SPW.Admin.Api.Features.SpecialDay.Delete.DeleteHandler/<Handle>d__3": {
         "System.Void SPW.Admin.Api.Features.SpecialDay.Delete.DeleteHandler/<Handle>d__3::MoveNext()": {
           "Lines": {
-            "17": 0,
-            "18": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "26": 0,
-            "28": 0,
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "28": 1,
             "29": 0,
             "30": 0,
-            "33": 0,
-            "35": 0,
-            "36": 0
+            "33": 1,
+            "35": 1,
+            "36": 2
           },
           "Branches": [
             {
@@ -778,7 +778,7 @@
               "EndOffset": 75,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 20,
@@ -786,7 +786,7 @@
               "EndOffset": 108,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 28,
@@ -802,7 +802,7 @@
               "EndOffset": 293,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -812,11 +812,11 @@
       "SPW.Admin.Api.Features.SpecialDay.Create.CreateHandler": {
         "System.Void SPW.Admin.Api.Features.SpecialDay.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.SpecialDay.ISpecialDayData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.SpecialDay.Create.CreateCommand>)": {
           "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0,
-            "13": 0,
-            "14": 0
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
           },
           "Branches": []
         }
@@ -824,23 +824,23 @@
       "SPW.Admin.Api.Features.SpecialDay.Create.CreateHandler/<Handle>d__3": {
         "System.Void SPW.Admin.Api.Features.SpecialDay.Create.CreateHandler/<Handle>d__3::MoveNext()": {
           "Lines": {
-            "17": 0,
-            "18": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0,
-            "29": 0,
-            "30": 0,
-            "31": 0,
-            "32": 0,
-            "33": 0,
-            "35": 0,
-            "37": 0,
-            "38": 0
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "35": 1,
+            "37": 1,
+            "38": 2
           },
           "Branches": [
             {
@@ -849,7 +849,7 @@
               "EndOffset": 64,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 20,
@@ -857,7 +857,7 @@
               "EndOffset": 97,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -1200,8 +1200,8 @@
       "SPW.Admin.Api.Features.Point.Errors": {
         "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Point.Errors::ReturnInvalidEntriesError(System.String)": {
           "Lines": {
-            "7": 0,
-            "8": 0
+            "7": 6,
+            "8": 6
           },
           "Branches": []
         },
@@ -1218,37 +1218,37 @@
       "SPW.Admin.Api.Features.Point.Update.UpdateCommand": {
         "System.Guid SPW.Admin.Api.Features.Point.Update.UpdateCommand::get_Id()": {
           "Lines": {
-            "7": 0
+            "7": 1
           },
           "Branches": []
         },
         "System.String SPW.Admin.Api.Features.Point.Update.UpdateCommand::get_Name()": {
           "Lines": {
-            "8": 0
+            "8": 3
           },
           "Branches": []
         },
         "System.Int32 SPW.Admin.Api.Features.Point.Update.UpdateCommand::get_NumberOfPublishers()": {
           "Lines": {
-            "9": 0
+            "9": 3
           },
           "Branches": []
         },
         "System.String SPW.Admin.Api.Features.Point.Update.UpdateCommand::get_Address()": {
           "Lines": {
-            "10": 0
+            "10": 3
           },
           "Branches": []
         },
         "System.String SPW.Admin.Api.Features.Point.Update.UpdateCommand::get_ImageUrl()": {
           "Lines": {
-            "11": 0
+            "11": 3
           },
           "Branches": []
         },
         "System.String SPW.Admin.Api.Features.Point.Update.UpdateCommand::get_GoogleMapsUrl()": {
           "Lines": {
-            "12": 0
+            "12": 3
           },
           "Branches": []
         }
@@ -1258,11 +1258,11 @@
       "SPW.Admin.Api.Features.Point.Update.UpdateHandler": {
         "System.Void SPW.Admin.Api.Features.Point.Update.UpdateHandler::.ctor(SPW.Admin.Api.Features.Point.IPointData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Point.Update.UpdateCommand>)": {
           "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0,
-            "13": 0,
-            "14": 0
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
           },
           "Branches": []
         }
@@ -1270,24 +1270,24 @@
       "SPW.Admin.Api.Features.Point.Update.UpdateHandler/<Handle>d__3": {
         "System.Void SPW.Admin.Api.Features.Point.Update.UpdateHandler/<Handle>d__3::MoveNext()": {
           "Lines": {
-            "17": 0,
-            "18": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0,
-            "29": 0,
-            "30": 0,
-            "31": 0,
-            "32": 0,
-            "33": 0,
-            "34": 0,
-            "36": 0,
-            "38": 0,
-            "39": 0
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "34": 1,
+            "36": 1,
+            "38": 1,
+            "39": 2
           },
           "Branches": [
             {
@@ -1296,7 +1296,7 @@
               "EndOffset": 64,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 20,
@@ -1304,7 +1304,7 @@
               "EndOffset": 97,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -1314,7 +1314,7 @@
       "SPW.Admin.Api.Features.Point.GetById.GetByIdQuery": {
         "System.Guid SPW.Admin.Api.Features.Point.GetById.GetByIdQuery::get_Id()": {
           "Lines": {
-            "5": 0
+            "5": 2
           },
           "Branches": []
         }
@@ -1324,7 +1324,7 @@
       "SPW.Admin.Api.Features.Point.GetAll.GetAllQuery": {
         "System.Void SPW.Admin.Api.Features.Point.GetAll.GetAllQuery::.ctor()": {
           "Lines": {
-            "5": 0
+            "5": 1
           },
           "Branches": []
         }
@@ -1334,11 +1334,11 @@
       "SPW.Admin.Api.Features.Point.Delete.DeleteHandler": {
         "System.Void SPW.Admin.Api.Features.Point.Delete.DeleteHandler::.ctor(SPW.Admin.Api.Features.Point.IPointData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Point.Delete.DeleteCommand>)": {
           "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0,
-            "13": 0,
-            "14": 0
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
           },
           "Branches": []
         }
@@ -1346,19 +1346,19 @@
       "SPW.Admin.Api.Features.Point.Delete.DeleteHandler/<Handle>d__3": {
         "System.Void SPW.Admin.Api.Features.Point.Delete.DeleteHandler/<Handle>d__3::MoveNext()": {
           "Lines": {
-            "17": 0,
-            "18": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "26": 0,
-            "28": 0,
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "28": 1,
             "29": 0,
             "30": 0,
-            "33": 0,
-            "35": 0,
-            "36": 0
+            "33": 1,
+            "35": 1,
+            "36": 2
           },
           "Branches": [
             {
@@ -1367,7 +1367,7 @@
               "EndOffset": 75,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 20,
@@ -1375,7 +1375,7 @@
               "EndOffset": 108,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 28,
@@ -1391,7 +1391,7 @@
               "EndOffset": 293,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -1401,11 +1401,11 @@
       "SPW.Admin.Api.Features.Point.Create.CreateHandler": {
         "System.Void SPW.Admin.Api.Features.Point.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.Point.IPointData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Point.Create.CreateCommand>)": {
           "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0,
-            "13": 0,
-            "14": 0
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
           },
           "Branches": []
         }
@@ -1413,25 +1413,25 @@
       "SPW.Admin.Api.Features.Point.Create.CreateHandler/<Handle>d__3": {
         "System.Void SPW.Admin.Api.Features.Point.Create.CreateHandler/<Handle>d__3::MoveNext()": {
           "Lines": {
-            "17": 0,
-            "18": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0,
-            "29": 0,
-            "30": 0,
-            "31": 0,
-            "32": 0,
-            "33": 0,
-            "34": 0,
-            "35": 0,
-            "37": 0,
-            "39": 0,
-            "40": 0
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "34": 1,
+            "35": 1,
+            "37": 1,
+            "39": 1,
+            "40": 2
           },
           "Branches": [
             {
@@ -1440,7 +1440,7 @@
               "EndOffset": 64,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 20,
@@ -1448,7 +1448,7 @@
               "EndOffset": 97,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -2025,8 +2025,8 @@
       "SPW.Admin.Api.Features.Congregation.Errors": {
         "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Congregation.Errors::ReturnInvalidEntriesError(System.String)": {
           "Lines": {
-            "7": 0,
-            "8": 0
+            "7": 6,
+            "8": 6
           },
           "Branches": []
         },
@@ -2043,11 +2043,11 @@
       "SPW.Admin.Api.Features.Congregation.Update.UpdateHandler": {
         "System.Void SPW.Admin.Api.Features.Congregation.Update.UpdateHandler::.ctor(SPW.Admin.Api.Features.Congregation.ICongregationData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Congregation.Update.UpdateCommand>)": {
           "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0,
-            "13": 0,
-            "14": 0
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
           },
           "Branches": []
         }
@@ -2055,22 +2055,22 @@
       "SPW.Admin.Api.Features.Congregation.Update.UpdateHandler/<Handle>d__3": {
         "System.Void SPW.Admin.Api.Features.Congregation.Update.UpdateHandler/<Handle>d__3::MoveNext()": {
           "Lines": {
-            "17": 0,
-            "18": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0,
-            "29": 0,
-            "30": 0,
-            "31": 0,
-            "32": 0,
-            "34": 0,
-            "36": 0,
-            "37": 0
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "34": 1,
+            "36": 1,
+            "37": 2
           },
           "Branches": [
             {
@@ -2079,7 +2079,7 @@
               "EndOffset": 64,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 20,
@@ -2087,7 +2087,7 @@
               "EndOffset": 97,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -2097,7 +2097,7 @@
       "SPW.Admin.Api.Features.Congregation.GetById.GetByIdQuery": {
         "System.Guid SPW.Admin.Api.Features.Congregation.GetById.GetByIdQuery::get_Id()": {
           "Lines": {
-            "5": 0
+            "5": 2
           },
           "Branches": []
         }
@@ -2107,7 +2107,7 @@
       "SPW.Admin.Api.Features.Congregation.GetAll.GetAllQuery": {
         "System.Void SPW.Admin.Api.Features.Congregation.GetAll.GetAllQuery::.ctor()": {
           "Lines": {
-            "5": 0
+            "5": 1
           },
           "Branches": []
         }
@@ -2117,11 +2117,11 @@
       "SPW.Admin.Api.Features.Congregation.Create.CreateHandler": {
         "System.Void SPW.Admin.Api.Features.Congregation.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.Congregation.ICongregationData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Congregation.Create.CreateCommand>)": {
           "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0,
-            "13": 0,
-            "14": 0
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
           },
           "Branches": []
         }
@@ -2129,23 +2129,23 @@
       "SPW.Admin.Api.Features.Congregation.Create.CreateHandler/<Handle>d__3": {
         "System.Void SPW.Admin.Api.Features.Congregation.Create.CreateHandler/<Handle>d__3::MoveNext()": {
           "Lines": {
-            "17": 0,
-            "18": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0,
-            "29": 0,
-            "30": 0,
-            "31": 0,
-            "32": 0,
-            "33": 0,
-            "35": 0,
-            "37": 0,
-            "38": 0
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "35": 1,
+            "37": 1,
+            "38": 2
           },
           "Branches": [
             {
@@ -2154,7 +2154,7 @@
               "EndOffset": 64,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 20,
@@ -2162,7 +2162,7 @@
               "EndOffset": 97,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -2476,8 +2476,8 @@
       "SPW.Admin.Api.Features.Circuit.Errors": {
         "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Circuit.Errors::ReturnInvalidEntriesError(System.String)": {
           "Lines": {
-            "7": 0,
-            "8": 0
+            "7": 6,
+            "8": 6
           },
           "Branches": []
         },
@@ -2494,11 +2494,11 @@
       "SPW.Admin.Api.Features.Circuit.Update.UpdateHandler": {
         "System.Void SPW.Admin.Api.Features.Circuit.Update.UpdateHandler::.ctor(SPW.Admin.Api.Features.Circuit.ICircuitData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Circuit.Update.UpdateCommand>)": {
           "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0,
-            "13": 0,
-            "14": 0
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
           },
           "Branches": []
         }
@@ -2506,20 +2506,20 @@
       "SPW.Admin.Api.Features.Circuit.Update.UpdateHandler/<Handle>d__3": {
         "System.Void SPW.Admin.Api.Features.Circuit.Update.UpdateHandler/<Handle>d__3::MoveNext()": {
           "Lines": {
-            "17": 0,
-            "18": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0,
-            "29": 0,
-            "30": 0,
-            "32": 0,
-            "34": 0,
-            "35": 0
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "32": 1,
+            "34": 1,
+            "35": 2
           },
           "Branches": [
             {
@@ -2528,7 +2528,7 @@
               "EndOffset": 64,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 20,
@@ -2536,7 +2536,7 @@
               "EndOffset": 97,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -2561,7 +2561,7 @@
       "SPW.Admin.Api.Features.Circuit.GetById.GetByIdQuery": {
         "System.Guid SPW.Admin.Api.Features.Circuit.GetById.GetByIdQuery::get_Id()": {
           "Lines": {
-            "5": 0
+            "5": 2
           },
           "Branches": []
         }
@@ -2571,7 +2571,7 @@
       "SPW.Admin.Api.Features.Circuit.GetAll.GetAllQuery": {
         "System.Void SPW.Admin.Api.Features.Circuit.GetAll.GetAllQuery::.ctor()": {
           "Lines": {
-            "5": 0
+            "5": 1
           },
           "Branches": []
         }
@@ -2581,11 +2581,11 @@
       "SPW.Admin.Api.Features.Circuit.Create.CreateHandler": {
         "System.Void SPW.Admin.Api.Features.Circuit.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.Circuit.ICircuitData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Circuit.Create.CreateCommand>)": {
           "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0,
-            "13": 0,
-            "14": 0
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
           },
           "Branches": []
         }
@@ -2593,22 +2593,22 @@
       "SPW.Admin.Api.Features.Circuit.Create.CreateHandler/<Handle>d__3": {
         "System.Void SPW.Admin.Api.Features.Circuit.Create.CreateHandler/<Handle>d__3::MoveNext()": {
           "Lines": {
-            "17": 0,
-            "18": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0,
-            "29": 0,
-            "30": 0,
-            "31": 0,
-            "32": 0,
-            "34": 0,
-            "36": 0,
-            "37": 0
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "34": 1,
+            "36": 1,
+            "37": 2
           },
           "Branches": [
             {
@@ -2617,7 +2617,7 @@
               "EndOffset": 64,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 20,
@@ -2625,7 +2625,7 @@
               "EndOffset": 97,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -2845,8 +2845,8 @@
       "SPW.Admin.Api.Features.Announcement.Errors": {
         "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Announcement.Errors::ReturnInvalidEntriesError(System.String)": {
           "Lines": {
-            "7": 0,
-            "8": 0
+            "7": 6,
+            "8": 6
           },
           "Branches": []
         },
@@ -2863,11 +2863,11 @@
       "SPW.Admin.Api.Features.Announcement.Update.UpdateHandler": {
         "System.Void SPW.Admin.Api.Features.Announcement.Update.UpdateHandler::.ctor(SPW.Admin.Api.Features.Announcement.IAnnouncementData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Announcement.Update.UpdateCommand>)": {
           "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0,
-            "13": 0,
-            "14": 0
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
           },
           "Branches": []
         }
@@ -2875,21 +2875,21 @@
       "SPW.Admin.Api.Features.Announcement.Update.UpdateHandler/<Handle>d__3": {
         "System.Void SPW.Admin.Api.Features.Announcement.Update.UpdateHandler/<Handle>d__3::MoveNext()": {
           "Lines": {
-            "17": 0,
-            "18": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0,
-            "29": 0,
-            "30": 0,
-            "31": 0,
-            "33": 0,
-            "35": 0,
-            "36": 0
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "33": 1,
+            "35": 1,
+            "36": 2
           },
           "Branches": [
             {
@@ -2898,7 +2898,7 @@
               "EndOffset": 64,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 20,
@@ -2906,7 +2906,7 @@
               "EndOffset": 97,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -2916,7 +2916,7 @@
       "SPW.Admin.Api.Features.Announcement.GetById.GetByIdQuery": {
         "System.Guid SPW.Admin.Api.Features.Announcement.GetById.GetByIdQuery::get_Id()": {
           "Lines": {
-            "5": 0
+            "5": 2
           },
           "Branches": []
         }
@@ -2926,7 +2926,7 @@
       "SPW.Admin.Api.Features.Announcement.GetAll.GetAllQuery": {
         "System.Void SPW.Admin.Api.Features.Announcement.GetAll.GetAllQuery::.ctor()": {
           "Lines": {
-            "5": 0
+            "5": 1
           },
           "Branches": []
         }
@@ -2936,11 +2936,11 @@
       "SPW.Admin.Api.Features.Announcement.Delete.DeleteHandler": {
         "System.Void SPW.Admin.Api.Features.Announcement.Delete.DeleteHandler::.ctor(SPW.Admin.Api.Features.Announcement.IAnnouncementData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Announcement.Delete.DeleteCommand>)": {
           "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0,
-            "13": 0,
-            "14": 0
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
           },
           "Branches": []
         }
@@ -2948,19 +2948,19 @@
       "SPW.Admin.Api.Features.Announcement.Delete.DeleteHandler/<Handle>d__3": {
         "System.Void SPW.Admin.Api.Features.Announcement.Delete.DeleteHandler/<Handle>d__3::MoveNext()": {
           "Lines": {
-            "17": 0,
-            "18": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "26": 0,
-            "28": 0,
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "28": 1,
             "29": 0,
             "30": 0,
-            "33": 0,
-            "35": 0,
-            "36": 0
+            "33": 1,
+            "35": 1,
+            "36": 2
           },
           "Branches": [
             {
@@ -2969,7 +2969,7 @@
               "EndOffset": 75,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 20,
@@ -2977,7 +2977,7 @@
               "EndOffset": 108,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 28,
@@ -2993,7 +2993,7 @@
               "EndOffset": 293,
               "Path": 1,
               "Ordinal": 3,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }
@@ -3028,11 +3028,11 @@
       "SPW.Admin.Api.Features.Announcement.Create.CreateHandler": {
         "System.Void SPW.Admin.Api.Features.Announcement.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.Announcement.IAnnouncementData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Announcement.Create.CreateCommand>)": {
           "Lines": {
-            "10": 0,
-            "11": 0,
-            "12": 0,
-            "13": 0,
-            "14": 0
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
           },
           "Branches": []
         }
@@ -3040,23 +3040,23 @@
       "SPW.Admin.Api.Features.Announcement.Create.CreateHandler/<Handle>d__3": {
         "System.Void SPW.Admin.Api.Features.Announcement.Create.CreateHandler/<Handle>d__3::MoveNext()": {
           "Lines": {
-            "17": 0,
-            "18": 0,
-            "20": 0,
-            "21": 0,
-            "22": 0,
-            "23": 0,
-            "26": 0,
-            "27": 0,
-            "28": 0,
-            "29": 0,
-            "30": 0,
-            "31": 0,
-            "32": 0,
-            "33": 0,
-            "35": 0,
-            "37": 0,
-            "38": 0
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "35": 1,
+            "37": 1,
+            "38": 2
           },
           "Branches": [
             {
@@ -3065,7 +3065,7 @@
               "EndOffset": 64,
               "Path": 0,
               "Ordinal": 0,
-              "Hits": 0
+              "Hits": 1
             },
             {
               "Line": 20,
@@ -3073,7 +3073,7 @@
               "EndOffset": 97,
               "Path": 1,
               "Ordinal": 1,
-              "Hits": 0
+              "Hits": 1
             }
           ]
         }

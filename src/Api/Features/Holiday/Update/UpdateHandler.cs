@@ -25,12 +25,13 @@ internal sealed class UpdateHandler : IRequestHandler<UpdateCommand, Result<Guid
 
         var entity = new HolidayEntity
         {
+            DomainId = request.DomainId,
             Id = request.Id,
             Name = request.Name,
             Date = request.Date
         };
 
-        await _holidayData.UpdateAsync(entity, cancellationToken);
+        await _holidayData.UpdateHolidayAsync(entity, cancellationToken);
 
         return new Result<Guid>(entity.Id);
     }

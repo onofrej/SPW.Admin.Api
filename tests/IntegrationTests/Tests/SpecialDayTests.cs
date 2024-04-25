@@ -3,7 +3,6 @@ using SPW.Admin.Api.Features.Domain;
 using SPW.Admin.Api.Features.SpecialDay;
 using SPW.Admin.Api.Features.SpecialDay.Create;
 using SPW.Admin.Api.Features.SpecialDay.Update;
-using SPW.Admin.Api.Features.User;
 using SPW.Admin.Api.Shared.Models;
 using SPW.Admin.IntegrationTests.Common;
 using SPW.Admin.IntegrationTests.Fixtures;

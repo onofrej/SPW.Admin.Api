@@ -3,66 +3,75 @@ name: ASP.NET 8 Build
 on:
   push:
     branches:
-      - 'feature**'
+      - "feature**"
 
 jobs:
   Build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-      
-    - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '8.x' # Change to the version of .NET Core you need
-      
-    - name: Restore dependencies
-      run: dotnet restore
-      
-    - name: Build
-      run: dotnet build --configuration Release
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "8.x" # Change to the version of .NET Core you need
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release
 
   Unit-tests:
     runs-on: ubuntu-latest
     needs: Build
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-      
-    - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '8.x' # Change to the version of .NET Core you need
-      
-    - name: Restore dependencies
-      run: dotnet restore
-      
-    - name: Test
-      run: dotnet test ./tests/UnitTests/*.csproj --no-restore --logger:"trx" /p:CollectCoverage=\"true\" /p:CoverletOutputFormat=\"opencover\" /p:Exclude=\"[xunit.*]*\"
-  
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "8.x" # Change to the version of .NET Core you need
+
+      - name: Install Coverlet
+        run: dotnet tool install --global coverlet.console
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release
+
+      - name: Test
+        run: dotnet test ./tests/UnitTests/*.csproj --no-restore --logger:"trx" /p:CollectCoverage=\"true\" /p:CoverletOutputFormat=\"opencover\" /p:Exclude=\"[xunit.*]*\"
+
+      - name: Coverage test
+        run: coverlet ./tests/UnitTests/bin/Debug/net8.0/SPW.Admin.UnitTests.dll --target "dotnet" --targetargs "test ./tests/UnitTests/UnitTests.csproj --no-build"
+
   Integration-tests:
     runs-on: ubuntu-latest
     timeout-minutes: 2
     needs: unit-tests
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-      
-    - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '8.x' # Change to the version of .NET Core you need
-      
-    - name: Restore dependencies
-      run: dotnet restore
-    
-    - name: Build
-      run: dotnet build --configuration Release
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Test
-      run: |
-        ls
-        docker-compose -f ./tests/IntegrationTests/docker-compose.yaml up -d
-        dotnet test ./tests/IntegrationTests/*.csproj
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "8.x" # Change to the version of .NET Core you need
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release
+
+      - name: Test
+        run: |
+          ls
+          docker-compose -f ./tests/IntegrationTests/docker-compose.yaml up -d
+          dotnet test ./tests/IntegrationTests/*.csproj

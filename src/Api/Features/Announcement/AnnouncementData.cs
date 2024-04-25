@@ -1,6 +1,4 @@
-﻿using SPW.Admin.Api.Features.Circuit;
-
-namespace SPW.Admin.Api.Features.Announcement;
+﻿namespace SPW.Admin.Api.Features.Announcement;
 
 [ExcludeFromCodeCoverage]
 internal sealed class AnnouncementData(NpgsqlDataSourceBuilder npgsqlDataSourceBuilder) : IAnnouncementData

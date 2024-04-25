@@ -14,10 +14,10 @@ public class HolidayTests : BaseIntegratedTest, IClassFixture<MainFixture>
     private const string GetByIdQuery = @"SELECT * FROM ""holiday"" WHERE id = @Id";
     private const string InsertQuery = @"INSERT INTO ""holiday"" (id, name, date, domain_id) VALUES (@Id, @Name, @Date, @DomainId)";
     private readonly MainFixture _mainFixture;
-    private const int DaysToAddAtDateValues = 10;
 
-    private readonly DateTime _creationDate = new(DateTime.Now.Year + DaysToAddAtDateValues,
-        DateTime.Now.Month, DateTime.Now.Day);
+    private readonly DateTime _creationDate = new(year: DateTime.Now.Year,
+        month: DateTime.Now.Month,
+        day: DateTime.Now.Day, 0, 0, 0, DateTimeKind.Utc);
 
     private readonly DomainEntity _domainEntity = new Faker<DomainEntity>().StrictMode(true)
        .RuleFor(property => property.Name, setter => setter.Company.CompanyName())

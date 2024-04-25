@@ -1,6 +1,5 @@
-using System.IO.Compression;
-using Microsoft.AspNetCore.ResponseCompression;
 using SPW.Admin.Api.DependencyInjection;
+using SPW.Admin.Api.Shared.Infrastructure;
 using SPW.Admin.Api.Shared.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +10,10 @@ builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 
 builder.Services.InitializeApplicationDependencies();
 
+builder.Services.AddScoped<IDynamoDBContext, DynamoDBContext>();
+
+builder.Services.AddAWSService<IAmazonDynamoDB>();
+
 builder.Services.AddCarter();
 
 builder.Services.AddMediatR(configuration =>
@@ -20,15 +23,22 @@ builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 
 builder.Services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehavior<,>));
 
-builder.Services.AddScoped<IDynamoDBContext, DynamoDBContext>();
+builder.Services.AddSingleton(_ =>
+{
+    DefaultTypeMap.MatchNamesWithUnderscores = true;
+    return new NpgsqlDataSourceBuilder(builder.Configuration.GetSection("PostgreSQL:ConnectionString").Value!);
+});
 
-builder.Services.AddAWSService<IAmazonDynamoDB>();
+builder.Services.AddSingleton<IConnectionProvider, ConnectionProvider>();
 
 builder.Logging.ClearProviders();
 
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.CustomSchemaIds(x => x.FullName);
+});
 
 builder.Services.AddResponseCompression(options =>
 {
@@ -45,6 +55,17 @@ builder.Services.Configure<BrotliCompressionProviderOptions>(options =>
 builder.Services.Configure<GzipCompressionProviderOptions>(options =>
 {
     options.Level = CompressionLevel.SmallestSize;
+});
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("frontend_consumer");
+        });
 });
 
 Log.Logger = new LoggerConfiguration()
@@ -69,6 +90,11 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UseResponseCompression();
+
+app.UseCors(MyAllowSpecificOrigins);
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Run();
 

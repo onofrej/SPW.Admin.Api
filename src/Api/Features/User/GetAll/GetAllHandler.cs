@@ -1,5 +1,4 @@
-﻿using SPW.Admin.Api.Features.User.DataAccess;
-using SPW.Admin.Api.Shared.Models;
+﻿using SPW.Admin.Api.Shared.Models;
 
 namespace SPW.Admin.Api.Features.User.GetAll;
 
@@ -15,6 +14,6 @@ internal sealed class GetAllHandler : IRequestHandler<GetAllQuery, Result<IEnume
 
     public async Task<Result<IEnumerable<UserEntity>>> Handle(GetAllQuery request, CancellationToken cancellationToken)
     {
-        return new Result<IEnumerable<UserEntity>>(await _userData.GetAllAsync(cancellationToken));
+        return new Result<IEnumerable<UserEntity>>(await _userData.GetAllUsersAsync(cancellationToken));
     }
 }

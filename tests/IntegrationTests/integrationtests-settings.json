@@ -1,0 +1,8 @@
+{
+  "AWSLocalStackSettings": {
+    "ServiceURL": "http://localhost:4566"
+  },
+  "PostgreSQL": {
+    "ConnectionString": "Host=localhost;Port=5432;Database=db-spw;Username=admin;Password=integrated-test-pwd"
+  }
+}

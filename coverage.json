@@ -1,0 +1,3104 @@
+{
+  "SPW.Admin.Api.dll": {
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Shared\\Middlewares\\GlobalExceptionHandler.cs": {
+      "SPW.Admin.Api.Shared.Middlewares.GlobalExceptionHandler": {
+        "System.Void SPW.Admin.Api.Shared.Middlewares.GlobalExceptionHandler::.ctor(Microsoft.AspNetCore.Http.RequestDelegate)": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Shared.Middlewares.GlobalExceptionHandler/<InvokeAsync>d__3": {
+        "System.Void SPW.Admin.Api.Shared.Middlewares.GlobalExceptionHandler/<InvokeAsync>d__3::MoveNext()": {
+          "Lines": {
+            "16": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "26": 0,
+            "28": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Shared\\Middlewares\\LoggingPipelineBehavior.cs": {
+      "SPW.Admin.Api.Shared.Middlewares.LoggingPipelineBehavior`2": {
+        "System.Void SPW.Admin.Api.Shared.Middlewares.LoggingPipelineBehavior`2::.ctor(Microsoft.Extensions.Logging.ILogger`1<SPW.Admin.Api.Shared.Middlewares.LoggingPipelineBehavior`2<TRequest,TResponse>>)": {
+          "Lines": {
+            "9": 0,
+            "10": 0,
+            "11": 0,
+            "12": 0
+          },
+          "Branches": [
+            {
+              "Line": 11,
+              "Offset": 11,
+              "EndOffset": 13,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 11,
+              "Offset": 11,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Shared.Middlewares.LoggingPipelineBehavior`2/<Handle>d__2": {
+        "System.Void SPW.Admin.Api.Shared.Middlewares.LoggingPipelineBehavior`2/<Handle>d__2::MoveNext()": {
+          "Lines": {
+            "15": 0,
+            "16": 0,
+            "18": 0,
+            "20": 0,
+            "22": 0,
+            "23": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Validity\\EndPoints.cs": {
+      "SPW.Admin.Api.Features.Validity.EndPoints": {
+        "System.Void SPW.Admin.Api.Features.Validity.EndPoints::AddRoutes(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Validity.EndPoints/<CreateValidityAsync>d__3": {
+        "System.Void SPW.Admin.Api.Features.Validity.EndPoints/<CreateValidityAsync>d__3::MoveNext()": {
+          "Lines": {
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "66": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "73": 0,
+            "75": 0,
+            "76": 0
+          },
+          "Branches": [
+            {
+              "Line": 68,
+              "Offset": 253,
+              "EndOffset": 255,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 253,
+              "EndOffset": 293,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Validity.EndPoints/<DeleteValidityAsync>d__5": {
+        "System.Void SPW.Admin.Api.Features.Validity.EndPoints/<DeleteValidityAsync>d__5::MoveNext()": {
+          "Lines": {
+            "103": 0,
+            "104": 0,
+            "106": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "113": 0,
+            "115": 0,
+            "116": 0
+          },
+          "Branches": [
+            {
+              "Line": 108,
+              "Offset": 191,
+              "EndOffset": 193,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 108,
+              "Offset": 191,
+              "EndOffset": 228,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Validity.EndPoints/<GetByIdAsync>d__2": {
+        "System.Void SPW.Admin.Api.Features.Validity.EndPoints/<GetByIdAsync>d__2::MoveNext()": {
+          "Lines": {
+            "39": 0,
+            "40": 0,
+            "42": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "49": 0,
+            "51": 0,
+            "52": 0
+          },
+          "Branches": [
+            {
+              "Line": 44,
+              "Offset": 184,
+              "EndOffset": 186,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 184,
+              "EndOffset": 221,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Validity.EndPoints/<GetValiditiesAsync>d__1": {
+        "System.Void SPW.Admin.Api.Features.Validity.EndPoints/<GetValiditiesAsync>d__1::MoveNext()": {
+          "Lines": {
+            "25": 0,
+            "26": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "33": 0,
+            "35": 0,
+            "36": 0
+          },
+          "Branches": [
+            {
+              "Line": 28,
+              "Offset": 166,
+              "EndOffset": 168,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 166,
+              "EndOffset": 203,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Validity.EndPoints/<UpdateValidityAsync>d__4": {
+        "System.Void SPW.Admin.Api.Features.Validity.EndPoints/<UpdateValidityAsync>d__4::MoveNext()": {
+          "Lines": {
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "90": 0,
+            "92": 0,
+            "93": 0,
+            "94": 0,
+            "97": 0,
+            "99": 0,
+            "100": 0
+          },
+          "Branches": [
+            {
+              "Line": 92,
+              "Offset": 253,
+              "EndOffset": 255,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 92,
+              "Offset": 253,
+              "EndOffset": 290,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Validity\\Errors.cs": {
+      "SPW.Admin.Api.Features.Validity.Errors": {
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Validity.Errors::ReturnInvalidEntriesError(System.String)": {
+          "Lines": {
+            "7": 6,
+            "8": 6
+          },
+          "Branches": []
+        },
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Validity.Errors::ReturnValidityNotFoundError()": {
+          "Lines": {
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Validity\\Update\\UpdateHandler.cs": {
+      "SPW.Admin.Api.Features.Validity.Update.UpdateHandler": {
+        "System.Void SPW.Admin.Api.Features.Validity.Update.UpdateHandler::.ctor(SPW.Admin.Api.Features.Validity.IValidityData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Validity.Update.UpdateCommand>)": {
+          "Lines": {
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Validity.Update.UpdateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Validity.Update.UpdateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "34": 1,
+            "36": 1,
+            "37": 2
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Validity\\GetById\\GetByIdQuery.cs": {
+      "SPW.Admin.Api.Features.Validity.GetById.GetByIdQuery": {
+        "System.Guid SPW.Admin.Api.Features.Validity.GetById.GetByIdQuery::get_Id()": {
+          "Lines": {
+            "5": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Validity\\GetAll\\GetAllQuery.cs": {
+      "SPW.Admin.Api.Features.Validity.GetAll.GetAllQuery": {
+        "System.Void SPW.Admin.Api.Features.Validity.GetAll.GetAllQuery::.ctor()": {
+          "Lines": {
+            "5": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Validity\\Create\\CreateCommand.cs": {
+      "SPW.Admin.Api.Features.Validity.Create.CreateCommand": {
+        "System.DateTime SPW.Admin.Api.Features.Validity.Create.CreateCommand::get_StartDate()": {
+          "Lines": {
+            "7": 3
+          },
+          "Branches": []
+        },
+        "System.DateTime SPW.Admin.Api.Features.Validity.Create.CreateCommand::get_EndDate()": {
+          "Lines": {
+            "8": 3
+          },
+          "Branches": []
+        },
+        "System.Boolean SPW.Admin.Api.Features.Validity.Create.CreateCommand::get_Status()": {
+          "Lines": {
+            "9": 2
+          },
+          "Branches": []
+        },
+        "System.Guid SPW.Admin.Api.Features.Validity.Create.CreateCommand::get_DomainId()": {
+          "Lines": {
+            "10": 3
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Validity\\Create\\CreateHandler.cs": {
+      "SPW.Admin.Api.Features.Validity.Create.CreateHandler": {
+        "System.Void SPW.Admin.Api.Features.Validity.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.Validity.IValidityData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Validity.Create.CreateCommand>)": {
+          "Lines": {
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Validity.Create.CreateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Validity.Create.CreateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "35": 1,
+            "37": 1,
+            "38": 2
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Validity\\Create\\CreateValidator.cs": {
+      "SPW.Admin.Api.Features.Validity.Create.CreateValidator": {
+        "System.Void SPW.Admin.Api.Features.Validity.Create.CreateValidator::.ctor()": {
+          "Lines": {
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\User\\Errors.cs": {
+      "SPW.Admin.Api.Features.User.Errors": {
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.User.Errors::ReturnInvalidEntriesError(System.String)": {
+          "Lines": {
+            "7": 2,
+            "8": 2
+          },
+          "Branches": []
+        },
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.User.Errors::ReturnUserNotFoundError()": {
+          "Lines": {
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\User\\Update\\UpdateHandler.cs": {
+      "SPW.Admin.Api.Features.User.Update.UpdateHandler": {
+        "System.Void SPW.Admin.Api.Features.User.Update.UpdateHandler::.ctor(SPW.Admin.Api.Features.User.IUserData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.User.Update.UpdateCommand>)": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.User.Update.UpdateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.User.Update.UpdateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "40": 0,
+            "42": 0,
+            "43": 0
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\User\\GetById\\GetByIdQuery.cs": {
+      "SPW.Admin.Api.Features.User.GetById.GetByIdQuery": {
+        "System.Guid SPW.Admin.Api.Features.User.GetById.GetByIdQuery::get_Id()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\User\\GetAll\\GetAllQuery.cs": {
+      "SPW.Admin.Api.Features.User.GetAll.GetAllQuery": {
+        "System.Void SPW.Admin.Api.Features.User.GetAll.GetAllQuery::.ctor()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\User\\Create\\CreateHandler.cs": {
+      "SPW.Admin.Api.Features.User.Create.CreateHandler": {
+        "System.Void SPW.Admin.Api.Features.User.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.User.IUserData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.User.Create.CreateCommand>)": {
+          "Lines": {
+            "5": 2
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.User.Create.CreateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.User.Create.CreateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "9": 2,
+            "10": 2,
+            "12": 2,
+            "13": 1,
+            "14": 1,
+            "15": 1,
+            "18": 1,
+            "19": 1,
+            "20": 1,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "24": 1,
+            "25": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "32": 1,
+            "34": 1,
+            "35": 2
+          },
+          "Branches": [
+            {
+              "Line": 12,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 12,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\SpecialDay\\Errors.cs": {
+      "SPW.Admin.Api.Features.SpecialDay.Errors": {
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.SpecialDay.Errors::ReturnInvalidEntriesError(System.String)": {
+          "Lines": {
+            "7": 6,
+            "8": 6
+          },
+          "Branches": []
+        },
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.SpecialDay.Errors::ReturnSpecialDayNotFoundError()": {
+          "Lines": {
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\SpecialDay\\Update\\UpdateHandler.cs": {
+      "SPW.Admin.Api.Features.SpecialDay.Update.UpdateHandler": {
+        "System.Void SPW.Admin.Api.Features.SpecialDay.Update.UpdateHandler::.ctor(SPW.Admin.Api.Features.SpecialDay.ISpecialDayData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.SpecialDay.Update.UpdateCommand>)": {
+          "Lines": {
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.SpecialDay.Update.UpdateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.SpecialDay.Update.UpdateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "35": 1,
+            "37": 1,
+            "38": 2
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\SpecialDay\\Update\\UpdateValidator.cs": {
+      "SPW.Admin.Api.Features.SpecialDay.Update.UpdateValidator": {
+        "System.Void SPW.Admin.Api.Features.SpecialDay.Update.UpdateValidator::.ctor()": {
+          "Lines": {
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\SpecialDay\\GetById\\GetByIdQuery.cs": {
+      "SPW.Admin.Api.Features.SpecialDay.GetById.GetByIdQuery": {
+        "System.Guid SPW.Admin.Api.Features.SpecialDay.GetById.GetByIdQuery::get_Id()": {
+          "Lines": {
+            "5": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\SpecialDay\\GetAll\\GetAllQuery.cs": {
+      "SPW.Admin.Api.Features.SpecialDay.GetAll.GetAllQuery": {
+        "System.Void SPW.Admin.Api.Features.SpecialDay.GetAll.GetAllQuery::.ctor()": {
+          "Lines": {
+            "5": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\SpecialDay\\Delete\\DeleteHandler.cs": {
+      "SPW.Admin.Api.Features.SpecialDay.Delete.DeleteHandler": {
+        "System.Void SPW.Admin.Api.Features.SpecialDay.Delete.DeleteHandler::.ctor(SPW.Admin.Api.Features.SpecialDay.ISpecialDayData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.SpecialDay.Delete.DeleteCommand>)": {
+          "Lines": {
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.SpecialDay.Delete.DeleteHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.SpecialDay.Delete.DeleteHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "28": 1,
+            "29": 0,
+            "30": 0,
+            "33": 1,
+            "35": 1,
+            "36": 2
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 73,
+              "EndOffset": 75,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 20,
+              "Offset": 73,
+              "EndOffset": 108,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 28,
+              "Offset": 269,
+              "EndOffset": 271,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 269,
+              "EndOffset": 293,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\SpecialDay\\Create\\CreateHandler.cs": {
+      "SPW.Admin.Api.Features.SpecialDay.Create.CreateHandler": {
+        "System.Void SPW.Admin.Api.Features.SpecialDay.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.SpecialDay.ISpecialDayData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.SpecialDay.Create.CreateCommand>)": {
+          "Lines": {
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.SpecialDay.Create.CreateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.SpecialDay.Create.CreateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "35": 1,
+            "37": 1,
+            "38": 2
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Schedule\\Errors.cs": {
+      "SPW.Admin.Api.Features.Schedule.Errors": {
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Schedule.Errors::ReturnInvalidEntriesError(System.String)": {
+          "Lines": {
+            "7": 0,
+            "8": 0
+          },
+          "Branches": []
+        },
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Schedule.Errors::ReturnScheduleNotFoundError()": {
+          "Lines": {
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Schedule\\Update\\UpdateHandler.cs": {
+      "SPW.Admin.Api.Features.Schedule.Update.UpdateHandler": {
+        "System.Void SPW.Admin.Api.Features.Schedule.Update.UpdateHandler::.ctor(SPW.Admin.Api.Features.Schedule.IScheduleData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Schedule.Update.UpdateCommand>)": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Schedule.Update.UpdateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Schedule.Update.UpdateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "9": 0,
+            "10": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "24": 0,
+            "26": 0,
+            "27": 0
+          },
+          "Branches": [
+            {
+              "Line": 12,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 12,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Schedule\\GetById\\GetByIdQuery.cs": {
+      "SPW.Admin.Api.Features.Schedule.GetById.GetByIdQuery": {
+        "System.Guid SPW.Admin.Api.Features.Schedule.GetById.GetByIdQuery::get_Id()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Schedule\\GetAll\\GetAllQuery.cs": {
+      "SPW.Admin.Api.Features.Schedule.GetAll.GetAllQuery": {
+        "System.Void SPW.Admin.Api.Features.Schedule.GetAll.GetAllQuery::.ctor()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Schedule\\Create\\CreateHandler.cs": {
+      "SPW.Admin.Api.Features.Schedule.Create.CreateHandler": {
+        "System.Void SPW.Admin.Api.Features.Schedule.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.Schedule.IScheduleData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Schedule.Create.CreateCommand>)": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Schedule.Create.CreateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Schedule.Create.CreateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "9": 0,
+            "10": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "25": 0,
+            "27": 0,
+            "28": 0
+          },
+          "Branches": [
+            {
+              "Line": 12,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 12,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Point\\EndPoints.cs": {
+      "SPW.Admin.Api.Features.Point.EndPoints": {
+        "System.Void SPW.Admin.Api.Features.Point.EndPoints::AddRoutes(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Point.EndPoints/<CreatePointAsync>d__3": {
+        "System.Void SPW.Admin.Api.Features.Point.EndPoints/<CreatePointAsync>d__3::MoveNext()": {
+          "Lines": {
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "66": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "73": 0,
+            "75": 0,
+            "76": 0
+          },
+          "Branches": [
+            {
+              "Line": 68,
+              "Offset": 289,
+              "EndOffset": 291,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 68,
+              "Offset": 289,
+              "EndOffset": 329,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Point.EndPoints/<DeletePointAsync>d__5": {
+        "System.Void SPW.Admin.Api.Features.Point.EndPoints/<DeletePointAsync>d__5::MoveNext()": {
+          "Lines": {
+            "103": 0,
+            "104": 0,
+            "106": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "113": 0,
+            "115": 0,
+            "116": 0
+          },
+          "Branches": [
+            {
+              "Line": 108,
+              "Offset": 191,
+              "EndOffset": 193,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 108,
+              "Offset": 191,
+              "EndOffset": 228,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Point.EndPoints/<GetByIdAsync>d__2": {
+        "System.Void SPW.Admin.Api.Features.Point.EndPoints/<GetByIdAsync>d__2::MoveNext()": {
+          "Lines": {
+            "39": 0,
+            "40": 0,
+            "42": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "49": 0,
+            "51": 0,
+            "52": 0
+          },
+          "Branches": [
+            {
+              "Line": 44,
+              "Offset": 184,
+              "EndOffset": 186,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 184,
+              "EndOffset": 221,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Point.EndPoints/<GetPointsAsync>d__1": {
+        "System.Void SPW.Admin.Api.Features.Point.EndPoints/<GetPointsAsync>d__1::MoveNext()": {
+          "Lines": {
+            "25": 0,
+            "26": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "33": 0,
+            "35": 0,
+            "36": 0
+          },
+          "Branches": [
+            {
+              "Line": 28,
+              "Offset": 166,
+              "EndOffset": 168,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 166,
+              "EndOffset": 203,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Point.EndPoints/<UpdatePointAsync>d__4": {
+        "System.Void SPW.Admin.Api.Features.Point.EndPoints/<UpdatePointAsync>d__4::MoveNext()": {
+          "Lines": {
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "90": 0,
+            "92": 0,
+            "93": 0,
+            "94": 0,
+            "97": 0,
+            "99": 0,
+            "100": 0
+          },
+          "Branches": [
+            {
+              "Line": 92,
+              "Offset": 289,
+              "EndOffset": 291,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 92,
+              "Offset": 289,
+              "EndOffset": 326,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Point\\Errors.cs": {
+      "SPW.Admin.Api.Features.Point.Errors": {
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Point.Errors::ReturnInvalidEntriesError(System.String)": {
+          "Lines": {
+            "7": 6,
+            "8": 6
+          },
+          "Branches": []
+        },
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Point.Errors::ReturnPointNotFoundError()": {
+          "Lines": {
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Point\\Update\\UpdateCommand.cs": {
+      "SPW.Admin.Api.Features.Point.Update.UpdateCommand": {
+        "System.Guid SPW.Admin.Api.Features.Point.Update.UpdateCommand::get_Id()": {
+          "Lines": {
+            "7": 1
+          },
+          "Branches": []
+        },
+        "System.String SPW.Admin.Api.Features.Point.Update.UpdateCommand::get_Name()": {
+          "Lines": {
+            "8": 3
+          },
+          "Branches": []
+        },
+        "System.Int32 SPW.Admin.Api.Features.Point.Update.UpdateCommand::get_NumberOfPublishers()": {
+          "Lines": {
+            "9": 3
+          },
+          "Branches": []
+        },
+        "System.String SPW.Admin.Api.Features.Point.Update.UpdateCommand::get_Address()": {
+          "Lines": {
+            "10": 3
+          },
+          "Branches": []
+        },
+        "System.String SPW.Admin.Api.Features.Point.Update.UpdateCommand::get_ImageUrl()": {
+          "Lines": {
+            "11": 3
+          },
+          "Branches": []
+        },
+        "System.String SPW.Admin.Api.Features.Point.Update.UpdateCommand::get_GoogleMapsUrl()": {
+          "Lines": {
+            "12": 3
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Point\\Update\\UpdateHandler.cs": {
+      "SPW.Admin.Api.Features.Point.Update.UpdateHandler": {
+        "System.Void SPW.Admin.Api.Features.Point.Update.UpdateHandler::.ctor(SPW.Admin.Api.Features.Point.IPointData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Point.Update.UpdateCommand>)": {
+          "Lines": {
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Point.Update.UpdateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Point.Update.UpdateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "34": 1,
+            "36": 1,
+            "38": 1,
+            "39": 2
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Point\\GetById\\GetByIdQuery.cs": {
+      "SPW.Admin.Api.Features.Point.GetById.GetByIdQuery": {
+        "System.Guid SPW.Admin.Api.Features.Point.GetById.GetByIdQuery::get_Id()": {
+          "Lines": {
+            "5": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Point\\GetAll\\GetAllQuery.cs": {
+      "SPW.Admin.Api.Features.Point.GetAll.GetAllQuery": {
+        "System.Void SPW.Admin.Api.Features.Point.GetAll.GetAllQuery::.ctor()": {
+          "Lines": {
+            "5": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Point\\Delete\\DeleteHandler.cs": {
+      "SPW.Admin.Api.Features.Point.Delete.DeleteHandler": {
+        "System.Void SPW.Admin.Api.Features.Point.Delete.DeleteHandler::.ctor(SPW.Admin.Api.Features.Point.IPointData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Point.Delete.DeleteCommand>)": {
+          "Lines": {
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Point.Delete.DeleteHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Point.Delete.DeleteHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "28": 1,
+            "29": 0,
+            "30": 0,
+            "33": 1,
+            "35": 1,
+            "36": 2
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 73,
+              "EndOffset": 75,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 20,
+              "Offset": 73,
+              "EndOffset": 108,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 28,
+              "Offset": 269,
+              "EndOffset": 271,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 269,
+              "EndOffset": 293,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Point\\Create\\CreateHandler.cs": {
+      "SPW.Admin.Api.Features.Point.Create.CreateHandler": {
+        "System.Void SPW.Admin.Api.Features.Point.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.Point.IPointData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Point.Create.CreateCommand>)": {
+          "Lines": {
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Point.Create.CreateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Point.Create.CreateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "34": 1,
+            "35": 1,
+            "37": 1,
+            "39": 1,
+            "40": 2
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Holiday\\Errors.cs": {
+      "SPW.Admin.Api.Features.Holiday.Errors": {
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Holiday.Errors::ReturnInvalidEntriesError(System.String)": {
+          "Lines": {
+            "7": 0,
+            "8": 0
+          },
+          "Branches": []
+        },
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Holiday.Errors::ReturnHolidayNotFoundError()": {
+          "Lines": {
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Holiday\\Update\\UpdateHandler.cs": {
+      "SPW.Admin.Api.Features.Holiday.Update.UpdateHandler": {
+        "System.Void SPW.Admin.Api.Features.Holiday.Update.UpdateHandler::.ctor(SPW.Admin.Api.Features.Holiday.IHolidayData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Holiday.Update.UpdateCommand>)": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Holiday.Update.UpdateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Holiday.Update.UpdateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "33": 0,
+            "35": 0,
+            "36": 0
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Holiday\\GetById\\GetByIdQuery.cs": {
+      "SPW.Admin.Api.Features.Holiday.GetById.GetByIdQuery": {
+        "System.Guid SPW.Admin.Api.Features.Holiday.GetById.GetByIdQuery::get_Id()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Holiday\\GetAll\\GetAllQuery.cs": {
+      "SPW.Admin.Api.Features.Holiday.GetAll.GetAllQuery": {
+        "System.Void SPW.Admin.Api.Features.Holiday.GetAll.GetAllQuery::.ctor()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Holiday\\Create\\CreateHandler.cs": {
+      "SPW.Admin.Api.Features.Holiday.Create.CreateHandler": {
+        "System.Void SPW.Admin.Api.Features.Holiday.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.Holiday.IHolidayData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Holiday.Create.CreateCommand>)": {
+          "Lines": {
+            "10": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Holiday.Create.CreateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Holiday.Create.CreateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "33": 0,
+            "35": 0,
+            "36": 0
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Domain\\Errors.cs": {
+      "SPW.Admin.Api.Features.Domain.Errors": {
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Domain.Errors::ReturnInvalidEntriesError(System.String)": {
+          "Lines": {
+            "7": 0,
+            "8": 0
+          },
+          "Branches": []
+        },
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Domain.Errors::ReturnDomainNotFoundError()": {
+          "Lines": {
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Domain\\Update\\UpdateHandler.cs": {
+      "SPW.Admin.Api.Features.Domain.Update.UpdateHandler": {
+        "System.Void SPW.Admin.Api.Features.Domain.Update.UpdateHandler::.ctor(SPW.Admin.Api.Features.Domain.IDomainData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Domain.Update.UpdateCommand>)": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Domain.Update.UpdateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Domain.Update.UpdateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "23": 0,
+            "25": 0,
+            "26": 0
+          },
+          "Branches": [
+            {
+              "Line": 11,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 11,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Domain\\GetById\\GetByIdQuery.cs": {
+      "SPW.Admin.Api.Features.Domain.GetById.GetByIdQuery": {
+        "System.Guid SPW.Admin.Api.Features.Domain.GetById.GetByIdQuery::get_Id()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Domain\\GetAll\\GetAllQuery.cs": {
+      "SPW.Admin.Api.Features.Domain.GetAll.GetAllQuery": {
+        "System.Void SPW.Admin.Api.Features.Domain.GetAll.GetAllQuery::.ctor()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Domain\\Create\\CreateHandler.cs": {
+      "SPW.Admin.Api.Features.Domain.Create.CreateHandler": {
+        "System.Void SPW.Admin.Api.Features.Domain.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.Domain.IDomainData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Domain.Create.CreateCommand>)": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Domain.Create.CreateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Domain.Create.CreateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "8": 0,
+            "9": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "23": 0,
+            "25": 0,
+            "26": 0
+          },
+          "Branches": [
+            {
+              "Line": 11,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 11,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Congregation\\CongregationData.cs": {
+      "SPW.Admin.Api.Features.Congregation.CongregationData": {
+        "System.Void SPW.Admin.Api.Features.Congregation.CongregationData::.ctor(Npgsql.NpgsqlDataSourceBuilder)": {
+          "Lines": {
+            "3": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Congregation.CongregationData/<CreateCongregationAsync>d__4": {
+        "System.Void SPW.Admin.Api.Features.Congregation.CongregationData/<CreateCongregationAsync>d__4::MoveNext()": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Congregation.CongregationData/<DeleteCongregationAsync>d__6": {
+        "System.Void SPW.Admin.Api.Features.Congregation.CongregationData/<DeleteCongregationAsync>d__6::MoveNext()": {
+          "Lines": {
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Congregation.CongregationData/<GetAllCongregationsAsync>d__3": {
+        "System.Void SPW.Admin.Api.Features.Congregation.CongregationData/<GetAllCongregationsAsync>d__3::MoveNext()": {
+          "Lines": {
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Congregation.CongregationData/<GetCongregationByIdAsync>d__2": {
+        "System.Void SPW.Admin.Api.Features.Congregation.CongregationData/<GetCongregationByIdAsync>d__2::MoveNext()": {
+          "Lines": {
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Congregation.CongregationData/<UpdateCongregationAsync>d__5": {
+        "System.Void SPW.Admin.Api.Features.Congregation.CongregationData/<UpdateCongregationAsync>d__5::MoveNext()": {
+          "Lines": {
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Congregation\\EndPoints.cs": {
+      "SPW.Admin.Api.Features.Congregation.EndPoints": {
+        "System.Void SPW.Admin.Api.Features.Congregation.EndPoints::AddRoutes(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Congregation.EndPoints/<CreateCongregationAsync>d__3": {
+        "System.Void SPW.Admin.Api.Features.Congregation.EndPoints/<CreateCongregationAsync>d__3::MoveNext()": {
+          "Lines": {
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "63": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "70": 0,
+            "72": 0,
+            "73": 0
+          },
+          "Branches": [
+            {
+              "Line": 65,
+              "Offset": 235,
+              "EndOffset": 237,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 65,
+              "Offset": 235,
+              "EndOffset": 275,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Congregation.EndPoints/<DeleteCongregationAsync>d__5": {
+        "System.Void SPW.Admin.Api.Features.Congregation.EndPoints/<DeleteCongregationAsync>d__5::MoveNext()": {
+          "Lines": {
+            "98": 0,
+            "99": 0,
+            "101": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "108": 0,
+            "110": 0,
+            "111": 0
+          },
+          "Branches": [
+            {
+              "Line": 103,
+              "Offset": 191,
+              "EndOffset": 193,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 103,
+              "Offset": 191,
+              "EndOffset": 228,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Congregation.EndPoints/<GetByIdAsync>d__2": {
+        "System.Void SPW.Admin.Api.Features.Congregation.EndPoints/<GetByIdAsync>d__2::MoveNext()": {
+          "Lines": {
+            "39": 0,
+            "40": 0,
+            "42": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "49": 0,
+            "51": 0,
+            "52": 0
+          },
+          "Branches": [
+            {
+              "Line": 44,
+              "Offset": 184,
+              "EndOffset": 186,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 184,
+              "EndOffset": 221,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Congregation.EndPoints/<GetCongregationsAsync>d__1": {
+        "System.Void SPW.Admin.Api.Features.Congregation.EndPoints/<GetCongregationsAsync>d__1::MoveNext()": {
+          "Lines": {
+            "25": 0,
+            "26": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "33": 0,
+            "35": 0,
+            "36": 0
+          },
+          "Branches": [
+            {
+              "Line": 28,
+              "Offset": 166,
+              "EndOffset": 168,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 30,
+              "Offset": 181,
+              "EndOffset": 183,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 30,
+              "Offset": 181,
+              "EndOffset": 196,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 166,
+              "EndOffset": 224,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Congregation.EndPoints/<UpdateCongregationAsync>d__4": {
+        "System.Void SPW.Admin.Api.Features.Congregation.EndPoints/<UpdateCongregationAsync>d__4::MoveNext()": {
+          "Lines": {
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "85": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "92": 0,
+            "94": 0,
+            "95": 0
+          },
+          "Branches": [
+            {
+              "Line": 87,
+              "Offset": 253,
+              "EndOffset": 255,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 87,
+              "Offset": 253,
+              "EndOffset": 290,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Congregation\\Errors.cs": {
+      "SPW.Admin.Api.Features.Congregation.Errors": {
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Congregation.Errors::ReturnInvalidEntriesError(System.String)": {
+          "Lines": {
+            "7": 6,
+            "8": 6
+          },
+          "Branches": []
+        },
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Congregation.Errors::ReturnCongregationNotFoundError()": {
+          "Lines": {
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Congregation\\Update\\UpdateHandler.cs": {
+      "SPW.Admin.Api.Features.Congregation.Update.UpdateHandler": {
+        "System.Void SPW.Admin.Api.Features.Congregation.Update.UpdateHandler::.ctor(SPW.Admin.Api.Features.Congregation.ICongregationData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Congregation.Update.UpdateCommand>)": {
+          "Lines": {
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Congregation.Update.UpdateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Congregation.Update.UpdateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "34": 1,
+            "36": 1,
+            "37": 2
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Congregation\\GetById\\GetByIdQuery.cs": {
+      "SPW.Admin.Api.Features.Congregation.GetById.GetByIdQuery": {
+        "System.Guid SPW.Admin.Api.Features.Congregation.GetById.GetByIdQuery::get_Id()": {
+          "Lines": {
+            "5": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Congregation\\GetAll\\GetAllQuery.cs": {
+      "SPW.Admin.Api.Features.Congregation.GetAll.GetAllQuery": {
+        "System.Void SPW.Admin.Api.Features.Congregation.GetAll.GetAllQuery::.ctor()": {
+          "Lines": {
+            "5": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Congregation\\Create\\CreateHandler.cs": {
+      "SPW.Admin.Api.Features.Congregation.Create.CreateHandler": {
+        "System.Void SPW.Admin.Api.Features.Congregation.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.Congregation.ICongregationData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Congregation.Create.CreateCommand>)": {
+          "Lines": {
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Congregation.Create.CreateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Congregation.Create.CreateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "35": 1,
+            "37": 1,
+            "38": 2
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Congregation\\Create\\CreateValidator.cs": {
+      "SPW.Admin.Api.Features.Congregation.Create.CreateValidator": {
+        "System.Void SPW.Admin.Api.Features.Congregation.Create.CreateValidator::.ctor()": {
+          "Lines": {
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "16": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Circuit\\CircuitData.cs": {
+      "SPW.Admin.Api.Features.Circuit.CircuitData": {
+        "System.Void SPW.Admin.Api.Features.Circuit.CircuitData::.ctor(Npgsql.NpgsqlDataSourceBuilder)": {
+          "Lines": {
+            "3": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Circuit.CircuitData/<CreateCircuitAsync>d__4": {
+        "System.Void SPW.Admin.Api.Features.Circuit.CircuitData/<CreateCircuitAsync>d__4::MoveNext()": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Circuit.CircuitData/<DeleteCircuitAsync>d__6": {
+        "System.Void SPW.Admin.Api.Features.Circuit.CircuitData/<DeleteCircuitAsync>d__6::MoveNext()": {
+          "Lines": {
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Circuit.CircuitData/<GetAllCircuitsAsync>d__3": {
+        "System.Void SPW.Admin.Api.Features.Circuit.CircuitData/<GetAllCircuitsAsync>d__3::MoveNext()": {
+          "Lines": {
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Circuit.CircuitData/<GetCircuitByIdAsync>d__2": {
+        "System.Void SPW.Admin.Api.Features.Circuit.CircuitData/<GetCircuitByIdAsync>d__2::MoveNext()": {
+          "Lines": {
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Circuit.CircuitData/<UpdateCircuitAsync>d__5": {
+        "System.Void SPW.Admin.Api.Features.Circuit.CircuitData/<UpdateCircuitAsync>d__5::MoveNext()": {
+          "Lines": {
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Circuit\\EndPoints.cs": {
+      "SPW.Admin.Api.Features.Circuit.EndPoints": {
+        "System.Void SPW.Admin.Api.Features.Circuit.EndPoints::AddRoutes(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Circuit.EndPoints/<CreateCircuitAsync>d__3": {
+        "System.Void SPW.Admin.Api.Features.Circuit.EndPoints/<CreateCircuitAsync>d__3::MoveNext()": {
+          "Lines": {
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "62": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "69": 0,
+            "71": 0,
+            "72": 0
+          },
+          "Branches": [
+            {
+              "Line": 64,
+              "Offset": 214,
+              "EndOffset": 216,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 64,
+              "Offset": 214,
+              "EndOffset": 254,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Circuit.EndPoints/<DeleteCircuitAsync>d__5": {
+        "System.Void SPW.Admin.Api.Features.Circuit.EndPoints/<DeleteCircuitAsync>d__5::MoveNext()": {
+          "Lines": {
+            "95": 0,
+            "96": 0,
+            "98": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "105": 0,
+            "107": 0,
+            "108": 0
+          },
+          "Branches": [
+            {
+              "Line": 100,
+              "Offset": 191,
+              "EndOffset": 193,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 100,
+              "Offset": 191,
+              "EndOffset": 228,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Circuit.EndPoints/<GetByIdAsync>d__2": {
+        "System.Void SPW.Admin.Api.Features.Circuit.EndPoints/<GetByIdAsync>d__2::MoveNext()": {
+          "Lines": {
+            "39": 0,
+            "40": 0,
+            "42": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "49": 0,
+            "51": 0,
+            "52": 0
+          },
+          "Branches": [
+            {
+              "Line": 44,
+              "Offset": 184,
+              "EndOffset": 186,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 184,
+              "EndOffset": 221,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Circuit.EndPoints/<GetCircuitsAsync>d__1": {
+        "System.Void SPW.Admin.Api.Features.Circuit.EndPoints/<GetCircuitsAsync>d__1::MoveNext()": {
+          "Lines": {
+            "25": 0,
+            "26": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "33": 0,
+            "35": 0,
+            "36": 0
+          },
+          "Branches": [
+            {
+              "Line": 28,
+              "Offset": 166,
+              "EndOffset": 168,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 30,
+              "Offset": 181,
+              "EndOffset": 183,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 30,
+              "Offset": 181,
+              "EndOffset": 196,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 166,
+              "EndOffset": 224,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Circuit.EndPoints/<UpdateCircuitAsync>d__4": {
+        "System.Void SPW.Admin.Api.Features.Circuit.EndPoints/<UpdateCircuitAsync>d__4::MoveNext()": {
+          "Lines": {
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "82": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "89": 0,
+            "91": 0,
+            "92": 0
+          },
+          "Branches": [
+            {
+              "Line": 84,
+              "Offset": 214,
+              "EndOffset": 216,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 84,
+              "Offset": 214,
+              "EndOffset": 251,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Circuit\\Errors.cs": {
+      "SPW.Admin.Api.Features.Circuit.Errors": {
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Circuit.Errors::ReturnInvalidEntriesError(System.String)": {
+          "Lines": {
+            "7": 6,
+            "8": 6
+          },
+          "Branches": []
+        },
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Circuit.Errors::ReturnCircuitNotFoundError()": {
+          "Lines": {
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Circuit\\Update\\UpdateHandler.cs": {
+      "SPW.Admin.Api.Features.Circuit.Update.UpdateHandler": {
+        "System.Void SPW.Admin.Api.Features.Circuit.Update.UpdateHandler::.ctor(SPW.Admin.Api.Features.Circuit.ICircuitData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Circuit.Update.UpdateCommand>)": {
+          "Lines": {
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Circuit.Update.UpdateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Circuit.Update.UpdateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "32": 1,
+            "34": 1,
+            "35": 2
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Circuit\\Update\\UpdateValidator.cs": {
+      "SPW.Admin.Api.Features.Circuit.Update.UpdateValidator": {
+        "System.Void SPW.Admin.Api.Features.Circuit.Update.UpdateValidator::.ctor()": {
+          "Lines": {
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Circuit\\GetById\\GetByIdQuery.cs": {
+      "SPW.Admin.Api.Features.Circuit.GetById.GetByIdQuery": {
+        "System.Guid SPW.Admin.Api.Features.Circuit.GetById.GetByIdQuery::get_Id()": {
+          "Lines": {
+            "5": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Circuit\\GetAll\\GetAllQuery.cs": {
+      "SPW.Admin.Api.Features.Circuit.GetAll.GetAllQuery": {
+        "System.Void SPW.Admin.Api.Features.Circuit.GetAll.GetAllQuery::.ctor()": {
+          "Lines": {
+            "5": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Circuit\\Create\\CreateHandler.cs": {
+      "SPW.Admin.Api.Features.Circuit.Create.CreateHandler": {
+        "System.Void SPW.Admin.Api.Features.Circuit.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.Circuit.ICircuitData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Circuit.Create.CreateCommand>)": {
+          "Lines": {
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Circuit.Create.CreateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Circuit.Create.CreateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "34": 1,
+            "36": 1,
+            "37": 2
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Circuit\\Create\\CreateValidator.cs": {
+      "SPW.Admin.Api.Features.Circuit.Create.CreateValidator": {
+        "System.Void SPW.Admin.Api.Features.Circuit.Create.CreateValidator::.ctor()": {
+          "Lines": {
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "14": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Announcement\\EndPoints.cs": {
+      "SPW.Admin.Api.Features.Announcement.EndPoints": {
+        "System.Void SPW.Admin.Api.Features.Announcement.EndPoints::AddRoutes(Microsoft.AspNetCore.Routing.IEndpointRouteBuilder)": {
+          "Lines": {
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Announcement.EndPoints/<CreateAnnouncementAsync>d__3": {
+        "System.Void SPW.Admin.Api.Features.Announcement.EndPoints/<CreateAnnouncementAsync>d__3::MoveNext()": {
+          "Lines": {
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "63": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "70": 0,
+            "72": 0,
+            "73": 0
+          },
+          "Branches": [
+            {
+              "Line": 65,
+              "Offset": 235,
+              "EndOffset": 237,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 65,
+              "Offset": 235,
+              "EndOffset": 275,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Announcement.EndPoints/<DeleteAnnouncementAsync>d__5": {
+        "System.Void SPW.Admin.Api.Features.Announcement.EndPoints/<DeleteAnnouncementAsync>d__5::MoveNext()": {
+          "Lines": {
+            "99": 0,
+            "100": 0,
+            "102": 0,
+            "104": 0,
+            "105": 0,
+            "106": 0,
+            "109": 0,
+            "111": 0,
+            "112": 0
+          },
+          "Branches": [
+            {
+              "Line": 104,
+              "Offset": 191,
+              "EndOffset": 193,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 104,
+              "Offset": 191,
+              "EndOffset": 228,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Announcement.EndPoints/<GetAnnouncementsAsync>d__1": {
+        "System.Void SPW.Admin.Api.Features.Announcement.EndPoints/<GetAnnouncementsAsync>d__1::MoveNext()": {
+          "Lines": {
+            "25": 0,
+            "26": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "33": 0,
+            "35": 0,
+            "36": 0
+          },
+          "Branches": [
+            {
+              "Line": 28,
+              "Offset": 166,
+              "EndOffset": 168,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 166,
+              "EndOffset": 203,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Announcement.EndPoints/<GetByIdAsync>d__2": {
+        "System.Void SPW.Admin.Api.Features.Announcement.EndPoints/<GetByIdAsync>d__2::MoveNext()": {
+          "Lines": {
+            "39": 0,
+            "40": 0,
+            "42": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "49": 0,
+            "51": 0,
+            "52": 0
+          },
+          "Branches": [
+            {
+              "Line": 44,
+              "Offset": 184,
+              "EndOffset": 186,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 44,
+              "Offset": 184,
+              "EndOffset": 221,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "SPW.Admin.Api.Features.Announcement.EndPoints/<UpdateAnnouncementsync>d__4": {
+        "System.Void SPW.Admin.Api.Features.Announcement.EndPoints/<UpdateAnnouncementsync>d__4::MoveNext()": {
+          "Lines": {
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "86": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "93": 0,
+            "95": 0,
+            "96": 0
+          },
+          "Branches": [
+            {
+              "Line": 88,
+              "Offset": 235,
+              "EndOffset": 237,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 88,
+              "Offset": 235,
+              "EndOffset": 272,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Announcement\\Errors.cs": {
+      "SPW.Admin.Api.Features.Announcement.Errors": {
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Announcement.Errors::ReturnInvalidEntriesError(System.String)": {
+          "Lines": {
+            "7": 6,
+            "8": 6
+          },
+          "Branches": []
+        },
+        "SPW.Admin.Api.Shared.Models.Error SPW.Admin.Api.Features.Announcement.Errors::ReturnAnnouncementNotFoundError()": {
+          "Lines": {
+            "10": 0,
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Announcement\\Update\\UpdateHandler.cs": {
+      "SPW.Admin.Api.Features.Announcement.Update.UpdateHandler": {
+        "System.Void SPW.Admin.Api.Features.Announcement.Update.UpdateHandler::.ctor(SPW.Admin.Api.Features.Announcement.IAnnouncementData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Announcement.Update.UpdateCommand>)": {
+          "Lines": {
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Announcement.Update.UpdateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Announcement.Update.UpdateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "33": 1,
+            "35": 1,
+            "36": 2
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Announcement\\GetById\\GetByIdQuery.cs": {
+      "SPW.Admin.Api.Features.Announcement.GetById.GetByIdQuery": {
+        "System.Guid SPW.Admin.Api.Features.Announcement.GetById.GetByIdQuery::get_Id()": {
+          "Lines": {
+            "5": 2
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Announcement\\GetAll\\GetAllQuery.cs": {
+      "SPW.Admin.Api.Features.Announcement.GetAll.GetAllQuery": {
+        "System.Void SPW.Admin.Api.Features.Announcement.GetAll.GetAllQuery::.ctor()": {
+          "Lines": {
+            "5": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Announcement\\Delete\\DeleteHandler.cs": {
+      "SPW.Admin.Api.Features.Announcement.Delete.DeleteHandler": {
+        "System.Void SPW.Admin.Api.Features.Announcement.Delete.DeleteHandler::.ctor(SPW.Admin.Api.Features.Announcement.IAnnouncementData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Announcement.Delete.DeleteCommand>)": {
+          "Lines": {
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Announcement.Delete.DeleteHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Announcement.Delete.DeleteHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "28": 1,
+            "29": 0,
+            "30": 0,
+            "33": 1,
+            "35": 1,
+            "36": 2
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 73,
+              "EndOffset": 75,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 20,
+              "Offset": 73,
+              "EndOffset": 108,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 28,
+              "Offset": 269,
+              "EndOffset": 271,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 269,
+              "EndOffset": 293,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Announcement\\Delete\\DeleteRequest.cs": {
+      "SPW.Admin.Api.Features.Announcement.Delete.DeleteRequest": {
+        "System.Guid SPW.Admin.Api.Features.Announcement.Delete.DeleteRequest::get_Id()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Announcement\\Delete\\DeleteValidator.cs": {
+      "SPW.Admin.Api.Features.Announcement.Delete.DeleteValidator": {
+        "System.Void SPW.Admin.Api.Features.Announcement.Delete.DeleteValidator::.ctor()": {
+          "Lines": {
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "10": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Announcement\\Create\\CreateHandler.cs": {
+      "SPW.Admin.Api.Features.Announcement.Create.CreateHandler": {
+        "System.Void SPW.Admin.Api.Features.Announcement.Create.CreateHandler::.ctor(SPW.Admin.Api.Features.Announcement.IAnnouncementData,FluentValidation.IValidator`1<SPW.Admin.Api.Features.Announcement.Create.CreateCommand>)": {
+          "Lines": {
+            "10": 2,
+            "11": 2,
+            "12": 2,
+            "13": 2,
+            "14": 2
+          },
+          "Branches": []
+        }
+      },
+      "SPW.Admin.Api.Features.Announcement.Create.CreateHandler/<Handle>d__3": {
+        "System.Void SPW.Admin.Api.Features.Announcement.Create.CreateHandler/<Handle>d__3::MoveNext()": {
+          "Lines": {
+            "17": 2,
+            "18": 2,
+            "20": 2,
+            "21": 1,
+            "22": 1,
+            "23": 1,
+            "26": 1,
+            "27": 1,
+            "28": 1,
+            "29": 1,
+            "30": 1,
+            "31": 1,
+            "32": 1,
+            "33": 1,
+            "35": 1,
+            "37": 1,
+            "38": 2
+          },
+          "Branches": [
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 64,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 20,
+              "Offset": 62,
+              "EndOffset": 97,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\cmoli\\OneDrive\\Área de Trabalho\\DEV\\SPW\\SPW.Admin.Api\\src\\Api\\Features\\Announcement\\Create\\CreateValidator.cs": {
+      "SPW.Admin.Api.Features.Announcement.Create.CreateValidator": {
+        "System.Void SPW.Admin.Api.Features.Announcement.Create.CreateValidator::.ctor()": {
+          "Lines": {
+            "5": 0,
+            "6": 0,
+            "7": 0,
+            "8": 0,
+            "9": 0,
+            "11": 0,
+            "12": 0,
+            "13": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}

@@ -8,5 +8,9 @@ public sealed class UpdateValidator : AbstractValidator<UpdateCommand>
         RuleFor(expression => expression.Name)
             .NotEmpty()
             .WithMessage("Name cannot be empty");
+
+        RuleFor(expression => expression.Date)
+            .NotEmpty()
+            .WithMessage("Data cannot be empty");
     }
 }

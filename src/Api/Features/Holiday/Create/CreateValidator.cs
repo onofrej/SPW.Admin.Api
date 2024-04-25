@@ -13,6 +13,8 @@ public sealed class CreateValidator : AbstractValidator<CreateCommand>
            .NotEmpty()
            .WithMessage("Domain Id cannot be empty");
 
-        //TODO: Validate date property
+        RuleFor(expression => expression.Date)
+            .NotEmpty()
+            .WithMessage("Date cannot be empty");
     }
 }
